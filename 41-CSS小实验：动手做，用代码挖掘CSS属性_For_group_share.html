@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>41-CSS小实验：动手做，用代码挖掘CSS属性_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="41-CSS小实验：动手做，用代码挖掘CSS属性_For_group_share.html, html, OneManager">
+    <meta name="description" content="41-CSS小实验：动手做，用代码挖掘CSS属性_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">41-CSS小实验：动手做，用代码挖掘CSS属性_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/41-CSS%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%9A%E5%8A%A8%E6%89%8B%E5%81%9A%EF%BC%8C%E7%94%A8%E4%BB%A3%E7%A0%81%E6%8C%96%E6%8E%98CSS%E5%B1%9E%E6%80%A7_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/41-CSS%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%9A%E5%8A%A8%E6%89%8B%E5%81%9A%EF%BC%8C%E7%94%A8%E4%BB%A3%E7%A0%81%E6%8C%96%E6%8E%98CSS%E5%B1%9E%E6%80%A7_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;41-CSS小实验：动手做，用代码挖掘CSS属性&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;41-CSS小实验：动手做，用代码挖掘CSS属性&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;我们的课程中已经讲解了一部分CSS属性，但是CSS属性数量繁多，我们的课程只能覆盖其中一小部分，所以我设计了这个小实验，教你用代码挖掘W3C标准中的属性。&lt;/p&gt;&lt;h2&gt;浏览器中已经实现的属性&lt;/h2&gt;&lt;p&gt;首先我们来看看浏览器中实现了哪些属性。我们用一段代码来看一下。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;Object.keys(document.body.style).filter(e =&amp;gt; !e.match(/^webkit/))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码思路非常简单，就是枚举document.body.style上的所有属性，并且去掉webkit前缀的私有属性。&lt;/p&gt;&lt;p&gt;在我的Chrome中，得到了这样一组属性：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;alignContent, alignItems, alignSelf, alignmentBaseline, all, animation, animationDelay, animationDirection, animationDuration, animationFillMode, animationIterationCount, animationName, animationPlayState, animationTimingFunction, backfaceVisibility, background, backgroundAttachment, backgroundBlendMode, backgroundClip, backgroundColor, backgroundImage, backgroundOrigin, backgroundPosition, backgroundPositionX, backgroundPositionY, backgroundRepeat, backgroundRepeatX, backgroundRepeatY, backgroundSize, baselineShift, blockSize, border, borderBlockEnd, borderBlockEndColor, borderBlockEndStyle, borderBlockEndWidth, borderBlockStart, borderBlockStartColor, borderBlockStartStyle, borderBlockStartWidth, borderBottom, borderBottomColor, borderBottomLeftRadius, borderBottomRightRadius, borderBottomStyle, borderBottomWidth, borderCollapse, borderColor, borderImage, borderImageOutset, borderImageRepeat, borderImageSlice, borderImageSource, borderImageWidth, borderInlineEnd, borderInlineEndColor, borderInlineEndStyle, borderInlineEndWidth, borderInlineStart, borderInlineStartColor, borderInlineStartStyle, borderInlineStartWidth, borderLeft, borderLeftColor, borderLeftStyle, borderLeftWidth, borderRadius, borderRight, borderRightColor, borderRightStyle, borderRightWidth, borderSpacing, borderStyle, borderTop, borderTopColor, borderTopLeftRadius, borderTopRightRadius, borderTopStyle, borderTopWidth, borderWidth, bottom, boxShadow, boxSizing, breakAfter, breakBefore, breakInside, bufferedRendering, captionSide, caretColor, clear, clip, clipPath, clipRule, color, colorInterpolation, colorInterpolationFilters, colorRendering, columnCount, columnFill, columnGap, columnRule, columnRuleColor, columnRuleStyle, columnRuleWidth, columnSpan, columnWidth, columns, contain, content, counterIncrement, counterReset, cursor, cx, cy, d, direction, display, dominantBaseline, emptyCells, fill, fillOpacity, fillRule, filter, flex, flexBasis, flexDirection, flexFlow, flexGrow, flexShrink, flexWrap, float, floodColor, floodOpacity, font, fontDisplay, fontFamily, fontFeatureSettings, fontKerning, fontSize, fontStretch, fontStyle, fontVariant, fontVariantCaps, fontVariantEastAsian, fontVariantLigatures, fontVariantNumeric, fontVariationSettings, fontWeight, gap, grid, gridArea, gridAutoColumns, gridAutoFlow, gridAutoRows, gridColumn, gridColumnEnd, gridColumnGap, gridColumnStart, gridGap, gridRow, gridRowEnd, gridRowGap, gridRowStart, gridTemplate, gridTemplateAreas, gridTemplateColumns, gridTemplateRows, height, hyphens, imageRendering, inlineSize, isolation, justifyContent, justifyItems, justifySelf, left, letterSpacing, lightingColor, lineBreak, lineHeight, listStyle, listStyleImage, listStylePosition, listStyleType, margin, marginBlockEnd, marginBlockStart, marginBottom, marginInlineEnd, marginInlineStart, marginLeft, marginRight, marginTop, marker, markerEnd, markerMid, markerStart, mask, maskType, maxBlockSize, maxHeight, maxInlineSize, maxWidth, maxZoom, minBlockSize, minHeight, minInlineSize, minWidth, minZoom, mixBlendMode, objectFit, objectPosition, offset, offsetDistance, offsetPath, offsetRotate, opacity, order, orientation, orphans, outline, outlineColor, outlineOffset, outlineStyle, outlineWidth, overflow, overflowAnchor, overflowWrap, overflowX, overflowY, overscrollBehavior, overscrollBehaviorX, overscrollBehaviorY, padding, paddingBlockEnd, paddingBlockStart, paddingBottom, paddingInlineEnd, paddingInlineStart, paddingLeft, paddingRight, paddingTop, page, pageBreakAfter, pageBreakBefore, pageBreakInside, paintOrder, perspective, perspectiveOrigin, placeContent, placeItems, placeSelf, pointerEvents, position, quotes, r, resize, right, rowGap, rx, ry, scrollBehavior, scrollMargin, scrollMarginBlock, scrollMarginBlockEnd, scrollMarginBlockStart, scrollMarginBottom, scrollMarginInline, scrollMarginInlineEnd, scrollMarginInlineStart, scrollMarginLeft, scrollMarginRight, scrollMarginTop, scrollPadding, scrollPaddingBlock, scrollPaddingBlockEnd, scrollPaddingBlockStart, scrollPaddingBottom, scrollPaddingInline, scrollPaddingInlineEnd, scrollPaddingInlineStart, scrollPaddingLeft, scrollPaddingRight, scrollPaddingTop, scrollSnapAlign, scrollSnapStop, scrollSnapType, shapeImageThreshold, shapeMargin, shapeOutside, shapeRendering, size, speak, src, stopColor, stopOpacity, stroke, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, tabSize, tableLayout, textAlign, textAlignLast, textAnchor, textCombineUpright, textDecoration, textDecorationColor, textDecorationLine, textDecorationSkipInk, textDecorationStyle, textIndent, textOrientation, textOverflow, textRendering, textShadow, textSizeAdjust, textTransform, textUnderlinePosition, top, touchAction, transform, transformBox, transformOrigin, transformStyle, transition, transitionDelay, transitionDuration, transitionProperty, transitionTimingFunction, unicodeBidi, unicodeRange, userSelect, userZoom, vectorEffect, verticalAlign, visibility, whiteSpace, widows, width, willChange, wordBreak, wordSpacing, wordWrap, writingMode, x, y, zIndex, zoom
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;数了一下，这里有390个属性，这非常壮观了，要想了解它们可不是一件容易的事情。接下来我们试着找到它们背后对应的标准。&lt;/p&gt;&lt;h2&gt;小实验：找出W3C标准中的CSS属性&lt;/h2&gt;&lt;p&gt;我们知道CSS2.1是一份标准，但是CSS3分布在无数标准中，我们需要用代码把它们整理出来，这就是我们今天的小实验内容了。&lt;/p&gt;&lt;p&gt;为了达到我们的目的，我们需要写一个简单的爬虫，来找一找W3C标准中都覆盖了哪些属性。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;我们这个爬虫的思路是：用iframe来加载所有标准的网页，然后用JavaScript找出它们中间定义的标准。&lt;/strong&gt;&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;h3&gt;第一步：找到CSS相关的标准。&lt;/h3&gt;&lt;p&gt;我们来到W3C的TR页面：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/?tag=css&quot;&gt;https://www.w3.org/TR/?tag=css&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;我们必须从这个页面里抓取所有的标准名称和链接，打开它的代码，我们会发现它是有规律的，这个页面由一个巨大的列表构成，我们只需要根据tag选取需要的标准即可。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;document.querySelectorAll(&quot;#container li[data-tag~=css] h2:not(.Retired):not(.GroupNote)&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码可以找到所有CSS相关的标准，我们用代码把从HTML结构中把它们抽取出来。可以得到一个列表。&lt;br&gt;
+（图片较大，请等待加载。）&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/3b/be/3bc9ec8fad753e4a7af9db27bb1e25be.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h3&gt;第二步：分析每个标准中的CSS属性&lt;/h3&gt;&lt;p&gt;得到了这个标准的列表，下一步我们就是分析每个标准中的CSS属性。&lt;/p&gt;&lt;p&gt;我们打开第一个标准，试着找出属性定义：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/2019/WD-css-lists-3-20190425/&quot;&gt;https://www.w3.org/TR/2019/WD-css-lists-3-20190425/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;经过分析，我们会发现，属性总是在一个具有propdef的容器中，有属性data-dfn-type值为property。&lt;/p&gt;&lt;p&gt;这里我不得不感慨，W3C的标准写得真的是十分严谨，这给我们带来了很大的方便。我们用以下代码获取属性：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;document.querySelectorAll(&quot;.propdef [data-dfn-type=property]&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对于第一个标准 CSS  Lists  Module  Level 3 得到了这个列表：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;list-style-image
+list-style-type
+list-style-position
+list-style
+marker-side
+counter-reset
+counter-set
+counter-increment
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好了，接下来，我们来用iframe打开这些标准，并且用我们分析好的规则，来找出里面的属性就可以了。最终成品代码如下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+var iframe = document.createElement(&quot;iframe&quot;);
+document.body.appendChild(iframe);
+iframe.src = &quot;https://www.w3.org/TR/2019/WD-css-lists-3-20190425/&quot;
+function happen(element, type){
+  return new Promise(resolve =&amp;gt; {
+    element.addEventListener(type, resolve, {once: true})
+  })
+}
+happen(iframe, &quot;load&quot;).then(function(){
+  //Array.prototype.map.call(document.querySelectorAll(&quot;#container li[data-tag~=css] h2&quot;), e=&amp;gt; e.children[0].href + &quot; |\t&quot; + e.children[0].textContent).join(&quot;\n&quot;)
+  console.log(iframe.contentWindow);
+})
+async function start(){
+  var output = []
+  for(let standard of  Array.prototype.slice.call(document.querySelectorAll(&quot;#container li[data-tag~=css] h2:not(.Retired):not(.GroupNote)&quot;))) {
+    console.log(standard.children[0].href);
+    iframe.src = standard.children[0].href;
+    await happen(iframe, &quot;load&quot;);
+    var properties = Array.prototype.map.call(iframe.contentWindow.document.querySelectorAll(&quot;.propdef [data-dfn-type=property]&quot;), e =&amp;gt; e.childNodes[0].textContent);
+    if(properties.length)
+        output.push(standard.children[0].textContent + &quot; | &quot; + properties.join(&quot;, &quot;));
+  }
+  console.log(output.join(&quot;\n&quot;))
+}
+start();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样，我们就得到了每个属性属于哪个标准，我们来看看最终结果。我把它整理成了一个列表。&lt;/p&gt;&lt;p&gt;（图片较大，请等待加载。）&lt;br&gt;
+&lt;img src=&quot;https://static001.geekbang.org/resource/image/ab/71/ab03527b7b40b594bb55f6bfd523d271.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;至此，我们已经找出了标准中讲解的所有属性。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;今天的这节课我们通过代码对标准做了分析，找出了属性和标准的对应关系。&lt;/p&gt;&lt;p&gt;我们的第一步是找到所有的标准列表，第二步是找到每个标准中的属性。最后得到的这个列表比较全面地覆盖了CSS属性，并根据标准划分好了分类，我觉得这可以作为你后续学习和精研的重要依据。&lt;/p&gt;&lt;p&gt;我在本篇内容的前面还有一份浏览器中已经实现的属性列表，理论上属性列表中的属性应该都出现在了我们的标准中。&lt;/p&gt;&lt;p&gt;那么，这次课后的小任务，就是找出被我们的代码遗漏的属性，和重复出现在多份标准中的属性，让我们的列表更为完善。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:40 星期四 124.232.146.132 Runningtime:0.437s Mem:1.39 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

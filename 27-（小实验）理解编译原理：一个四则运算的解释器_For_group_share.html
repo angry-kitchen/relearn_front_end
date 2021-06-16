@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>27-（小实验）理解编译原理：一个四则运算的解释器_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="27-（小实验）理解编译原理：一个四则运算的解释器_For_group_share.html, html, OneManager">
+    <meta name="description" content="27-（小实验）理解编译原理：一个四则运算的解释器_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">27-（小实验）理解编译原理：一个四则运算的解释器_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/27-%EF%BC%88%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%89%E7%90%86%E8%A7%A3%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E7%9A%84%E8%A7%A3%E9%87%8A%E5%99%A8_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/27-%EF%BC%88%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%89%E7%90%86%E8%A7%A3%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E7%9A%84%E8%A7%A3%E9%87%8A%E5%99%A8_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;27-（小实验）理解编译原理：一个四则运算的解释器&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;27-（小实验）理解编译原理：一个四则运算的解释器&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;在前面的课程中，我在JavaScript和CSS的部分，多次提到了编译原理相关的知识。这一部分的知识，如果我们从编译原理“龙书”等正规的资料中学习，就会耗费掉不少的时间，所以我在这里设计了一个小实验，帮助你快速理解编译原理相关的知识。&lt;/p&gt;&lt;p&gt;今天的内容比较特殊，我们来做一段详细的代码实验，详细的代码我放在了文章里，如果你正在收听音频，可以点击文章查看详情。&lt;/p&gt;&lt;h2&gt;分析&lt;/h2&gt;&lt;p&gt;按照编译原理相关的知识，我们来设计一下工作，这里我们分成几个步骤。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;定义四则运算：产出四则运算的词法定义和语法定义。&lt;/li&gt;
+&lt;li&gt;词法分析：把输入的字符串流变成token。&lt;/li&gt;
+&lt;li&gt;语法分析：把token变成抽象语法树AST。&lt;/li&gt;
+&lt;li&gt;解释执行：后序遍历AST，执行得出结果。&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;定义四则运算&lt;/h2&gt;&lt;p&gt;四则运算就是加减乘除四种运算，例如：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;1 + 2 * 3
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;首先我们来定义词法，四则运算里面只有数字和运算符，所以定义很简单，但是我们还要注意空格和换行符，所以词法定义大概是下面这样的。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Token
+&lt;ul&gt;
+&lt;li&gt;Number: &lt;code&gt;1&lt;/code&gt; &lt;code&gt;2&lt;/code&gt; &lt;code&gt;3&lt;/code&gt; &lt;code&gt;4&lt;/code&gt; &lt;code&gt;5&lt;/code&gt; &lt;code&gt;6&lt;/code&gt; &lt;code&gt;7&lt;/code&gt; &lt;code&gt;8&lt;/code&gt; &lt;code&gt;9&lt;/code&gt; &lt;code&gt;0&lt;/code&gt; 的组合&lt;/li&gt;
+&lt;li&gt;Operator: &lt;code&gt;+&lt;/code&gt; 、&lt;code&gt;-&lt;/code&gt;、 &lt;code&gt;*&lt;/code&gt;、 &lt;code&gt;/&lt;/code&gt; 之一&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Whitespace: &lt;code&gt;&amp;lt;sp&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;LineTerminator：&lt;code&gt;&amp;lt;LF&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;这里我们对空白和换行符没有任何的处理，所以词法分析阶段会直接丢弃。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;接下来我们来定义语法，语法定义多数采用BNF，但是其实大家写起来都是乱写的，比如JavaScript标准里面就是一种跟BNF类似的自创语法。&lt;/p&gt;&lt;p&gt;不过语法定义的核心思想不会变，都是几种结构的组合产生一个新的结构，所以语法定义也叫语法产生式。&lt;/p&gt;&lt;p&gt;因为加减乘除有优先级，所以我们可以认为加法是由若干个乘法再由加号或者减号连接成的：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;Expression&amp;gt; ::= 
+    &amp;lt;AdditiveExpression&amp;gt;&amp;lt;EOF&amp;gt;
+&amp;lt;AdditiveExpression&amp;gt; ::= 
+    &amp;lt;MultiplicativeExpression&amp;gt;
+    |&amp;lt;AdditiveExpression&amp;gt;&amp;lt;+&amp;gt;&amp;lt;MultiplicativeExpression&amp;gt;
+    |&amp;lt;AdditiveExpression&amp;gt;&amp;lt;-&amp;gt;&amp;lt;MultiplicativeExpression&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种BNF的写法类似递归的原理，你可以理解一下，它表示一个列表。为了方便，我们把普通数字也得当成乘法的一种特例了。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;MultiplicativeExpression&amp;gt; ::= 
+    &amp;lt;Number&amp;gt;
+    |&amp;lt;MultiplicativeExpression&amp;gt;&amp;lt;*&amp;gt;&amp;lt;Number&amp;gt;
+    |&amp;lt;MultiplicativeExpression&amp;gt;&amp;lt;/&amp;gt;&amp;lt;Number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好了，这就是四则运算的定义了。&lt;/p&gt;&lt;h2&gt;词法分析：状态机&lt;/h2&gt;&lt;p&gt;词法分析部分，我们把字符流变成token流。词法分析有两种方案，一种是状态机，一种是正则表达式，它们是等效的，选择你喜欢的就好，这里我都会你介绍一下状态机。&lt;/p&gt;&lt;p&gt;根据分析，我们可能产生四种输入元素，其中只有两种token，我们状态机的第一个状态就是根据第一个输入字符来判断进入了哪种状态：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var token = [];
+const start = char =&amp;gt; {
+    if(char === '1' 
+        || char === '2'
+        || char === '3'
+        || char === '4'
+        || char === '5'
+        || char === '6'
+        || char === '7'
+        || char === '8'
+        || char === '9'
+        || char === '0'
+    ) {
+        token.push(char);
+        return inNumber;   
+    }
+    if(char === '+' 
+        || char === '-'
+        || char === '*'
+        || char === '/'
+    ) {
+        emmitToken(char, char);
+        return start
+    }
+    if(char === ' ') {
+        return start;
+    }
+    if(char === '\r' 
+        || char === '\n'
+    ) {
+        return start;
+    }
+}
+const inNumber = char =&amp;gt; {
+    if(char === '1' 
+        || char === '2'
+        || char === '3'
+        || char === '4'
+        || char === '5'
+        || char === '6'
+        || char === '7'
+        || char === '8'
+        || char === '9'
+        || char === '0'
+    ) {
+        token.push(char);
+        return inNumber;
+    } else {
+        emmitToken(&quot;Number&quot;, token.join(&quot;&quot;));
+        token = [];
+        return start(char); // put back char
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个状态机非常简单，它只有两个状态，因为我们只有Number不是单字符的token。&lt;/p&gt;&lt;p&gt;这里我的状态机实现是非常经典的方式：用函数表示状态，用if表示状态的迁移关系，用return值表示下一个状态。&lt;/p&gt;&lt;p&gt;下面我们来运行一下这个状态机试试看：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+function emmitToken(type, value) {
+    console.log(value);
+}
+var input = &quot;1024 + 2 * 256&quot;
+var state = start;
+for(var c of input.split(''))
+    state = state(c);
+state(Symbol('EOF'))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;运行后我们发现输出如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;1024
++
+2
+*
+256
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是我们想要的答案。&lt;/p&gt;&lt;h2&gt;语法分析：LL&lt;/h2&gt;&lt;p&gt;做完了词法分析，我们开始进行语法分析，LL语法分析根据每一个产生式来写一个函数，首先我们来写好函数名：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;function AdditiveExpression( ){
+}
+function MultiplicativeExpression(){
+    
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了便于理解，我们就不做流式处理了，实际上一般编译代码都应该支持流式处理。&lt;/p&gt;&lt;p&gt;所以我们假设token已经都拿到了：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var tokens = [{
+    type:&quot;Number&quot;,
+    value: &quot;1024&quot;
+}, {
+    type:&quot;+&quot;
+    value: &quot;+&quot;
+}, {
+    type:&quot;Number&quot;,
+    value: &quot;2&quot;
+}, {
+    type:&quot;*&quot;
+    value: &quot;*&quot;
+}, {
+    type:&quot;Number&quot;,
+    value: &quot;256&quot;
+}, {
+    type:&quot;EOF&quot;
+}];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;每个产生式对应着一个函数，例如：根据产生式，我们的AdditiveExpression需要处理三种情况：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-BNF&quot;&gt;&amp;lt;AdditiveExpression&amp;gt; ::= 
+    &amp;lt;MultiplicativeExpression&amp;gt;
+    |&amp;lt;AdditiveExpression&amp;gt;&amp;lt;+&amp;gt;&amp;lt;MultiplicativeExpression&amp;gt;
+    |&amp;lt;AdditiveExpression&amp;gt;&amp;lt;-&amp;gt;&amp;lt;MultiplicativeExpression&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么AddititveExpression中就要写三个if分支，来处理三种情况。&lt;/p&gt;&lt;p&gt;AdditiveExpression的写法是根传入的节点，利用产生式合成新的节点&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function AdditiveExpression(source){
+    if(source[0].type === &quot;MultiplicativeExpression&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            children:[source[0]]
+        }
+        source[0] = node;
+        return node;
+    } 
+    if(source[0].type === &quot;AdditiveExpression&quot; &amp;amp;&amp;amp; source[1].type === &quot;+&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            operator:&quot;+&quot;,
+            children:[source.shift(), source.shift(), MultiplicativeExpression(source)]
+        }
+        source.unshift(node);
+    }
+    if(source[0].type === &quot;AdditiveExpression&quot; &amp;amp;&amp;amp; source[1].type === &quot;-&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            operator:&quot;-&quot;,
+            children:[source.shift(), source.shift(), MultiplicativeExpression(source)]
+        }
+        source.unshift(node);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么下一步我们就把解析好的token传给我们的顶层处理函数Expression。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Expression(tokens);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来，我们看Expression该怎么处理它。&lt;/p&gt;&lt;p&gt;我们Expression收到第一个token，是个Number，这个时候，Expression就傻了，这是因为产生式只告诉我们，收到了 AdditiveExpression 怎么办。&lt;/p&gt;&lt;p&gt;这个时候，我们就需要对产生式的首项层层展开，根据所有可能性调用相应的处理函数，这个过程在编译原理中称为求“closure”。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function Expression(source){
+    if(source[0].type === &quot;AdditiveExpression&quot; &amp;amp;&amp;amp; source[1] &amp;amp;&amp;amp; source[1].type === &quot;EOF&quot; ) {
+        let node = {
+            type:&quot;Expression&quot;,
+            children:[source.shift(), source.shift()]
+        }
+        source.unshift(node);
+        return node;
+    }
+    AdditiveExpression(source);
+    return Expression(source);
+}
+function AdditiveExpression(source){
+    if(source[0].type === &quot;MultiplicativeExpression&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            children:[source[0]]
+        }
+        source[0] = node;
+        return AdditiveExpression(source);
+    } 
+    if(source[0].type === &quot;AdditiveExpression&quot; &amp;amp;&amp;amp; source[1] &amp;amp;&amp;amp; source[1].type === &quot;+&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            operator:&quot;+&quot;,
+            children:[]
+        }
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        MultiplicativeExpression(source);
+        node.children.push(source.shift());
+        source.unshift(node);
+        return AdditiveExpression(source);
+    }
+    if(source[0].type === &quot;AdditiveExpression&quot; &amp;amp;&amp;amp; source[1] &amp;amp;&amp;amp; source[1].type === &quot;-&quot;) {
+        let node = {
+            type:&quot;AdditiveExpression&quot;,
+            operator:&quot;-&quot;,
+            children:[]
+        }
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        MultiplicativeExpression(source);
+        node.children.push(source.shift());
+        source.unshift(node);
+        return AdditiveExpression(source);
+    }
+    if(source[0].type === &quot;AdditiveExpression&quot;)
+        return source[0];
+    MultiplicativeExpression(source);
+    return AdditiveExpression(source);
+}
+function MultiplicativeExpression(source){
+    if(source[0].type === &quot;Number&quot;) {
+        let node = {
+            type:&quot;MultiplicativeExpression&quot;,
+            children:[source[0]]
+        }
+        source[0] = node;
+        return MultiplicativeExpression(source);
+    } 
+    if(source[0].type === &quot;MultiplicativeExpression&quot; &amp;amp;&amp;amp; source[1] &amp;amp;&amp;amp; source[1].type === &quot;*&quot;) {
+        let node = {
+            type:&quot;MultiplicativeExpression&quot;,
+            operator:&quot;*&quot;,
+            children:[]
+        }
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        source.unshift(node);
+        return MultiplicativeExpression(source);
+    }
+    if(source[0].type === &quot;MultiplicativeExpression&quot;&amp;amp;&amp;amp; source[1] &amp;amp;&amp;amp; source[1].type === &quot;/&quot;) {
+        let node = {
+            type:&quot;MultiplicativeExpression&quot;,
+            operator:&quot;/&quot;,
+            children:[]
+        }
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        node.children.push(source.shift());
+        source.unshift(node);
+        return MultiplicativeExpression(source);
+    }
+    if(source[0].type === &quot;MultiplicativeExpression&quot;)
+        return source[0];
+    return MultiplicativeExpression(source);
+};
+var source = [{
+    type:&quot;Number&quot;,
+    value: &quot;3&quot;
+}, {
+    type:&quot;*&quot;,
+    value: &quot;*&quot;
+}, {
+    type:&quot;Number&quot;,
+    value: &quot;300&quot;
+}, {
+    type:&quot;+&quot;,
+    value: &quot;+&quot;
+}, {
+    type:&quot;Number&quot;,
+    value: &quot;2&quot;
+}, {
+    type:&quot;*&quot;,
+    value: &quot;*&quot;
+}, {
+    type:&quot;Number&quot;,
+    value: &quot;256&quot;
+}, {
+    type:&quot;EOF&quot;
+}];
+var ast = Expression(source);
+console.log(ast);
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;解释执行&lt;/h2&gt;&lt;p&gt;得到了AST之后，最困难的一步我们已经解决了。这里我们就不对这颗树做任何的优化和精简了，那么接下来，直接进入执行阶段。我们只需要对这个树做遍历操作执行即可。&lt;/p&gt;&lt;p&gt;我们根据不同的节点类型和其它信息，写if分别处理即可：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+function evaluate(node) {
+    if(node.type === &quot;Expression&quot;) {
+        return evaluate(node.children[0])
+    }
+    if(node.type === &quot;AdditiveExpression&quot;) {
+        if(node.operator === '-') {
+            return evaluate(node.children[0]) - evaluate(node.children[2]);
+        }
+        if(node.operator === '+') {
+            return evaluate(node.children[0]) + evaluate(node.children[2]);
+        }
+        return evaluate(node.children[0])
+    }
+    if(node.type === &quot;MultiplicativeExpression&quot;) {
+        if(node.operator === '*') {
+            return evaluate(node.children[0]) * evaluate(node.children[2]);
+        }
+        if(node.operator === '/') {
+            return evaluate(node.children[0]) / evaluate(node.children[2]);
+        }
+        return evaluate(node.children[0])
+    }
+    if(node.type === &quot;Number&quot;) {
+        return Number(node.value);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;总结&lt;/h2&gt;&lt;p&gt;在这个小实验中，我们通过一个小实验学习了编译原理的基本知识，小实验的目的是帮助你理解JavaScript课程中涉及到的编译原理基本概念，它离真正的编译原理学习还有很大的差距。&lt;/p&gt;&lt;p&gt;通过实验，我们了解了产生式、词法分析、语法分析和解释执行的过程。&lt;/p&gt;&lt;p&gt;最后留给你一些挑战，你可以根据自己的水平选择：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;补全emmitToken，使得我们的代码能完整工作起来。&lt;/li&gt;
+&lt;li&gt;为四则运算加入小数。&lt;/li&gt;
+&lt;li&gt;引入负数。&lt;/li&gt;
+&lt;li&gt;添加括号功能。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;欢迎写好的同学留言给我。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-03-26 10:11:51
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            * 以前我只大概了解一般的做法是消除文法中的左递归，这一课让我知道原来还可以通过“层层展开”去处理。&lt;br&gt;* 词法分析我尝试了正则的方式&lt;br&gt;* 括号的处理费了些时间，这里我是修改了文法（感觉我的 Expression 产生式[在源码注释里]怪怪的，希望 winter 老师有时间的话可以指点一下），另一种做法是，先把中缀表达式变成前缀表达式&lt;br&gt;* 学习一些编译原理的知识还是很有必要也很有趣的，可以去写一些webpack的loader啊，插件啊，vscode的插件等等&lt;br&gt;https:&amp;#47;&amp;#47;github.com&amp;#47;aimergenge&amp;#47;arithmetic-executor [3赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Bojack  2019-03-24 22:00:18
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            实现了小数与负数的编译器 https:&amp;#47;&amp;#47;gist.github.com&amp;#47;OPY-bbt&amp;#47;8ee387122550326f60592b94b7908d19 [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            一条不会挣扎的咸鱼🐟  2019-03-21 10:42:40
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            想问下老师有没有推荐的国外论坛|YouTube作者|个人博客 [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            leslee  2019-03-22 20:46:47
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            BNF 那里有没有详细一点的资料呢 或者有没有更加通俗的写法？ 看不懂了…… [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Huayra  2019-03-21 08:27:46
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            硬啃龙书，对编程语言的理解更上一层楼 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            爱的神  2019-03-27 16:01:46
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            大三正在学习编译原理，目前仅能看懂词法分析那些，后面还不能看懂。补全了emmitToken函数。&lt;br&gt;var tokens = []&lt;br&gt;emmitToken(type，value){&lt;br&gt;   tokens.push({&lt;br&gt;      type :  type，&lt;br&gt;      value:  value&lt;br&gt;   })&lt;br&gt;}&lt;br&gt;不知道对不对🤔 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            疯二中  2019-03-24 18:47:24
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            涨知识了，BNF和LL真是精妙 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            翰弟  2019-03-22 09:39:01
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            日拱一卒 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            ban  2019-03-21 23:03:09
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师，做后端的感觉越到后面越看不到，请问该怎么做，求解 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:00 星期四 124.232.146.132 Runningtime:0.508s Mem:1.41 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

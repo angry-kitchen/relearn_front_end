@@ -1,0 +1,1284 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>24-CSS排版：从毕升开始，我们就开始用正常流了_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="24-CSS排版：从毕升开始，我们就开始用正常流了_For_group_share.html, html, OneManager">
+    <meta name="description" content="24-CSS排版：从毕升开始，我们就开始用正常流了_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">24-CSS排版：从毕升开始，我们就开始用正常流了_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/24-CSS%E6%8E%92%E7%89%88%EF%BC%9A%E4%BB%8E%E6%AF%95%E5%8D%87%E5%BC%80%E5%A7%8B%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%B1%E5%BC%80%E5%A7%8B%E7%94%A8%E6%AD%A3%E5%B8%B8%E6%B5%81%E4%BA%86_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/24-CSS%E6%8E%92%E7%89%88%EF%BC%9A%E4%BB%8E%E6%AF%95%E5%8D%87%E5%BC%80%E5%A7%8B%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%B1%E5%BC%80%E5%A7%8B%E7%94%A8%E6%AD%A3%E5%B8%B8%E6%B5%81%E4%BA%86_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;24-CSS排版：从毕升开始，我们就开始用正常流了&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;24-CSS排版：从毕升开始，我们就开始用正常流了&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。今天我们来聊聊CSS的正常流。&lt;/p&gt;&lt;p&gt;我想，在CSS中，大家最讨厌的大概就是排版部分了。因为早年的CSS设计上不能够很好地支持软件排版需求，导致大家需要使用很多黑科技，让很多新人望而却步。&lt;/p&gt;&lt;p&gt;现在CSS提供了很多种排版方式，我们有很多选项可以选择自己适合的那一种，然而，正常流却是我们绕不开的一种排版。&lt;/p&gt;&lt;p&gt;我们能够在网上看到关于正常流的各种资料，比如：块级格式化上下文、margin折叠等等……这一系列的概念光是听起来就令人非常头痛。&lt;/p&gt;&lt;p&gt;所以我相信很多同学一定会奇怪：正常流到底正常在哪里。事实上，我认为正常流本身是简单和符合直觉的东西。&lt;/p&gt;&lt;p&gt;我们之所以会觉得它奇怪，是因为如果我们从严苛的CSS标准角度去理解正常流，规定排版的算法，就需要引入上述那些复杂的概念。但是，如果我们单纯地从感性认知的层面去理解正常流，它其实是简单的。&lt;/p&gt;&lt;p&gt;下面，就让我们先抛弃掉所有的已知概念，从感性认知的角度出发，一起去理解一下正常流。&lt;/p&gt;&lt;h2&gt;正常流的行为&lt;/h2&gt;&lt;p&gt;首先，我们先从词源来讲一讲排版这件事。&lt;/p&gt;&lt;p&gt;在毕昇发明活字印刷之前，排版这项工作是不存在的，相应的操作叫做“雕版”。人们要想印刷书籍，就需要依靠雕版工人去手工雕刻印版。&lt;/p&gt;&lt;p&gt;活字印刷的出现，将排版这个词引入进来，排版是活字印刷的15道工序之一，不论是古代的木质活字印刷，还是近代的铅质活字印刷，排版的过程是由排版工人一个字一个字从字架捡出，再排入版框中。实际上，这个过程就是一个流式处理的过程。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;从古代活字印刷开始，到现代的出版行业，再到今天的Web，排版过程其实并没有什么本质的变化，只不过，今天在我们的CSS中，排版需要处理的内容，不再是简单的大小相同的木字或者铅字，而是有着不同字体和字号的富文本，以及插入在富文本中大小不等的盒。&lt;/p&gt;&lt;p&gt;并且，在这些过程中，都会有一个正常流的存在。那么，正常流是什么样的呢？&lt;/p&gt;&lt;p&gt;&lt;strong&gt;我们可以用一句话来描述正常流的排版行为，那就是：依次排列，排不下了换行。&lt;/strong&gt;这个操作很简单吧，我想，任何一个不懂排版的人都会将其作为排版时的第一反应。&lt;/p&gt;&lt;p&gt;理解了正常流的基本概念，剩下的功能只需要在它的基础上延伸一下就好。&lt;/p&gt;&lt;p&gt;在正常流基础上，我们有float相关规则，使得一些盒占据了正常流需要的空间，我们可以把float理解为“文字环绕”。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/af/65/aff7250eac6064158021aea86dd4ac65.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们还有vertical-align相关规则规定了如何在垂直方向对齐盒。vertical-align相关规则看起来复杂，但是实际上，基线、文字顶/底、行顶/底都是我们正常书写文字时需要用到的概念，只是我们平时不一定会总结它们。&lt;/p&gt;&lt;p&gt;下图展示了在不同的vertical-align设置时，盒与文字是如何混合排版的。为了方便你理解，我们用代码给大家标注了基线、文字顶/底、行顶/底等概念&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/aa/e3/aa6611b00f71f606493f165294410ee3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+（点击大图查看）&lt;/p&gt;&lt;p&gt;除此之外，margin折叠是很多人非常不理解的一种设计，但是实际上我们可以把margin理解为“一个元素规定了自身周围至少需要的空间”，这样，我们就非常容易理解为什么margin需要折叠了。&lt;/p&gt;&lt;h2&gt;正常流的原理&lt;/h2&gt;&lt;p&gt;我们前面描述了正常流的行为，接下来我们要切换一下模式，用比较严谨的姿势来理解一下正常流。&lt;/p&gt;&lt;p&gt;在CSS标准中，规定了如何排布每一个文字或者盒的算法，这个算法依赖一个排版的“当前状态”，CSS把这个当前状态称为“格式化上下文（formatting context）”。&lt;/p&gt;&lt;p&gt;我们可以认为排版过程是这样的：&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;格式化上下文 + 盒/文字 = 位置&lt;/p&gt;
+&lt;/blockquote&gt;&lt;blockquote&gt;
+&lt;p&gt;formatting context + boxes/charater = positions&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;我们需要排版的盒，是分为块级盒和行内级盒的，所以排版需要分别为它们规定了块级格式化上下文和行内级格式化上下文。&lt;/p&gt;&lt;p&gt;与正常流一样，如果我们单纯地看格式化上下文，规则其实是非常简单的。&lt;/p&gt;&lt;p&gt;块级格式化上下文顺次排列元素：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/a5/e7/a5e1b9a77d9745499f96d25cf0a0dbe7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;行内级格式化上下文顺次排列元素：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/1c/cf/1ced4fa809b30343df45e559cf0c08cf.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;注意，块级和行内级元素的排版，受文字书写方向的影响，这里我们讲上下左右只是为了方便你直观理解。&lt;/p&gt;&lt;p&gt;当我们要把正常流中的一个盒或者文字排版，需要分成三种情况处理。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;当遇到块级盒&lt;/strong&gt;：排入块级格式化上下文。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当遇到行内级盒或者文字&lt;/strong&gt;：首先尝试排入行内级格式化上下文，如果排不下，那么创建一个行盒，先将行盒排版（行盒是块级，所以到第一种情况），行盒会创建一个行内级格式化上下文。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;遇到float盒&lt;/strong&gt;：把盒的顶部跟当前行内级上下文上边缘对齐，然后根据float的方向把盒的对应边缘对到块级格式化上下文的边缘，之后重排当前行盒。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;我们以上讲的都是一个块级格式化上下文中的排版规则，实际上，页面中的布局没有那么简单，一些元素会在其内部创建新的块级格式化上下文，这些元素有：&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;浮动元素；&lt;/li&gt;
+&lt;li&gt;绝对定位元素；&lt;/li&gt;
+&lt;li&gt;非块级但仍能包含块级元素的容器（如inline-blocks, table-cells, table-captions）；&lt;/li&gt;
+&lt;li&gt;块级的能包含块级元素的容器，且属性overflow不为visible。&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;这里的最后一条比较绕，实际上，我个人喜欢用另一种思路去理解它：&lt;/p&gt;&lt;p&gt;自身为块级，且overflow为visible的块级元素容器，它的块级格式化上下文和外部的块级格式化上下文发生了融合，也就是说，如果不考虑盒模型相关的属性，这样的元素从排版的角度就好像根本不存在。&lt;/p&gt;&lt;p&gt;好了，到这里我们已经讲完了正常流的排版详细规则，但是理解规则仅仅是基础，我们还需要掌握一些技巧。&lt;/p&gt;&lt;h2&gt;正常流的使用技巧&lt;/h2&gt;&lt;p&gt;现在，我们就一起来动手用实际的例子来研究一下。我们今天来看看等分布局和自适应宽，从这两种经典布局问题入手，一起来探索一下正常流的使用技巧。&lt;/p&gt;&lt;h3&gt;等分布局问题&lt;/h3&gt;&lt;p&gt;横向等分布局是一个很常见的需求，按照一般的思路，我们可以使用百分比宽度来解决，我们参考以下代码：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;outer&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+.inner {
+    width:33.33%;
+    height:300px;
+    display:inline-block;
+    outline:solid 1px blue;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这段HTML代码中，我们放了三个div，用CSS给它们指定了百分比宽度，并且指定为inline-block。&lt;/p&gt;&lt;p&gt;但是这段代码执行之后，效果跟我们预期不同，我们可以发现，每个div并非紧挨，中间有空白，这是因为我们为了代码格式加入的换行和空格被HTML当作空格文本，跟inline盒混排了的缘故。&lt;/p&gt;&lt;p&gt;解决方案是修改HTML代码，去掉空格和换行：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;outer&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是这样做影响了源代码的可读性，一个变通的方案是，改变outer中的字号为0。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;.inner {
+    width:33.33%;
+    height:300px;
+    display:inline-block;
+    outline:solid 1px blue;
+    font-size:30px;
+}
+.outer {
+    font-size:0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在某些浏览器中，因为像素计算精度问题，还是会出现换行，我们给outer添加一个特定宽度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;.inner {
+    width:33.33%;
+    height:300px;
+    display:inline-block;
+    outline:solid 1px blue;
+}
+.outer {
+    width:101px
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个代码在某些旧版本浏览器中会出现换行。为了保险起见，我们给最后一个div加上一个负的右margin：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;.outer {
+    width:101px
+}
+.inner {
+    width:33.33%;
+    height:300px;
+    display:inline-block;
+    outline:solid 1px blue;
+}
+.inner:last-child {
+    margin-right:-5px;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就可以解决旧版本浏览器的问题了。&lt;/p&gt;&lt;p&gt;除了使用inline-block，float也可以实现类似的效果，但是float元素只能做顶对齐，不如inline-block灵活。&lt;/p&gt;&lt;h3&gt;自适应宽&lt;/h3&gt;&lt;p&gt;我们再来说说自适应宽。在IE6统治浏览器市场的旧时代，自适应宽（一个元素固定宽度，另一个元素填满父容器剩余宽度）是个经典的布局问题，我们现在就看一下如何使用正常流来解决：&lt;/p&gt;&lt;p&gt;我们首先来看一下问题：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;outer&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;fixed&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;auto&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+.fixed {
+    width:200px;
+}
+.fixed, .auto {
+    height:300px;
+    outline:solid 1px blue;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里fixed这个div宽度已经被指定好，我们需要添加css代码尝试让.auto填满剩余宽度。&lt;/p&gt;&lt;p&gt;使用正常流解决这个问题的思路是，利用负margin：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;.fixed {
+    display:inline-block;
+    vertical-align:top;
+}
+.auto {
+    margin-left:-200px;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是，这样做会导致auto中的内容位置不对，所以我们还需要使用padding把内容挤出来，最终完整代码如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;.fixed {
+    display:inline-block;
+    vertical-align:top;
+}
+.auto {
+    margin-left:-200px;
+    padding-left:200px;
+    box-sizing:border-box;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就给auto添加了padding-left和box-sizing两个属性。&lt;/p&gt;&lt;p&gt;总的来说，正常流布局主要是使用inline-block来作为内容的容器，利用块级格式化上下文的纵向排布和行内级格式化上下文的横向排布来完成布局的，我们需要根据需求的横向和纵向排布要求，来选择元素的display属性。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;这次的文章中，我们一起学习了正常流，我们可以用一句话来描述正常流的排版行为，那就是：依次排列，排不下了换行。这也是理解它最简单最源头的方式。&lt;/p&gt;&lt;p&gt;我们将正常流的知识分成了三个部分。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;正常流的行为部分，我们从一些感性认知出发，帮助你从思路和源头上理解正常流的行为。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正常流的原理部分，我用更严格的描述方式，给你讲解了CSS标准中规定的正常流排版逻辑。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后的正常流应用部分，我以两个经典布局问题等分布局和自适应宽为例，为你讲解了正常流实际使用的一些技巧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;最后，留给你一个思考题：用JavaScript写一个仅包含inline-block的正常流布局算法。你写好的话，可以留言给我，我们一起讨论。&lt;/p&gt;&lt;h1&gt;猜你喜欢&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://time.geekbang.org/course/intro/163?utm_term=zeusMTA7L&amp;amp;utm_source=app&amp;amp;utm_medium=chongxueqianduan&amp;amp;utm_campaign=163-presell&quot;&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/1a/08/1a49758821bdbdf6f0a8a1dc5bf39f08.jpg&quot; alt=&quot;unpreview&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Scorpio  2019-03-14 08:09:41
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            我大flex天下第一！！！😂  [37赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            AICC  2019-03-14 13:48:10
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            试了一下，发现上面第二个例子的代码并不能实现想要的效果&lt;br&gt;首先，因为hmtl代码的换行使得在inline-block的布局下两个盒子不能被放在一行这个通过父级font-size:0可解决&lt;br&gt;第二，由于auto在html的上的顺序是比fixed后面的，想像中的层级是高于fixed的，当auto是一个有背景的盒子，fixed就被完全遮挡了,可以通过transform：translateZ(0)把它提起来 [11赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            William  2019-03-14 07:11:59
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            1. 等宽布局，不用外层font-size:0的方法的话，应该是.inner:not(last-child) {&lt;br&gt;  margin-right: -5px;&lt;br&gt;}吧，前面元素均添加一个负外边距抵消掉空格大小。&lt;br&gt;2. 因为也是用inline-block，所以自适应宽需要加上&lt;br&gt;.outer {&lt;br&gt;  font-size: 0;&lt;br&gt;} [10赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-03-16 08:30:33
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Sir, have a look at this...&lt;br&gt;https:&amp;#47;&amp;#47;github.com&amp;#47;aimergenge&amp;#47;inline-block-layout [4赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            七月来风  2019-03-17 08:51:08
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            在 CSS 标准中，规定了如何排布每一个文字或者盒的算法，这个算法依赖一个排版的“当前状态”，CSS 把这个当前状态称为“格式化上下文（formatting context）”。&lt;br&gt;还是没有理解这句话 [3赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            沉默的话唠  2019-03-20 15:32:58
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            为什么我写后面的完整版的，不会自动排布，宽度总是不够。被撑下去了。 [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            有铭  2019-03-14 14:29:38
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            为什么三栏平分的那个样式里，给 outer 添加一个特定宽度和给最后一个 div 加上一个负的右 margin，我用chrome试验的结果，是变成了3个宽度很窄的盒子，而且第三个盒子在第二排？ [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            favorlm  2019-03-25 19:08:07
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师您好，最大的恐惧就是排版，还请赐教，如何克服 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            ycswaves  2019-03-24 12:07:07
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            .auto {&lt;br&gt;  width: calc(100% - 200px);&lt;br&gt;  &amp;#47;&amp;#47; ... rest of the necessary styles&lt;br&gt;} 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Geek_eea87d  2019-03-23 01:16:59
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            请问下(行盒是块级)，和一个浏览器是如何工作的 阶段四中的(浏览器对行的排版，一般是先行内布局...)这句话的 两个 行是您说的同一个行吗&lt;br&gt;&lt;br&gt; 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Sentry  2019-03-21 07:34:59
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师的每节课都像是在划重点，很赞！ 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            孙清海  2019-03-15 18:28:49
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            大师你好！今天再看一本书《数据结构与算法描述JavaScript》 偶然发现了熟悉的名字 ，程劭非 大师作序  !感觉好熟悉，哇这不是!!!我要好好看书了…… 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            夏超  2019-03-15 17:37:58
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            请问老师，JavaScript 的call stack size是多少，这个size的单位是啥，是调用栈中函数的个数，还是 一个存储单位，比如mb  之类的。如果调用栈中就一个函数，这个函数的参数有100万个，浏览器端依然会溢出，看起来是存储单位，但是没得到验证，请教老师 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            翰弟  2019-03-15 10:21:17
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            日拱一卒 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            彧豪  2019-03-15 07:40:35
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            grid写大的整体的布局框架，flex写一维的可线性化的布局，这两种布局的兼容性已经更好了，再加上一些模块和脚手架打包的时候能自动为你添加浏览器前缀，布局变得越来越容易了 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Rushan-Chen  2019-03-14 19:14:25
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            自适应宽：https:&amp;#47;&amp;#47;codepen.io&amp;#47;Rushan-Chen&amp;#47;pen&amp;#47;wOyGRJ?editors=1100&lt;br&gt;&lt;br&gt;为了左右部分一样高，.fixed 的 box-sizing 也设为了border-box。&lt;br&gt;为了去除元素见的空白符，外层 font-size 设置为0。&lt;br&gt;&lt;br&gt;这样两个元素是叠在一起的，如果要设置 background 就可能会覆盖。&lt;br&gt; 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            C阳  2019-03-14 11:04:50
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            自适应宽例子中，是否应该在.fixed, .auto中加入float:left才能正确显示效果呢？ 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:16 星期四 124.232.146.132 Runningtime:0.607s Mem:1.42 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

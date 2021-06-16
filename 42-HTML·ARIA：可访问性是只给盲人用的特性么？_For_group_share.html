@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>42-HTML·ARIA：可访问性是只给盲人用的特性么？_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="42-HTML·ARIA：可访问性是只给盲人用的特性么？_For_group_share.html, html, OneManager">
+    <meta name="description" content="42-HTML·ARIA：可访问性是只给盲人用的特性么？_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">42-HTML·ARIA：可访问性是只给盲人用的特性么？_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/42-HTML%C2%B7ARIA%EF%BC%9A%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E6%98%AF%E5%8F%AA%E7%BB%99%E7%9B%B2%E4%BA%BA%E7%94%A8%E7%9A%84%E7%89%B9%E6%80%A7%E4%B9%88%EF%BC%9F_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/42-HTML%C2%B7ARIA%EF%BC%9A%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E6%98%AF%E5%8F%AA%E7%BB%99%E7%9B%B2%E4%BA%BA%E7%94%A8%E7%9A%84%E7%89%B9%E6%80%A7%E4%B9%88%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;42-HTML·ARIA：可访问性是只给盲人用的特性么？&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;42-HTML·ARIA：可访问性是只给盲人用的特性么？&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;我们都知道，HTML已经是一个完整的语义系统。在前面的课程中，我们围绕着HTML本身做了讲解，但是在实际应用中，我们还会用到一些它的扩展。今天我们要讲的ARIA就是其中重要的一部分。&lt;/p&gt;&lt;p&gt;ARIA全称为Accessible Rich Internet Applications，它表现为一组属性，是用于可访问性的一份标准。关于可访问性，它被提到最多的，就是它可以为视觉障碍用户服务，但是，这是一个误解。&lt;/p&gt;&lt;p&gt;实际上，可访问性其实是一个相当大的课题，它的定义包含了各种设备访问、各种环境、各种人群访问的友好性。不单单是永久性的残障人士需要用到可访问性，健康的人也可能在特定时刻处于需要可访问性的环境。&lt;/p&gt;&lt;p&gt;我们今天讲的ARIA，是以交互形式来标注各种元素的一类属性，所以，在ARIA属性中，你可以看到很多熟悉的面孔，交互形式往往跟我们直觉中的“控件”非常相似。&lt;/p&gt;&lt;p&gt;所以我们的课程，特意把ARIA加入还有一个原因：ARIA的角色对于我们UI系统的设计有重要的参考意义。&lt;/p&gt;&lt;h2&gt;综述&lt;/h2&gt;&lt;p&gt;我们先整体来看看，ARIA给HTML元素添加的一个核心属性就是role，我们来看一个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;span role=&quot;checkbox&quot; aria-checked=&quot;false&quot; tabindex=&quot;0&quot; aria-labelledby=&quot;chk1-label&quot;&amp;gt;
+&amp;lt;/span&amp;gt; &amp;lt;label id=&quot;chk1-label&quot;&amp;gt;Remember my preferences&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;这里我们给一个span添加了checkbox角色，这样，表示我们这个span被用于checkbox，这意味着，我们可能已经用JS代码绑定了这个span的click事件，并且以checkbox的交互方式来处理用户操作。&lt;/p&gt;&lt;p&gt;同时，ARIA系统还提供了一系列ARIA属性给checkbox这个role，这意味着，&lt;strong&gt;我们可以通过HTML属性变化来理解这个JavaScript组件的状态&lt;/strong&gt;，读屏软件等三方客户端，就可以理解我们的UI变化，这正是ARIA标准的意义。&lt;/p&gt;&lt;p&gt;role的定义是一个树形的继承关系，我们先来理解一下它的整体结构：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/ae/69/aeccf64871b309735054912fbbb18a69.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;其中，widget表示一些可交互的组件，structure表示文档中的结构，window则代表窗体。&lt;/p&gt;&lt;p&gt;接下来，让我们分类了解一下重要的ARIA角色。&lt;/p&gt;&lt;h2&gt;Widget角色&lt;/h2&gt;&lt;p&gt;我们刚刚已经讲过一个widget role，就是checkbox。&lt;/p&gt;&lt;p&gt;这一类角色跟我们桌面开发中的控件类似，它表示一个可交互的组件，它们有：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/10/dd/10ea9eb62d60fb4bfb18c27da50836dd.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们这里按照继承关系给出一份列表和简要说明：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/03/f1/038e1152c9bddc7ed864d271691d17f1.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;ARIA role允许多继承，这里有些角色我没有重复写。&lt;/p&gt;&lt;p&gt;注意，这些role可以出现在任何一个HTML元素之上，同时要注意，这些ARIA属性，不会真实地改变任何一个元素的行为，比如，我们刚才讲的checkbox，即使我们给一个span添加了Checkbox角色，我们也需要用JavaScript编写相应的逻辑。&lt;/p&gt;&lt;p&gt;这些widget同时还会带来对应的ARIA属性，比如，我们的Checkbox角色，会带来两个属性：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;aria-checked 表示复选框是否已经被选中；&lt;/li&gt;
+&lt;li&gt;aria-labelledby 表示复选框对应的文字。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;而Button角色，则会带来另外两个属性：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;aria-pressed 按钮是否已经被按下；&lt;/li&gt;
+&lt;li&gt;aria-expanded 按钮控制的目标是否已经被展开。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;除了它们本身的属性之外，可交互组件还有继承来的属性，比如，switch角色继承了checkbox，因此，它也可以使用aria-checked属性。&lt;/p&gt;&lt;p&gt;在WAI-ARIA标准中，你可以找到所有的角色和对应的属性，我们这里就不一一列举了。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/wai-aria/&quot;&gt;https://www.w3.org/TR/wai-aria/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;很多这些ARIA属性都是需要在JavaScript中维护的。&lt;/p&gt;&lt;p&gt;如果我们要实现一份组件库，这些widget role和它们对应的aria属性是非常好的参考。&lt;/p&gt;&lt;p&gt;如果你是组件的实现者，也希望你在实现组件时把对应的ARIA属性自动维护好。&lt;/p&gt;&lt;p&gt;除了简单的widget，还有一些比较复杂的角色，需要多个角色一起配合。我们来逐个了解一下。&lt;/p&gt;&lt;p&gt;Combobox 是一个带选项的输入框，我们常见的搜索引擎，一般都会提供这样的输入框，当输入时，它会提供若干提示选项。&lt;/p&gt;&lt;p&gt;Grid 是一个表格，它会分成行、列，行列又有行头和列头表示行、列的意义。&lt;/p&gt;&lt;p&gt;Tablist 是一个可切换的结构，一般被称为选项卡，它包含了tab头和tabpanel，在tab容器中，可能包含各种组件。&lt;/p&gt;&lt;p&gt;Listbox 是一个可选中的列表，它内部具有角色为Option的选项。&lt;/p&gt;&lt;p&gt;Menu 是指菜单，菜单中可以加入嵌套的菜单项（Menuitem角色），除了普通菜单项，还可以有Menuitemcheckbox 带复选框的菜单栏和Menuitemradio 带单选框的菜单栏。&lt;/p&gt;&lt;p&gt;Radiogroup 是一组互斥的单选框的容器，它的内部可以由若干个角色为radio的单选框。&lt;/p&gt;&lt;p&gt;Tree 是树形控件，它的内部含有 Treeitem 树形控件项，它还有一种升级形式是Treegrid&lt;/p&gt;&lt;h2&gt;structure角色&lt;/h2&gt;&lt;p&gt;结构角色其实跟HTML5中不少新标签作用重合了，这里建议优先使用HTML5标签。&lt;/p&gt;&lt;p&gt;这部分角色的作用类似于语义化标签，但是内容稍微有些不同，我们这里就不详细讲解了，仅仅给出一张图供你参考：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/b2/7a/b21a82fd68a885f751123f48a7e26b7a.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;注：separator在允许焦点时属于组件，在不允许焦点时属于文档结构。&lt;/p&gt;&lt;p&gt;这里我们需要特别提出Landmark角色这个概念，Landmark角色直接翻译是地标，它是ARIA标准中总结的Web网页中最常见的8个结构，Landmark角色实际上是section的子类，这些角色在生成页面摘要时有很大可能性需要被保留，它们是：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/9a/75/9aee7029d4bf684a8679a6776d6e9075.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;window角色&lt;/h2&gt;&lt;p&gt;在我们的网页中，有些元素表示“新窗口”，这时候，会用到window角色。window系角色非常少，只有三个角色：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;window
+&lt;ul&gt;
+&lt;li&gt;dialog
+&lt;ul&gt;
+&lt;li&gt;alertdialog&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;dialog可能会产生“焦点陷阱”，也就是说，当这样的角色被激活时，焦点无法离开这个区域。&lt;/p&gt;&lt;h2&gt;总结&lt;/h2&gt;&lt;p&gt;今天我介绍了ARIA相关的知识，我们分几个部分学习了如何使用ARIA属性来提高页面的可访问性。&lt;/p&gt;&lt;p&gt;我们以ARIA角色为中心，讲解了ARIA定义的语义体系。我们可以把ARIA分为三类：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Widget角色：主要是各种可交互的控件&lt;/li&gt;
+&lt;li&gt;结构角色：文档的结构&lt;/li&gt;
+&lt;li&gt;窗体角色：弹出的窗体&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;今天的课后小问题是，请找一个支持图结构可视化的JS库，把所有ARIA的继承关系用可视化的方式展现出来。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            cjd  2019-05-07 01:21:53
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            沙发 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:40 星期四 124.232.146.132 Runningtime:0.476s Mem:1.38 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

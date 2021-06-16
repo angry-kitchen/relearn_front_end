@@ -1,0 +1,1043 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>37-浏览器API（小实验）：动手整理全部API_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="37-浏览器API（小实验）：动手整理全部API_For_group_share.html, html, OneManager">
+    <meta name="description" content="37-浏览器API（小实验）：动手整理全部API_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">37-浏览器API（小实验）：动手整理全部API_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/37-%E6%B5%8F%E8%A7%88%E5%99%A8API%EF%BC%88%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%89%EF%BC%9A%E5%8A%A8%E6%89%8B%E6%95%B4%E7%90%86%E5%85%A8%E9%83%A8API_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/37-%E6%B5%8F%E8%A7%88%E5%99%A8API%EF%BC%88%E5%B0%8F%E5%AE%9E%E9%AA%8C%EF%BC%89%EF%BC%9A%E5%8A%A8%E6%89%8B%E6%95%B4%E7%90%86%E5%85%A8%E9%83%A8API_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;37-浏览器API（小实验）：动手整理全部API&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;37-浏览器API（小实验）：动手整理全部API&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。今天我们来讲讲浏览器API。&lt;/p&gt;&lt;p&gt;浏览器的API数目繁多，我们在之前的课程中，已经一起学习了其中几个比较有体系的部分：比如之前讲到过的DOM和CSSOM等等。但是，如果你留意过，会发现我们讲到的API仍然是标准中非常小的一部分。&lt;/p&gt;&lt;p&gt;这里，我们不可能把课程变成一本厚厚的API参考手册，所以这一节课，我设计了一个实验，我们一起来给API分分类。&lt;/p&gt;&lt;p&gt;我们按照每个API所在的标准来分类。所以，我们用代码来反射浏览器环境中全局对象的属性，然后我们用JavaScript的filter方法来逐步过滤掉已知的属性。&lt;/p&gt;&lt;p&gt;接下来，我们整理API的方法如下：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;从Window的属性中，找到API名称；&lt;/li&gt;
+&lt;li&gt;查阅MDN或者Google，找到API所在的标准；&lt;/li&gt;
+&lt;li&gt;阅读标准，手工或者用代码整理出标准中包含的API；&lt;/li&gt;
+&lt;li&gt;用代码在Window的属性中过滤掉标准中涉及的API。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;重复这个过程，我们可以找到所有的API对应的标准。首先我们先把前面已经讲过的API过滤掉。&lt;/p&gt;&lt;p&gt;##JavaScript中规定的API&lt;/p&gt;&lt;p&gt;大部分的API属于Window对象（或者说全局对象），我们可以用反射来看一看现行浏览器中已经实现的API，我这里使用Mac下的Chrome 72.0.3626.121版本。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;我们首先调用 Object.getOwnPropertyNames(window)。在我的环境中，可以看到，共有821个属性。&lt;/p&gt;&lt;p&gt;这里包含了JavaScript标准规定的属性，我们做一下过滤：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;{
+    let js = new Set();
+    let objects = [&quot;BigInt&quot;, &quot;BigInt64Array&quot;, &quot;BigUint64Array&quot;, &quot;Infinity&quot;, &quot;NaN&quot;, &quot;undefined&quot;, &quot;eval&quot;, &quot;isFinite&quot;, &quot;isNaN&quot;, &quot;parseFloat&quot;, &quot;parseInt&quot;, &quot;decodeURI&quot;, &quot;decodeURIComponent&quot;, &quot;encodeURI&quot;, &quot;encodeURIComponent&quot;, &quot;Array&quot;, &quot;Date&quot;, &quot;RegExp&quot;, &quot;Promise&quot;, &quot;Proxy&quot;, &quot;Map&quot;, &quot;WeakMap&quot;, &quot;Set&quot;, &quot;WeakSet&quot;, &quot;Function&quot;, &quot;Boolean&quot;, &quot;String&quot;, &quot;Number&quot;, &quot;Symbol&quot;, &quot;Object&quot;, &quot;Error&quot;, &quot;EvalError&quot;, &quot;RangeError&quot;, &quot;ReferenceError&quot;, &quot;SyntaxError&quot;, &quot;TypeError&quot;, &quot;URIError&quot;, &quot;ArrayBuffer&quot;, &quot;SharedArrayBuffer&quot;, &quot;DataView&quot;, &quot;Float32Array&quot;, &quot;Float64Array&quot;, &quot;Int8Array&quot;, &quot;Int16Array&quot;, &quot;Int32Array&quot;, &quot;Uint8Array&quot;, &quot;Uint16Array&quot;, &quot;Uint32Array&quot;, &quot;Uint8ClampedArray&quot;, &quot;Atomics&quot;, &quot;JSON&quot;, &quot;Math&quot;, &quot;Reflect&quot;, &quot;escape&quot;, &quot;unescape&quot;];
+    objects.forEach(o =&amp;gt; js.add(o));
+    let names = Object.getOwnPropertyNames(window)
+    names = names.filter(e =&amp;gt; !js.has(e));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这一部分我们已经在JavaScript部分讲解过了（JavaScript对象：你知道全部的对象分类吗），所以这里我就采用手工的方式过滤出来。&lt;/p&gt;&lt;h2&gt;DOM中的元素构造器&lt;/h2&gt;&lt;p&gt;接下来我们看看已经讲过的DOM部分，DOM部分包含了document属性和一系列的构造器，我们可以用JavaScript的prototype来过滤构造器。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;    names = names.filter( e =&amp;gt; {
+        try { 
+            return !(window[e].prototype instanceof Node)
+        } catch(err) {
+            return true;
+        }
+    }).filter( e =&amp;gt; e != &quot;Node&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我们把所有Node的子类都过滤掉，再把Node本身也过滤掉，这是非常大的一批了。&lt;/p&gt;&lt;h2&gt;Window对象上的属性&lt;/h2&gt;&lt;p&gt;接下来我们要找到Window对象的定义，我们在下面链接中可以找到。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://html.spec.whatwg.org/#window&quot;&gt;https://html.spec.whatwg.org/#window&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这里有一个Window接口，是使用WebIDL定义的，我们手工把其中的函数和属性整理出来，如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;
+ window,self,document,name,location,history,customElements,locationbar,menubar, personalbar,scrollbars,statusbar,toolbar,status,close,closed,stop,focus, blur,frames,length,top,opener,parent,frameElement,open,navigator,applicationCache,alert,confirm,prompt,print,postMessage
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来，我们编写代码，把这些函数和属性，从浏览器Window对象的属性中去掉，JavaScript代码如下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;{
+    let names = Object.getOwnPropertyNames(window)
+    let js = new Set();
+    let objects = [&quot;BigInt&quot;, &quot;BigInt64Array&quot;, &quot;BigUint64Array&quot;, &quot;Infinity&quot;, &quot;NaN&quot;, &quot;undefined&quot;, &quot;eval&quot;, &quot;isFinite&quot;, &quot;isNaN&quot;, &quot;parseFloat&quot;, &quot;parseInt&quot;, &quot;decodeURI&quot;, &quot;decodeURIComponent&quot;, &quot;encodeURI&quot;, &quot;encodeURIComponent&quot;, &quot;Array&quot;, &quot;Date&quot;, &quot;RegExp&quot;, &quot;Promise&quot;, &quot;Proxy&quot;, &quot;Map&quot;, &quot;WeakMap&quot;, &quot;Set&quot;, &quot;WeakSet&quot;, &quot;Function&quot;, &quot;Boolean&quot;, &quot;String&quot;, &quot;Number&quot;, &quot;Symbol&quot;, &quot;Object&quot;, &quot;Error&quot;, &quot;EvalError&quot;, &quot;RangeError&quot;, &quot;ReferenceError&quot;, &quot;SyntaxError&quot;, &quot;TypeError&quot;, &quot;URIError&quot;, &quot;ArrayBuffer&quot;, &quot;SharedArrayBuffer&quot;, &quot;DataView&quot;, &quot;Float32Array&quot;, &quot;Float64Array&quot;, &quot;Int8Array&quot;, &quot;Int16Array&quot;, &quot;Int32Array&quot;, &quot;Uint8Array&quot;, &quot;Uint16Array&quot;, &quot;Uint32Array&quot;, &quot;Uint8ClampedArray&quot;, &quot;Atomics&quot;, &quot;JSON&quot;, &quot;Math&quot;, &quot;Reflect&quot;, &quot;escape&quot;, &quot;unescape&quot;];
+    objects.forEach(o =&amp;gt; js.add(o));
+    names = names.filter(e =&amp;gt; !js.has(e));
+    names = names.filter( e =&amp;gt; {
+        try { 
+            return !(window[e].prototype instanceof Node)
+        } catch(err) {
+            return true;
+        }
+    }).filter( e =&amp;gt; e != &quot;Node&quot;)
+    let windowprops = new Set();
+    objects = [&quot;window&quot;, &quot;self&quot;, &quot;document&quot;, &quot;name&quot;, &quot;location&quot;, &quot;history&quot;, &quot;customElements&quot;, &quot;locationbar&quot;, &quot;menubar&quot;, &quot; personalbar&quot;, &quot;scrollbars&quot;, &quot;statusbar&quot;, &quot;toolbar&quot;, &quot;status&quot;, &quot;close&quot;, &quot;closed&quot;, &quot;stop&quot;, &quot;focus&quot;, &quot; blur&quot;, &quot;frames&quot;, &quot;length&quot;, &quot;top&quot;, &quot;opener&quot;, &quot;parent&quot;, &quot;frameElement&quot;, &quot;open&quot;, &quot;navigator&quot;, &quot;applicationCache&quot;, &quot;alert&quot;, &quot;confirm&quot;, &quot;prompt&quot;, &quot;print&quot;, &quot;postMessage&quot;, &quot;console&quot;];
+    objects.forEach(o =&amp;gt; windowprops.add(o));
+    names = names.filter(e =&amp;gt; !windowprops.has(e));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们还要过滤掉所有的事件，也就是on开头的属性。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = names.filter( e =&amp;gt; !e.match(/^on/))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;webkit前缀的私有属性我们也过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = names.filter( e =&amp;gt; !e.match(/^webkit/))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;除此之外，我们在HTML标准中还能找到所有的接口，这些我们也过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+    let interfaces = new Set();
+    objects = [&quot;ApplicationCache&quot;, &quot;AudioTrack&quot;, &quot;AudioTrackList&quot;, &quot;BarProp&quot;, &quot;BeforeUnloadEvent&quot;, &quot;BroadcastChannel&quot;, &quot;CanvasGradient&quot;, &quot;CanvasPattern&quot;, &quot;CanvasRenderingContext2D&quot;, &quot;CloseEvent&quot;, &quot;CustomElementRegistry&quot;, &quot;DOMStringList&quot;, &quot;DOMStringMap&quot;, &quot;DataTransfer&quot;, &quot;DataTransferItem&quot;, &quot;DataTransferItemList&quot;, &quot;DedicatedWorkerGlobalScope&quot;, &quot;Document&quot;, &quot;DragEvent&quot;, &quot;ErrorEvent&quot;, &quot;EventSource&quot;, &quot;External&quot;, &quot;FormDataEvent&quot;, &quot;HTMLAllCollection&quot;, &quot;HashChangeEvent&quot;, &quot;History&quot;, &quot;ImageBitmap&quot;, &quot;ImageBitmapRenderingContext&quot;, &quot;ImageData&quot;, &quot;Location&quot;, &quot;MediaError&quot;, &quot;MessageChannel&quot;, &quot;MessageEvent&quot;, &quot;MessagePort&quot;, &quot;MimeType&quot;, &quot;MimeTypeArray&quot;, &quot;Navigator&quot;, &quot;OffscreenCanvas&quot;, &quot;OffscreenCanvasRenderingContext2D&quot;, &quot;PageTransitionEvent&quot;, &quot;Path2D&quot;, &quot;Plugin&quot;, &quot;PluginArray&quot;, &quot;PopStateEvent&quot;, &quot;PromiseRejectionEvent&quot;, &quot;RadioNodeList&quot;, &quot;SharedWorker&quot;, &quot;SharedWorkerGlobalScope&quot;, &quot;Storage&quot;, &quot;StorageEvent&quot;, &quot;TextMetrics&quot;, &quot;TextTrack&quot;, &quot;TextTrackCue&quot;, &quot;TextTrackCueList&quot;, &quot;TextTrackList&quot;, &quot;TimeRanges&quot;, &quot;TrackEvent&quot;, &quot;ValidityState&quot;, &quot;VideoTrack&quot;, &quot;VideoTrackList&quot;, &quot;WebSocket&quot;, &quot;Window&quot;, &quot;Worker&quot;, &quot;WorkerGlobalScope&quot;, &quot;WorkerLocation&quot;, &quot;WorkerNavigator&quot;];
+    objects.forEach(o =&amp;gt; interfaces.add(o));
+    names = names.filter(e =&amp;gt; !interfaces.has(e));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样过滤之后，我们已经过滤掉了所有的事件、Window对象、JavaScript全局对象和DOM相关的属性，但是，竟然还剩余了很多属性！你是不是很惊讶呢？好了，接下来我们才进入今天的正题。&lt;/p&gt;&lt;h2&gt;其它属性&lt;/h2&gt;&lt;p&gt;这些既不属于Window对象，又不属于JavaScript语言的Global对象的属性，它们究竟是什么呢？&lt;/p&gt;&lt;p&gt;我们可以一个一个来查看这些属性，来发现一些我们以前没有关注过的标准。&lt;/p&gt;&lt;p&gt;首先，我们要把过滤的代码做一下抽象，写成一个函数：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function filterOut(names, props) {
+    let set = new Set();
+    props.forEach(o =&amp;gt; set.add(o));
+    return names.filter(e =&amp;gt; !set.has(e));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;每次执行完filter函数，都会剩下一些属性，接下来，我们找到剩下的属性来看一看。&lt;/p&gt;&lt;h3&gt;ECMAScript 2018 Internationalization API&lt;/h3&gt;&lt;p&gt;在我的浏览器环境中，第一个属性是：Intl。&lt;/p&gt;&lt;p&gt;查找这些属性来历的最佳文档是MDN，当然，你也可以使用Google。&lt;/p&gt;&lt;p&gt;总之，经过查阅，我发现，它属于ECMA402标准，这份标准是JavaScript的一个扩展，它包含了国际化相关的内容：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.ecma-international.org/ecma-402/5.0/index.html#Title&quot;&gt;http://www.ecma-international.org/ecma-402/5.0/index.html#Title&lt;/a&gt;&lt;/p&gt;&lt;p&gt;ECMA402中，只有一个全局属性Intl，我们也把它过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = names.filter(e =&amp;gt; e != &quot;Intl&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再来看看还有什么属性。&lt;/p&gt;&lt;h3&gt;Streams标准&lt;/h3&gt;&lt;p&gt;接下来我看到的属性是： ByteLengthQueuingStrategy。&lt;/p&gt;&lt;p&gt;同样经过查阅，它来自WHATWG的Streams标准：&lt;br&gt;
+&lt;a href=&quot;https://streams.spec.whatwg.org/#blqs-class&quot;&gt;https://streams.spec.whatwg.org/#blqs-class&lt;/a&gt;&lt;/p&gt;&lt;p&gt;不过，跟ECMA402不同，Streams标准中还有一些其它属性，这里我手工查阅了这份标准，并做了整理。&lt;/p&gt;&lt;p&gt;接下来，我们用代码把它们跟 ByteLengthQueuingStrategy 一起过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = filterOut(names, [&quot;ReadableStream&quot;, &quot;ReadableStreamDefaultReader&quot;, &quot;ReadableStreamBYOBReader&quot;, &quot;ReadableStreamDefaultController&quot;, &quot;ReadableByteStreamController&quot;, &quot;ReadableStreamBYOBRequest&quot;, &quot;WritableStream&quot;, &quot;WritableStreamDefaultWriter&quot;, &quot;WritableStreamDefaultController&quot;, &quot;TransformStream&quot;, &quot;TransformStreamDefaultController&quot;, &quot;ByteLengthQueuingStrategy&quot;, &quot;CountQueuingStrategy&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好了，过滤之后，又少了一些属性，我们继续往下看。&lt;/p&gt;&lt;h3&gt;WebGL&lt;/h3&gt;&lt;p&gt;接下来我看到的属性是：WebGLContext​Event。&lt;/p&gt;&lt;p&gt;显然，这个属性来自WebGL标准：&lt;a href=&quot;https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15&quot;&gt;https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15&lt;/a&gt;&lt;/p&gt;&lt;p&gt;我们在这份标准中找到了一些别的属性，我们把它一起过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = filterOut(names, [&quot;WebGLContextEvent&quot;,&quot;WebGLObject&quot;, &quot;WebGLBuffer&quot;, &quot;WebGLFramebuffer&quot;, &quot;WebGLProgram&quot;, &quot;WebGLRenderbuffer&quot;, &quot;WebGLShader&quot;, &quot;WebGLTexture&quot;, &quot;WebGLUniformLocation&quot;, &quot;WebGLActiveInfo&quot;, &quot;WebGLShaderPrecisionFormat&quot;, &quot;WebGLRenderingContext&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;过滤掉WebGL，我们继续往下看。&lt;/p&gt;&lt;h3&gt;Web Audio API&lt;/h3&gt;&lt;p&gt;下一个属性是 WaveShaperNode。这个属性名听起来就跟声音有关，这个属性来自W3C的Web Audio API标准。&lt;/p&gt;&lt;p&gt;我们来看一下标准：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/webaudio/&quot;&gt;https://www.w3.org/TR/webaudio/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Web Audio API中有大量的属性，这里我用代码做了过滤。得到了以下列表：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;[&amp;quot;AudioContext&amp;quot;, &amp;quot;AudioNode&amp;quot;, &amp;quot;AnalyserNode&amp;quot;, &amp;quot;AudioBuffer&amp;quot;, &amp;quot;AudioBufferSourceNode&amp;quot;, &amp;quot;AudioDestinationNode&amp;quot;, &amp;quot;AudioParam&amp;quot;, &amp;quot;AudioListener&amp;quot;, &amp;quot;AudioWorklet&amp;quot;, &amp;quot;AudioWorkletGlobalScope&amp;quot;, &amp;quot;AudioWorkletNode&amp;quot;, &amp;quot;AudioWorkletProcessor&amp;quot;, &amp;quot;BiquadFilterNode&amp;quot;, &amp;quot;ChannelMergerNode&amp;quot;, &amp;quot;ChannelSplitterNode&amp;quot;, &amp;quot;ConstantSourceNode&amp;quot;, &amp;quot;ConvolverNode&amp;quot;, &amp;quot;DelayNode&amp;quot;, &amp;quot;DynamicsCompressorNode&amp;quot;, &amp;quot;GainNode&amp;quot;, &amp;quot;IIRFilterNode&amp;quot;, &amp;quot;MediaElementAudioSourceNode&amp;quot;, &amp;quot;MediaStreamAudioSourceNode&amp;quot;, &amp;quot;MediaStreamTrackAudioSourceNode&amp;quot;, &amp;quot;MediaStreamAudioDestinationNode&amp;quot;, &amp;quot;PannerNode&amp;quot;, &amp;quot;PeriodicWave&amp;quot;, &amp;quot;OscillatorNode&amp;quot;, &amp;quot;StereoPannerNode&amp;quot;, &amp;quot;WaveShaperNode&amp;quot;, &amp;quot;ScriptProcessorNode&amp;quot;, &amp;quot;AudioProcessingEvent&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;于是我们把它们也过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+names = filterOut(names, [&quot;AudioContext&quot;, &quot;AudioNode&quot;, &quot;AnalyserNode&quot;, &quot;AudioBuffer&quot;, &quot;AudioBufferSourceNode&quot;, &quot;AudioDestinationNode&quot;, &quot;AudioParam&quot;, &quot;AudioListener&quot;, &quot;AudioWorklet&quot;, &quot;AudioWorkletGlobalScope&quot;, &quot;AudioWorkletNode&quot;, &quot;AudioWorkletProcessor&quot;, &quot;BiquadFilterNode&quot;, &quot;ChannelMergerNode&quot;, &quot;ChannelSplitterNode&quot;, &quot;ConstantSourceNode&quot;, &quot;ConvolverNode&quot;, &quot;DelayNode&quot;, &quot;DynamicsCompressorNode&quot;, &quot;GainNode&quot;, &quot;IIRFilterNode&quot;, &quot;MediaElementAudioSourceNode&quot;, &quot;MediaStreamAudioSourceNode&quot;, &quot;MediaStreamTrackAudioSourceNode&quot;, &quot;MediaStreamAudioDestinationNode&quot;, &quot;PannerNode&quot;, &quot;PeriodicWave&quot;, &quot;OscillatorNode&quot;, &quot;StereoPannerNode&quot;, &quot;WaveShaperNode&quot;, &quot;ScriptProcessorNode&quot;, &quot;AudioProcessingEvent&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们继续看下一个属性。&lt;/p&gt;&lt;h3&gt;Encoding标准&lt;/h3&gt;&lt;p&gt;在我的环境中，下一个属性是 TextDecoder，经过查阅得知，这个属性也来自一份WHATWG的标准，Encoding：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://encoding.spec.whatwg.org/#dom-textencoder&quot;&gt;https://encoding.spec.whatwg.org/#dom-textencoder&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这份标准仅仅包含四个接口，我们把它们过滤掉：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = filterOut(names, [&quot;TextDecoder&quot;, &quot;TextEncoder&quot;, &quot;TextDecoderStream&quot;, &quot;TextEncoderStream&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们继续来看下一个属性。&lt;/p&gt;&lt;h3&gt;Web Background Synchronization&lt;/h3&gt;&lt;p&gt;下一个属性是 SyncManager，这个属性比较特殊，它并没有被标准化，但是我们仍然可以找到它的来源文档：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://wicg.github.io/BackgroundSync/spec/#sync-manager-interface&quot;&gt;https://wicg.github.io/BackgroundSync/spec/#sync-manager-interface&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这个属性我们就不多说了，过滤掉就好了。&lt;/p&gt;&lt;h3&gt;Web Cryptography API&lt;/h3&gt;&lt;p&gt;我们继续看下去，下一个属性是 SubtleCrypto，这个属性来自Web Cryptography API，也是W3C的标准。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/WebCryptoAPI/&quot;&gt;https://www.w3.org/TR/WebCryptoAPI/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这份标准中规定了三个Class和一个Window对象的扩展，给Window对象添加了一个属性crypto。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = filterOut(names, [&quot;CryptoKey&quot;, &quot;SubtleCrypto&quot;, &quot;Crypto&quot;, &quot;crypto&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们继续来看。&lt;/p&gt;&lt;h3&gt;Media Source Extensions&lt;/h3&gt;&lt;p&gt;下一个属性是 SourceBufferList，它来自于：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/media-source/&quot;&gt;https://www.w3.org/TR/media-source/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这份标准中包含了三个接口，这份标准还扩展了一些接口，但是没有扩展window。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;names = filterOut(names, [&quot;MediaSource&quot;, &quot;SourceBuffer&quot;, &quot;SourceBufferList&quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们继续看下一个属性。&lt;/p&gt;&lt;h3&gt;The Screen Orientation API&lt;/h3&gt;&lt;p&gt;下一个属性是ScreenOrientation，它来自W3C的The Screen Orientation API标准：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/screen-orientation/&quot;&gt;https://www.w3.org/TR/screen-orientation/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;它里面只有ScreenOrientation一个接口，也是可以过滤掉的。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;到 Screen Orientation API，我这里看到还剩300余个属性没有处理，剩余部分，我想把它留给大家自己来完成。&lt;/p&gt;&lt;p&gt;我们可以看到，在整理API的过程中，我们可以找到各种不同组织的标准，比如：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;ECMA402标准来自 ECMA；&lt;/li&gt;
+&lt;li&gt;Encoding标准来自WHATWG；&lt;/li&gt;
+&lt;li&gt;WebGL标准来自 Khronos；&lt;/li&gt;
+&lt;li&gt;Web Cryptography标准来自 W3C；&lt;/li&gt;
+&lt;li&gt;还有些API，根本没有被标准化。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;浏览器环境的API，正是这样复杂的环境。我们平时编程面对的环境也是这样的一个环境。&lt;/p&gt;&lt;p&gt;所以，面对如此繁复的API，我建议在系统掌握DOM、CSSOM的基础上，你可以仅仅做大概的浏览和记忆，根据实际工作需要，选择其中几个来深入学习。&lt;/p&gt;&lt;p&gt;做完这个实验，你对Web API的理解应该会有很大提升。&lt;/p&gt;&lt;p&gt;这一节课的问题就是完成所有的API到标准的归类，不同的浏览器环境应该略有不同，欢迎你把自己的结果留言一起讨论。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            mfist  2019-04-18 06:42:24
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            1. 通过老师的课，感觉慢慢会去翻标准了，之前学习没有见过的API，只是到MDN为止。&lt;br&gt;2. 浏览器器中大多数的对象都原型继承自Object，是否可以根据原型继承关系 将window上面的api绘制成一颗树？有了这些继承关系 是否更容易理清这些全局属性呢。&lt;br&gt; 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:33 星期四 124.232.146.132 Runningtime:0.454s Mem:1.41 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

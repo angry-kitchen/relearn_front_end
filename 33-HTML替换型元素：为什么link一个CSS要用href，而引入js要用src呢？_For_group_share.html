@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？_For_group_share.html, html, OneManager">
+    <meta name="description" content="33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/33-HTML%E6%9B%BF%E6%8D%A2%E5%9E%8B%E5%85%83%E7%B4%A0%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88link%E4%B8%80%E4%B8%AACSS%E8%A6%81%E7%94%A8href%EF%BC%8C%E8%80%8C%E5%BC%95%E5%85%A5js%E8%A6%81%E7%94%A8src%E5%91%A2%EF%BC%9F_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/33-HTML%E6%9B%BF%E6%8D%A2%E5%9E%8B%E5%85%83%E7%B4%A0%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88link%E4%B8%80%E4%B8%AACSS%E8%A6%81%E7%94%A8href%EF%BC%8C%E8%80%8C%E5%BC%95%E5%85%A5js%E8%A6%81%E7%94%A8src%E5%91%A2%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;33-HTML替换型元素：为什么link一个CSS要用href，而引入js要用src呢？&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。我们今天来讲讲替换型元素。&lt;/p&gt;&lt;p&gt;我们都知道一个常识，一个网页，它是由多个文件构成的，我们在之前的课程中，已经学过了一种引入文件的方案：链接。&lt;/p&gt;&lt;p&gt;这节课我们要讲的替换型元素，就是另一种引入文件的方式了。替换型元素是把文件的内容引入，替换掉自身位置的一类标签。&lt;/p&gt;&lt;p&gt;我们首先来看一种比较熟悉的标签：script标签。&lt;/p&gt;&lt;h2&gt;script&lt;/h2&gt;&lt;p&gt;我们之所以选择先讲解script标签，是因为script标签是为数不多的既可以作为替换型标签，又可以不作为替换型标签的元素。&lt;/p&gt;&lt;p&gt;我们先来看看script标签的两种用法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+console.log(&quot;Hello world!&quot;);
+&amp;lt;/script&amp;gt;
+&amp;lt;script type=&quot;text/javascript&quot; src=&quot;my.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，我们展示了两种script标签的写法，一种是直接把脚本代码写在script标签之间，另一种是把代码放到独立的js文件中，用src属性引入。&lt;/p&gt;&lt;p&gt;这两种写法是等效的。我想这种等效性可以帮助你理解替换型元素的“替换”是怎么一回事。&lt;/p&gt;&lt;p&gt;这里我们就可以回答标题中的问题了：凡是替换型元素，都是使用src属性来引用文件的，而我们之前的课程中已经讲过，链接型元素是使用href标签的。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;虽然我不知道当初是怎么设计的，但是style标签并非替换型元素，不能使用src属性，这样，我们用link标签引入CSS文件，当然就是用href标签啦。&lt;/p&gt;&lt;p&gt;接下来我们再看看别的替换型元素，先来了解一下img标签。&lt;/p&gt;&lt;h2&gt;img&lt;/h2&gt;&lt;p&gt;毫无疑问我们最熟悉的替换型标签就是img标签了，几乎每个前端都会日常使用img标签。&lt;/p&gt;&lt;p&gt;img标签的作用是引入一张图片。这个标签是没有办法像script标签那样作为非替换型标签来使用的，它必须有src属性才有意义。&lt;/p&gt;&lt;p&gt;如果一定不想要引入独立文件，可以使用data uri，我们来看个实际的例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt; &amp;lt;img src='data:image/svg+xml;charset=utf8,&amp;lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;&amp;lt;rect width=&quot;300&quot; height=&quot;100&quot; style=&quot;fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)&quot;/&amp;gt;&amp;lt;/svg&amp;gt;'/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中我们使用了data uri作为图片的src，这样，并没有产生独立的文件，客观上做到了和内联相同的结果，这是一个常用的技巧。&lt;/p&gt;&lt;p&gt;img标签可以使用width和height指定宽度和高度。也可以只指定其中之一。我们看个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt; &amp;lt;img src='data:image/svg+xml;charset=utf8,&amp;lt;svg width=&quot;600&quot; height=&quot;400&quot; version=&quot;1.1&quot;
+xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;&amp;lt;ellipse cx=&quot;300&quot; cy=&quot;150&quot; rx=&quot;200&quot; ry=&quot;80&quot;
+style=&quot;fill:rgb(200,100,50);
+stroke:rgb(0,0,100);stroke-width:2&quot;/&amp;gt;&amp;lt;/svg&amp;gt;' width=&quot;100&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，为了方便你理解，我们把图片换成了椭圆，我们可以看到，当我们指定了宽度后，图片被&lt;strong&gt;等比例缩放了&lt;/strong&gt;。这个特性非常重要，适用于那种我们既要限制图片尺寸，又要保持图片比例的场景。&lt;/p&gt;&lt;p&gt;如果从性能的角度考虑，建议你同时给出图片的宽高，因为替换型元素加载完文件后，如果尺寸发生变换，会触发重排版（这个概念我们在浏览器原理部分已经讲过，可以复习一下）。&lt;/p&gt;&lt;p&gt;此处要重点提到一个属性，alt属性，这个属性很难被普通用户感知，对于视障用户非常重要，可以毫不夸张地讲，给img加上alt属性，已经做完了可访问性的一半。&lt;/p&gt;&lt;p&gt;img标签还有一组重要的属性，那就是srcset和sizes，它们是src属性的升级版（所以我们前面讲img标签必须有src属性，这是不严谨的说法）。&lt;/p&gt;&lt;p&gt;这两个属性的作用是在不同的屏幕大小和特性下，使用不同的图片源。下面一个例子也来自MDN，它展示了srcset和sizes的用法&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;&amp;lt;img srcset=&quot;elva-fairy-320w.jpg 320w,
+             elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w&quot;
+     sizes=&quot;(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px&quot;
+     src=&quot;elva-fairy-800w.jpg&quot; alt=&quot;Elva dressed as a fairy&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;srcset提供了根据屏幕条件选取图片的能力，但是其实更好的做法，是使用picture元素。&lt;/p&gt;&lt;h2&gt;picture&lt;/h2&gt;&lt;p&gt;picture元素可以根据屏幕的条件为其中的img元素提供不同的源，它的基本用法如下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;picture&amp;gt;
+  &amp;lt;source srcset=&quot;image-wide.png&quot; media=&quot;(min-width: 600px)&quot;&amp;gt;
+  &amp;lt;img src=&quot;image-narrow.png&quot;&amp;gt;
+&amp;lt;/picture&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;picture元素的设计跟audio和video保持了一致（稍后我会为你讲解这两个元素），它跟img搭配srcset和sizes不同，它使用source元素来指定图片源，并且支持多个。&lt;/p&gt;&lt;p&gt;这里的media属性是media query，跟CSS的@media规则一致。&lt;/p&gt;&lt;h2&gt;video&lt;/h2&gt;&lt;p&gt;在HTML5早期的设计中，video标签跟img标签类似，也是使用src属性来引入源文件的，不过，我想应该是考虑到了各家浏览器支持的视频格式不同，现在的video标签跟picture元素一样，也是提倡使用source的。&lt;/p&gt;&lt;p&gt;下面例子是一个古典的video用法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;video controls=&quot;controls&quot; src=&quot;movie.ogg&quot;&amp;gt;
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中的代码用src来指定视频的源文件。但是因为一些历史原因，浏览器对视频的编码格式兼容问题分成了几个派系，这样，对于一些兼容性要求高的网站，我们使用单一的视频格式是不合适的。&lt;/p&gt;&lt;p&gt;现在的video标签可以使用source标签来指定接入多个视频源。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;video controls=&quot;controls&quot; &amp;gt;
+  &amp;lt;source src=&quot;movie.webm&quot; type=&quot;video/webm&quot; &amp;gt;
+  &amp;lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot; &amp;gt;
+  &amp;lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&amp;gt;
+  You browser does not support video.
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从这个例子中，我们可以看到，source标签除了支持media之外，还可以使用type来区分源文件的使用场景。&lt;/p&gt;&lt;p&gt;video标签的内容默认会被当做不支持video的浏览器显示的内容吗，因此，如果要支持更古老的浏览器，还可以在其中加入object或者embed标签，这里就不详细展开了。&lt;/p&gt;&lt;p&gt;video中还支持一种标签：track。&lt;/p&gt;&lt;p&gt;track是一种播放时序相关的标签，它最常见的用途就是字幕。track标签中，必须使用 srclang 来指定语言，此外，track具有kind属性，共有五种。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;subtitles：就是字幕了，不一定是翻译，也可能是补充性说明&lt;/li&gt;
+&lt;li&gt;captions：报幕内容，可能包含演职员表等元信息，适合听障人士或者没有打开声音的人了解音频内容&lt;/li&gt;
+&lt;li&gt;descriptions：视频描述信息，适合视障人士或者没有视频播放功能的终端打开视频时了解视频内尔用&lt;/li&gt;
+&lt;li&gt;chapters：用于浏览器视频内容。&lt;/li&gt;
+&lt;li&gt;metadata：给代码提供的元信息，对普通用户不可见。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;一个完整的video标签可能会包含多种track和多个source，这些共同构成了一个视频播放所需的全部信息。&lt;/p&gt;&lt;h2&gt;audio&lt;/h2&gt;&lt;p&gt;接下来我们来讲讲audio，跟picture和video两种标签一样，audio也可以使用source元素来指定源文件。我们看一下例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;audio controls&amp;gt;
+  &amp;lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;
+  &amp;lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&amp;gt;
+  &amp;lt;p&amp;gt;You browser does not support audio.&amp;lt;/p&amp;gt;
+&amp;lt;/audio&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但比起video，audio元素的历史问题并不严重，所以使用src也是没有问题的。&lt;/p&gt;&lt;h2&gt;iframe&lt;/h2&gt;&lt;p&gt;最后我们来讲一下iframe，这个标签能够嵌入一个完整的网页。&lt;/p&gt;&lt;p&gt;不过，在移动端，iframe受到了相当多的限制，它无法指定大小，里面的内容会被完全平铺到父级页面上。&lt;/p&gt;&lt;p&gt;同时很多网页也会通过http协议头禁止自己被放入iframe中。&lt;/p&gt;&lt;p&gt;iframe标签也是各种安全问题的重灾区。opener、window.name、甚至css的opacity都是黑客可以利用的漏洞。&lt;/p&gt;&lt;p&gt;因此，在2019年，当下这个时间点，任何情况下我都不推荐在实际开发中用以前的iframe。&lt;/p&gt;&lt;p&gt;当然，不推荐使用是一回事，因为没人能保证不遇到历史代码，我们还是应该了解一下iframe的基本用法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;iframe src=&quot;http://time.geekbang.org&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子展示了古典的iframe用法。&lt;/p&gt;&lt;p&gt;在新标准中，为iframe加入了sandbox模式和srcdoc属性，这样，给iframe带来了一定的新场景。我们来看看例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;iframe sandbox srcdoc=&quot;&amp;lt;p&amp;gt;Yeah, you can see it &amp;lt;a href=&quot;/gallery?mode=cover&amp;amp;amp;amp;page=1&quot;&amp;gt;in my gallery&amp;lt;/a&amp;gt;.&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，使用srcdoc属性创建了一个新的文档，嵌入在iframe中展示，并且使用了sandbox来隔离。&lt;/p&gt;&lt;p&gt;这样，这个iframe就不涉及任何跨域问题了。&lt;/p&gt;&lt;h2&gt;总结&lt;/h2&gt;&lt;p&gt;这节课，我们又认识了一组HTML元素：替换型元素。它们的特点是，引入一个外部资源来进入页面，替换掉自身的位置。&lt;/p&gt;&lt;p&gt;我们通过对script、img、picture、audio、video、iframe几个标签的讲解，了解了不同的资源引入方式：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;src属性；&lt;/li&gt;
+&lt;li&gt;srcset属性；&lt;/li&gt;
+&lt;li&gt;source标签；&lt;/li&gt;
+&lt;li&gt;srcdoc属性。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;这中间，我们也介绍了一些小技巧，比如src属性的好朋友——data uri，这在实际开发中非常有用。&lt;/p&gt;&lt;p&gt;最后，留给大家一个小问题，请查资料总结一下，在多数现代浏览器兼容的范围内，src属性支持哪些协议的uri（如http和我们提到的data）。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            favorlm  2019-04-09 07:18:25
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            早起第一件事，学习 [4赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Geeker1992  2019-04-10 08:50:51
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师，style 既然也可以这么用&lt;br&gt;&amp;lt;style&amp;gt;css 规则&amp;lt;&amp;#47;style&amp;gt;，&lt;br&gt;为什么没有 &amp;lt;style src=“”&amp;gt;&amp;lt;&amp;#47;style&amp;gt;？&lt;br&gt; [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            umaru  2019-04-10 08:48:01
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Style元素不能使用css属性，这句话没看懂 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            赵健  2019-04-09 23:28:40
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师好，想请问下，业务场景中需要嵌入公司其他行业线的页面，这种不使用iframe该咋办？ [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-04-09 10:10:36
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            常见的有：http:&amp;#47;&amp;#47;,https:&amp;#47;&amp;#47;,file:&amp;#47;&amp;#47;,data... [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            AbyssKR  2019-04-11 19:44:18
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            style 标签不在替换中元素中，所以不使用 src 属性。&amp;lt;style src=&amp;quot;&amp;quot;&amp;gt; W3C 的回答是从未讨论过，而且看到貌似以前还出现过 link 引入 JavaScript 的想法。 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:24 星期四 124.232.146.132 Runningtime:0.361s Mem:1.4 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

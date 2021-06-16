@@ -1,0 +1,1037 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？_For_group_share.html, html, OneManager">
+    <meta name="description" content="期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/%E6%9C%9F%E6%9C%AB%E7%AD%94%E7%96%91%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84%E4%B8%AD%EF%BC%8C%E6%AF%8F%E4%B8%AA%E9%80%BB%E8%BE%91%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0%E7%8B%AC%E7%AB%8B%E5%8F%91%E5%B8%83%E5%91%A2%EF%BC%9F_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/%E6%9C%9F%E6%9C%AB%E7%AD%94%E7%96%91%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84%E4%B8%AD%EF%BC%8C%E6%AF%8F%E4%B8%AA%E9%80%BB%E8%BE%91%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0%E7%8B%AC%E7%AB%8B%E5%8F%91%E5%B8%83%E5%91%A2%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;期末答疑（二）：前端架构中，每个逻辑页面如何可以做到独立发布呢？&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;上一期的答疑文章发布之后，同学们的热情很高，我在后台又收到了一批新的问题，今天我们继续来答疑。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1. 请问前端架构中，每个逻辑页面如何可以做到独立发布呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：首先，我们要知道发布是什么意思，我们平时开发好一个网页，把它放到线上真实对用户服务的机器上，这个过程叫做发布。&lt;/p&gt;&lt;p&gt;正常来讲，前端工程师发布的原材料是HTML，产出是一个线上的URL地址。&lt;/p&gt;&lt;p&gt;各个公司的发布系统差异非常的大，有的是前端发HTML，有的是前端把代码给服务端同学，改成JSP之类的代码，再一起发布。&lt;/p&gt;&lt;p&gt;对于逻辑页面而言，我们需要发布的从HTML变成了JavaScript，这个JavaScript代码的作用就是渲染一个页面的内容。同时我们线上还需要一个公共的HTML文件来运行这些JavaScript。&lt;/p&gt;&lt;p&gt;最后这些JavaScript文件只要能够做到独立发布，我们就可以认为逻辑页面是独立发布了。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;2. 对于一个后端开发者来说，前端最困难的东西永远是CSS布局而不是JavaScript，我们对CSS有很大畏惧和恐慌在于：CSS没有很好的调试工具能解决问题，即使chrome dev这样的顶级debug工具，有时候也很难解释诸如“为什么页面上的这个盒子在这个地方”这样的问题。感觉CSS完全不符合编程的思路，老师有没有办法缓解一下这个问题？&lt;/strong&gt;&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;答：其实我在课程中已经解释过了，早期的CSS从思路上来说就很别扭， 任何人都会觉得别扭，现在有了flex布局，我认为这个问题基本可以算解决了。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;3. 最近一直在研究前端性能优化和线上错误收集，收效甚微，老师可以讲解一下大厂是怎么处理的吗？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：这一部分，首先你需要一个比较通用的日志服务，能接受前端用HTTP请求的方式打一些日志进去，一般公司都会有这样的系统，如果没有，就需要新建一个，这部分比较麻烦，需要一定的专业知识。&lt;/p&gt;&lt;p&gt;有了这个日志服务，剩下的就是在每个前端页面插入一个JavaScript代码，监听Window.onerror可以得到错误，取window.performance可以得到性能，拿到以后，打日志就行了。&lt;/p&gt;&lt;p&gt;至于后续怎么去展示，展示了以后又怎么去推动执行，这块就需要你自己根据公司实际情况去找到解决方案了。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;4. 老师，想问一下用float排版的时候margin值在不同的浏览器中会显示不同，是什么原因导致的呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我是从IE6时代过来，我还真没听说过margin值有什么兼容问题，你可以拿具体的案例来，我们一起看一看。不过我建议早日切到flex，我们不要在没价值的事情上浪费生命。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;5. 把链接分为超链接类和外部资源类是您自己的理解么，还是官方有这种分类呀，我没找到。老师可以说一下么？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：不是，链接这个概念来自HTML标准（4.6.1位置）。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://html.spec.whatwg.org/&quot;&gt;https://html.spec.whatwg.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;我在HTML的部分都在讲这个问题，你可以关注一下。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;6. 老师，关于线上监控的数据采集和数据显示您有好的插件或者方案推荐？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;这个其实没有现成的，这个东西，如果公司从数据安全的角度考虑，一般都不让用第三方的。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;7. 老师提到原生构造器无法继承。而&lt;a href=&quot;http://es6.ruanyifeng.com/#docs/class-extends&quot;&gt;阮一峰老师&lt;/a&gt;表示，es6已经可以继承原生构造函数，并且能定义子类。以我的理解来看，阮一峰老师的说法没有问题。不知道老师怎么看？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我查了一下，你说的没错，还真是这样，这块我理解错了，我后面会迭代一下。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;8. 活动页面样式风格多变，并且有些活动页面是存在交互和购买流程等交互，这些交互怎么做成模板化？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：这个答案很简单，只要能传参数，就能做成模板化。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;9. DOM树就是一种嵌套的数据结构吗？然后是渲染引擎将这个数据结构处理成我们看到的网页吗 ？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：DOM树是嵌套的树形结构，渲染过程是把它变成位图，绘制过程是把它画到显示器上。关于这部分内容，你可以回顾一下浏览器原理部分的几节课。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;10. 浏览器中大多数的对象都原型继承自Object，是否可以根据原型继承关系将Window上面的api绘制成一颗树？有了这些继承关系是否更容易理清这些全局属性呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：API不止有类，也有很多函数呀。所有的函数API的原型都是Function.prototype，这不就没意义了么。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;11. “宿主对象（host Objects）：由 JavaScript 宿主环境提供的对象，它们的行为完全由宿主环境决定。”&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;但是下面对宿主对象的解释又是：“实际上，这个全局对象 windows上的属性，一部分来自 JavaScript 语言，一部分来自浏览器环境”。这并不像上面说的完全由宿主环境决定，这个怎么理解呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：请注意看了，我这里讲宿主对象有个“们”字。&lt;/p&gt;&lt;p&gt;所以，这里可不是对宿主对象的解释，这是对Window对象的解释。Window对象比较复杂，这块我没有详细讲，从JavaScript的Global Object的角度可以讲，浏览器部分还有个Window Proxy机制，我是觉得复杂又没什么实际意义就没有讲，你可以这样感性地理解一下：全局对象和Window对象合成了一个东西。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;12. winter老师，我看到淘宝用了iframe标签，能给我讲一下这个标签的使用场景和注意点吗？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我可以简单告诉你一个口诀：手机上不要用，PC上除了历史包袱不要用。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;13. 请问下，link preload 解析执行时机和构建 CSSOM一样吗，HTML从上往下解析到link preload才会解析执行？还是说并行解析HTML和preload？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：从标准来看应该是可以并行，但是具体怎样这块需要看浏览器源代码确定。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;14. 老师，在ES5之前版本规范中，会提及JavaScript的可执行代码分为全局、函数、Eval。但是在ES6之后版本规范中，再也不提及可执行代码的概念了，这是为什么呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：它们还在，只是现在执行过程更复杂了，没法这么简单分类了。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;15. winter老师，你提倡多继承吗？还是说尽量用聚合来解决问题？我看着ES6里面要实现多继承的方式也挺别扭的。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我不提倡多继承，Java也不支持多继承啊。如果你想抽象可以用接口来代替，想复用可以用Mixin来代替。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;16. 我这里还有个问题，使用figureCaption标签后，img标签的alt属性可以缺失么？我一直觉得alt与src情同手足，什么都不应该把彼此拆散的。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：不可以缺失，这是两个意思，figureCaption可能是“图1”这种东西，可不一定在描述图片内容。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;17. 老师，style 既然也可以这么用&lt;code&gt;&amp;lt;style&amp;gt;css&lt;/code&gt; 规则&lt;code&gt;&amp;lt;/style&amp;gt;&lt;/code&gt;，为什么没有 &lt;code&gt;&amp;lt;style src=“”&amp;gt;&amp;lt;/style&amp;gt;&lt;/code&gt;？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：你这个设计得不错，但是估计有了link以后，HTML懒得把style改成replacement了吧。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;18. 老师好，想请问下，业务场景中需要嵌入公司其他行业线的页面，这种不使用iframe该怎么办？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：理论上应该让他们给你做个组件出来，但是如果实在没别的办法，就使用iframe吧。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;19. 老师，目前有办法通过脚本反射的方式获取所有JavaScript原生对象吗？还是只能查文档？通过for. in 遍历全局对象是不可以的，因为这些JavaScript原生对象虽然挂到了全局，但是属于不可枚举成员。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我们现在可以用Object.getOwnPropertyNames，但是你symbol还是拿不到。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;20. 老师，jquery ajax 同步请求的原理是?目前用axios库，不支持同步请求，如果希望执行同步请求有什么解决办法？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：原理是XMLHttpRequest这个可以传第三个参数，但是我不建议你用同步请求，会把JS执行线程卡住。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;21. 老师您好，把JavaScript代码缓存在 localStorage 中，从 localStorage 取出后怎么执行？ 如果缓存的是 CSS 呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：执行JavaScript用eval，执行CSS用document.createElement(“style”)。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;22. 请问：var,let 和 const 在 babel 中都会被编译为 var, 那怎么区分 const 是常量呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：如果你用babel的话，就不要管编译后的代码。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;23. DOM树构建与CSSOM构建有先后关系吗？CSS计算与DOM树流式构建同步进行是不是意味着DOM树流式构建之前，CSSOM已经构建完成呢？&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：我这里说的确实有点歧义，我在这里再厘清一下。CSSOM是有rule部分和view部分的，rule部分是在DOM开始之前就构件完成的，而view部分是跟着DOM同步构建的。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;24. 老师能解释下这个么？&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;var b = 10;
+(function b(){
+b = 20;
+console.log(b); // [Function: b]
+})();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;答：这个地方比较特殊，“具有名称的函数表达式”会在外层词法环境和它自己执行产生的词法环境之间，产生一个词法环境，再把自己的名称和值当作变量塞进去。&lt;/p&gt;&lt;p&gt;所以你这里的b = 20 并没有改变外面的b，而是试图改变一个只读的变量b。这块儿的知识有点偏，你仅做理解掌握就好。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;25. 关于状态机这一块，我觉得是不是可以先讲一节正则的知识点呢。理解了正则，那么大家对状态机的概念就有了更加直观的理解了。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;答：一般正则都是状态机实现的，讲正则对理解它底层的状态机并没有多少意义。&lt;/p&gt;&lt;p&gt;当然了，词法分析也可以用正则来实现，我这里没有这么做而已，我写过一个JavaScript的词法分析是用正则做的，你可以参考这里:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/wintercn/JSinJS/blob/master/source/LexicalParser.js&quot;&gt;https://github.com/wintercn/JSinJS/blob/master/source/LexicalParser.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;hr&gt;&lt;/hr&gt;&lt;p&gt;好了，今天的答疑就到这里，如果你还有问题，可以继续给我留言。我们一起讨论。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-05-23 07:51:23
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            勇于承认错误的好老师 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            ywqqjw  2019-05-23 20:57:38
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            请问老师，在使用flex布局还有HTML5新标签时还是会碰上IE兼容性的问题，一般都是怎么解决？目前我都是只能重新写一遍，但是看着又是&amp;lt;div&amp;gt;一把梭很难受。 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Owen  2019-05-23 20:24:12
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            老师您好，平时在电脑上做好的页面，放到不同规格的屏幕上就会出现尺寸自适应的问题，请问老师有什么可靠办法解决页面在屏幕上自适应的问题。谢谢 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            李东霞  2019-05-23 18:03:49
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            希望能写些关于优化的课 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            sheldon  2019-05-23 14:09:10
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            问您一个问题，我最近看了《你不知道的javascript》.作者说：现在你所理解的javascript很可能是从别人那里学来的不完整版。这样的javascript只是真正的javascript的影子。学完这个系列后，你就会掌握真正的javascript.&lt;br&gt;我们的javascript知识也好，java知识也好。都是从书本上或者百度，google得来，或者工作中得来。像这本书的作者这样，市面上的书他都说只教了皮毛。那他是如何学习到这些知识的？&lt;br&gt;我很好奇。我想问作者是通过什么途径去了解这些知识点而写出这系列书的？&lt;br&gt;就我所在的周围同事来说，能持续不断的读书已经算是很厉害了。&lt;br&gt;期待您的答复！ 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:53 星期四 124.232.146.132 Runningtime:0.484s Mem:1.4 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

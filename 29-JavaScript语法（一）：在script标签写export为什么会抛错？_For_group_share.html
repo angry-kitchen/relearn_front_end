@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>29-JavaScript语法（一）：在script标签写export为什么会抛错？_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="29-JavaScript语法（一）：在script标签写export为什么会抛错？_For_group_share.html, html, OneManager">
+    <meta name="description" content="29-JavaScript语法（一）：在script标签写export为什么会抛错？_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">29-JavaScript语法（一）：在script标签写export为什么会抛错？_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/29-JavaScript%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9C%A8script%E6%A0%87%E7%AD%BE%E5%86%99export%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%9B%E9%94%99%EF%BC%9F_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/29-JavaScript%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9C%A8script%E6%A0%87%E7%AD%BE%E5%86%99export%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%9B%E9%94%99%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;29-JavaScript语法（一）：在script标签写export为什么会抛错？&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;29-JavaScript语法（一）：在script标签写export为什么会抛错？&lt;/h1&gt;
+&lt;p&gt;你好，我是winter，今天我们进入到语法部分的学习。在讲解具体的语法结构之前，这一堂课我首先要给你介绍一下JavaScript语法的一些基本规则。&lt;/p&gt;&lt;h2&gt;脚本和模块&lt;/h2&gt;&lt;p&gt;首先，JavaScript有两种源文件，一种叫做脚本，一种叫做模块。这个区分是在ES6引入了模块机制开始的，在ES5和之前的版本中，就只有一种源文件类型（就只有脚本）。&lt;/p&gt;&lt;p&gt;脚本是可以由浏览器或者node环境引入执行的，而模块只能由JavaScript代码用import引入执行。&lt;/p&gt;&lt;p&gt;从概念上，我们可以认为脚本具有主动性的JavaScript代码段，是控制宿主完成一定任务的代码；而模块是被动性的JavaScript代码段，是等待被调用的库。&lt;/p&gt;&lt;p&gt;我们对标准中的语法产生式做一些对比，不难发现，实际上模块和脚本之间的区别仅仅在于是否包含import 和 export。&lt;/p&gt;&lt;p&gt;脚本是一种兼容之前的版本的定义，在这个模式下，没有import就不需要处理加载“.js”文件问题。&lt;/p&gt;&lt;p&gt;现代浏览器可以支持用script标签引入模块或者脚本，如果要引入模块，必须给script标签添加type=“module”。如果引入脚本，则不需要type。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-HTML&quot;&gt;&amp;lt;script type=&quot;module&quot; src=&quot;xxxxx.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;这样，就回答了我们标题中的问题，script标签如果不加&lt;code&gt;type=“module”&lt;/code&gt;，默认认为我们加载的文件是脚本而非模块，如果我们在脚本中写了export，当然会抛错。&lt;/p&gt;&lt;p&gt;脚本中可以包含语句。模块中可以包含三种内容：import声明，export声明和语句。普通语句我们会在下一课专门给你讲解，下面我们就来讲讲import声明和export声明。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/43/44/43fdb35c0300e73bb19c143431f50a44.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h3&gt;import声明&lt;/h3&gt;&lt;p&gt;我们首先来介绍一下import声明，import声明有两种用法，一个是直接import一个模块，另一个是带from的import，它能引入模块里的一些信息。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;import &quot;mod&quot;; //引入一个模块
+import v from &quot;mod&quot;;  //把模块默认的导出值放入变量v
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;直接import一个模块，只是保证了这个模块代码被执行，引用它的模块是无法获得它的任何信息的。&lt;/p&gt;&lt;p&gt;带from的import意思是引入模块中的一部分信息，可以把它们变成本地的变量。&lt;/p&gt;&lt;p&gt;带from的import细分又有三种用法，我们可以分别看下例子：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;import x from &quot;./a.js&quot;&lt;/code&gt; 引入模块中导出的默认值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;import {a as x, modify} from &quot;./a.js&quot;;&lt;/code&gt; 引入模块中的变量。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;import * as x from &quot;./a.js&quot;&lt;/code&gt; 把模块中所有的变量以类似对象属性的方式引入。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;第一种方式还可以跟后两种组合使用。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;import d, {a as x, modify} from &quot;./a.js&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;import d, * as x from &quot;./a.js&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;语法要求不带as的默认值永远在最前。注意，这里的变量实际上仍然可以受到原来模块的控制。&lt;/p&gt;&lt;p&gt;我们看一个例子，假设有两个模块a和b。我们在模块a中声明了变量和一个修改变量的函数，并且把它们导出。我们用b模块导入了变量和修改变量的函数。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;模块a：&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+export var a = 1;
+export function modify(){
+    a = 2;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;模块b：&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;import {a, modify} from &quot;./a.js&quot;;
+console.log(a);
+modify();
+console.log(a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我们调用修改变量的函数后，b模块变量也跟着发生了改变。这说明导入与一般的赋值不同，导入后的变量只是改变了名字，它仍然与原来的变量是同一个。&lt;/p&gt;&lt;h3&gt;export声明&lt;/h3&gt;&lt;p&gt;我们再来说说export声明。与import相对，export声明承担的是导出的任务。&lt;/p&gt;&lt;p&gt;模块中导出变量的方式有两种，一种是独立使用export声明，另一种是直接在声明型语句前添加export关键字。&lt;/p&gt;&lt;p&gt;独立使用export声明就是一个export关键字加上变量名列表，例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;export {a, b, c};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们也可以直接在声明型语句前添加export关键字，这里的export可以加在任何声明性质的语句之前，整理如下：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;var&lt;/li&gt;
+&lt;li&gt;function (含async和generator)&lt;/li&gt;
+&lt;li&gt;class&lt;/li&gt;
+&lt;li&gt;let&lt;/li&gt;
+&lt;li&gt;const&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;export还有一种特殊的用法，就是跟default联合使用。export default 表示导出一个默认变量值，它可以用于function和class。这里导出的变量是没有名称的，可以使用&lt;code&gt;import x from &quot;./a.js&quot;&lt;/code&gt;这样的语法，在模块中引入。&lt;/p&gt;&lt;p&gt;export default 还支持一种语法，后面跟一个表达式，例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var a = {};
+export default a;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是，这里的行为跟导出变量是不一致的，这里导出的是值，导出的就是普通变量a的值，以后a的变化与导出的值就无关了，修改变量a，不会使得其他模块中引入的default值发生改变。&lt;/p&gt;&lt;p&gt;在import语句前无法加入export，但是我们可以直接使用export from语法。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;export a from &quot;a.js&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;JavaScript引擎除了执行脚本和模块之外，还可以执行函数。而函数体跟脚本和模块有一定的相似之处，所以接下来，给你讲讲函数体的相关知识。&lt;/p&gt;&lt;h2&gt;函数体&lt;/h2&gt;&lt;p&gt;执行函数的行为通常是在JavaScript代码执行时，注册宿主环境的某些事件触发的，而执行的过程，就是执行函数体（函数的花括号中间的部分）。&lt;/p&gt;&lt;p&gt;我们先看一个例子，感性地理解一下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;setTimeout(function(){
+    console.log(&quot;go go go&quot;);
+}, 10000)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码通过setTimeout函数注册了一个函数给宿主，当一定时间之后，宿主就会执行这个函数。&lt;/p&gt;&lt;p&gt;你还记得吗，我们前面已经在运行时这部分讲过，宿主会为这样的函数创建宏任务。&lt;/p&gt;&lt;p&gt;当我们学习了语法之后，我们可以认为，宏任务中可能会执行的代码包括“脚本(script)”“模块（module）”和“函数体（function body）”。正因为这样的相似性，我们把函数体也放到本课来讲解。&lt;/p&gt;&lt;p&gt;函数体其实也是一个语句的列表。跟脚本和模块比起来，函数体中的语句列表中多了return语句可以用。&lt;/p&gt;&lt;p&gt;函数体实际上有四种，下面，我来分别介绍一下。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;普通函数体，例如：&lt;/li&gt;
+&lt;/ul&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function foo(){
+    //Function body
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;异步函数体，例如：&lt;/li&gt;
+&lt;/ul&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;async function foo(){
+    //Function body
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;生成器函数体，例如：&lt;/li&gt;
+&lt;/ul&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function *foo(){
+    //Function body
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;异步生成器函数体，例如：&lt;/li&gt;
+&lt;/ul&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;async function *foo(){
+    //Function body
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面四种函数体的区别在于：能否使用await或者yield语句。&lt;/p&gt;&lt;p&gt;关于函数体、模块和脚本能使用的语句，我整理了一个表格，你可以参考一下：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/0b/50/0b24e78625beb70e3346aad1e8cfff50.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;讲完了三种语法结构，我再来介绍两个JavaScript语法的全局机制：预处理和指令序言。&lt;/p&gt;&lt;p&gt;这两个机制对于我们解释一些JavaScript的语法现象非常重要。不理解预处理机制我们就无法理解var等声明类语句的行为，而不理解指令序言，我们就无法解释严格模式。&lt;/p&gt;&lt;h2&gt;预处理&lt;/h2&gt;&lt;p&gt;JavaScript执行前，会对脚本、模块和函数体中的语句进行预处理。预处理过程将会提前处理var、函数声明、class、const和let这些语句，以确定其中变量的意义。&lt;/p&gt;&lt;p&gt;因为一些历史包袱，这一部分内容非常复杂，首先我们看一下var声明。&lt;/p&gt;&lt;h3&gt;var声明&lt;/h3&gt;&lt;p&gt;var声明永远作用于脚本、模块和函数体这个级别，在预处理阶段，不关心赋值的部分，只管在当前作用域声明这个变量。&lt;/p&gt;&lt;p&gt;我们还是从实例来进行学习。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var a = 1;
+function foo() {
+    console.log(a);
+    var a = 2;
+}
+foo();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码声明了一个脚本级别的a，又声明了foo函数体级别的a，我们注意到，函数体级的&lt;code&gt;var&lt;/code&gt;出现在console.log语句之后。&lt;/p&gt;&lt;p&gt;但是预处理过程在执行之前，所以有函数体级的变量a，就不会去访问外层作用域中的变量a了，而函数体级的变量a此时还没有赋值，所以是undefined。我们再看一个情况：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var a = 1;
+function foo() {
+    console.log(a);
+    if(false) {
+        var a = 2;
+    }
+}
+foo();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码比上一段代码在&lt;code&gt;var a = 2&lt;/code&gt;之外多了一段if，我们知道if(false)中的代码永远不会被执行，但是预处理阶段并不管这个，var的作用能够穿透一切语句结构，它只认脚本、模块和函数体三种语法结构。所以这里结果跟前一段代码完全一样，我们会得到undefined。&lt;/p&gt;&lt;p&gt;我们看下一个例子，我们在运行时部分讲过类似的例子。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var a = 1;
+function foo() {
+    var o= {a:3}
+    with(o) {
+        var a = 2;
+    }
+    console.log(o.a);
+    console.log(a);
+}
+foo();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这个例子中，我们引入了with语句，我们用with(o)创建了一个作用域，并把o对象加入词法环境，在其中使用了&lt;code&gt;var a = 2;&lt;/code&gt;语句。&lt;/p&gt;&lt;p&gt;在预处理阶段，只认&lt;code&gt;var&lt;/code&gt;中声明的变量，所以同样为foo的作用域创建了a这个变量，但是没有赋值。&lt;/p&gt;&lt;p&gt;在执行阶段，当执行到&lt;code&gt;var a = 2&lt;/code&gt;时，作用域变成了with语句内，这时候的a被认为访问到了对象o的属性a，所以最终执行的结果，我们得到了2和undefined。&lt;/p&gt;&lt;p&gt;这个行为是JavaScript公认的设计失误之一，一个语句中的a在预处理阶段和执行阶段被当做两个不同的变量，严重违背了直觉，但是今天，在JavaScript设计原则“don’t break the web”之下，已经无法修正了，所以你需要特别注意。&lt;/p&gt;&lt;p&gt;因为早年JavaScript没有let和const，只能用var，又因为var除了脚本和函数体都会穿透，人民群众发明了“立即执行的函数表达式（IIFE）”这一用法，用来产生作用域，例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+for(var i = 0; i &amp;lt; 20; i ++) {
+    void function(i){
+        var div = document.createElement(&quot;div&quot;);
+        div.innerHTML = i;
+        div.onclick = function(){
+            console.log(i);
+        }
+        document.body.appendChild(div);
+    }(i);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码非常经典，常常在实际开发中见到，也经常被用作面试题，为文档添加了20个div元素，并且绑定了点击事件，打印它们的序号。&lt;/p&gt;&lt;p&gt;我们通过IIFE在循环内构造了作用域，每次循环都产生一个新的环境记录，这样，每个div都能访问到环境中的i。&lt;/p&gt;&lt;p&gt;如果我们不用IIFE：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;for(var i = 0; i &amp;lt; 20; i ++) {
+    var div = document.createElement(&quot;div&quot;);
+    div.innerHTML = i;
+    div.onclick = function(){
+        console.log(i);
+    }
+    document.body.appendChild(div);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码的结果将会是点每个div都打印20，因为全局只有一个i，执行完循环后，i变成了20。&lt;/p&gt;&lt;h3&gt;function声明&lt;/h3&gt;&lt;p&gt;function声明的行为原本跟var非常相似，但是在最新的JavaScript标准中，对它进行了一定的修改，这让情况变得更加复杂了。&lt;/p&gt;&lt;p&gt;在全局（脚本、模块和函数体），function声明表现跟var相似，不同之处在于，function声明不但在作用域中加入变量，还会给它赋值。&lt;/p&gt;&lt;p&gt;我们看一下function声明的例子&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;console.log(foo);
+function foo(){
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里声明了函数foo，在声明之前，我们用console.log打印函数foo，我们可以发现，已经是函数foo的值了。&lt;/p&gt;&lt;p&gt;function声明出现在if等语句中的情况有点复杂，它仍然作用于脚本、模块和函数体级别，在预处理阶段，仍然会产生变量，它不再被提前赋值：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;console.log(foo);
+if(true) {
+    function foo(){
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码得到undefined。如果没有函数声明，则会抛出错误。&lt;/p&gt;&lt;p&gt;这说明function在预处理阶段仍然发生了作用，在作用域中产生了变量，没有产生赋值，赋值行为发生在了执行阶段。&lt;/p&gt;&lt;p&gt;出现在if等语句中的function，在if创建的作用域中仍然会被提前，产生赋值效果，我们会在下一节课继续讨论。&lt;/p&gt;&lt;h3&gt;class声明&lt;/h3&gt;&lt;p&gt;class声明在全局的行为跟function和var都不一样。&lt;/p&gt;&lt;p&gt;在class声明之前使用class名，会抛错：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;console.log(c);
+class c{
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码我们试图在class前打印变量c，我们得到了个错误，这个行为很像是class没有预处理，但是实际上并非如此。&lt;/p&gt;&lt;p&gt;我们看个复杂一点的例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var c = 1;
+function foo(){
+    console.log(c);
+    class c {}
+}
+foo();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，我们把class放进了一个函数体中，在外层作用域中有变量c。然后试图在class之前打印c。&lt;/p&gt;&lt;p&gt;执行后，我们看到，仍然抛出了错误，如果去掉class声明，则会正常打印出1，也就是说，出现在后面的class声明影响了前面语句的结果。&lt;/p&gt;&lt;p&gt;这说明，class声明也是会被预处理的，它会在作用域中创建变量，并且要求访问它时抛出错误。&lt;/p&gt;&lt;p&gt;class的声明作用不会穿透if等语句结构，所以只有写在全局环境才会有声明作用，这部分我们将会在下一节课讲解。&lt;/p&gt;&lt;p&gt;这样的class设计比function和var更符合直觉，而且在遇到一些比较奇怪的用法时，倾向于抛出错误。&lt;/p&gt;&lt;p&gt;按照现代语言设计的评价标准，及早抛错是好事，它能够帮助我们尽量在开发阶段就发现代码的可能问题。&lt;/p&gt;&lt;h2&gt;指令序言机制&lt;/h2&gt;&lt;p&gt;脚本和模块都支持一种特别的语法，叫做指令序言（Directive Prologs）。&lt;/p&gt;&lt;p&gt;这里的指令序言最早是为了use strict设计的，它规定了一种给JavaScript代码添加元信息的方式。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;&quot;use strict&quot;;
+function f(){
+    console.log(this);
+};
+f.call(null);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码展示了严格模式的用法，我这里定义了函数f，f中打印this值，然后用call的方法调用f，传入null作为this值，我们可以看到最终结果是null原封不动地被当做this值打印了出来，这是严格模式的特征。&lt;/p&gt;&lt;p&gt;如果我们去掉严格模式的指令需要，打印的结果将会变成global。&lt;/p&gt;&lt;p&gt;&lt;code&gt;&quot;use strict&quot;&lt;/code&gt;是JavaScript标准中规定的唯一一种指令序言，但是设计指令序言的目的是，留给JS的引擎和实现者一些统一的表达方式，在静态扫描时指定JS代码的一些特性。&lt;/p&gt;&lt;p&gt;例如，假设我们要设计一种声明本文件不需要进行lint检查的指令，我们可以这样设计：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;&quot;no lint&quot;;
+&quot;use strict&quot;;
+function doSth(){
+    //......
+}
+//......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;JavaScript的指令序言是只有一个字符串直接量的表达式语句，它只能出现在脚本、模块和函数体的最前面。&lt;/p&gt;&lt;p&gt;我们看两个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function doSth(){
+    //......
+}
+&quot;use strict&quot;;
+var a = 1;
+//......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，&lt;code&gt;&quot;use strict&quot;&lt;/code&gt;没有出现在最前，所以不是指令序言。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;'use strict';
+function doSth(){
+    //......
+}
+var a = 1;
+//......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，&lt;code&gt;'use strict'&lt;/code&gt;是单引号，这不妨碍它仍然是指令序言。&lt;/p&gt;&lt;h2&gt;总结&lt;/h2&gt;&lt;p&gt;今天，我们一起进入了JavaScript的语法部分，在开始学习之前，我先介绍了一部分语法的基本规则。&lt;/p&gt;&lt;p&gt;我们首先介绍了JavaScript语法的全局结构，JavaScript有两种源文件，一种叫做脚本，一种叫做模块。介绍完脚本和模块的基础概念，我们再来把它们往下分，脚本中可以包含语句。模块中可以包含三种内容：import声明，export声明和语句。&lt;/p&gt;&lt;p&gt;最后，我介绍了两个JavaScript语法的全局机制：预处理和指令序言。&lt;/p&gt;&lt;p&gt;最后，给你留一个小任务，我们试着用babel，分析一段JavaScript的模块代码，并且找出它中间的所有export的变量。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Leo  2019-03-28 14:20:03
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            当你认为你已经掌握了JS，JS会反手给你一巴掌。 [21赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            以勒  2019-04-01 09:19:11
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            前面学的宏观任务和微观人物 还记得的同学举个手，点个赞 [3赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            让时间说真话  2019-03-30 16:42:46
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            首先讲了脚本和模块，而这次老师讲的模块补缺我近段时间用模块时的一些疑问，Js的预处理语法让我更加理解了以前经常用到的作用域。感谢winter！！！ [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            许童童  2019-03-28 15:35:09
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            通过@babel&amp;#47;parser解析模块文件，然后通过遍历ExportNamedDeclaration，找出所有export的变量，&lt;br&gt;spec参考：https:&amp;#47;&amp;#47;github.com&amp;#47;babel&amp;#47;babel&amp;#47;blob&amp;#47;master&amp;#47;packages&amp;#47;babel-parser&amp;#47;ast&amp;#47;spec.md#exports [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            无羡  2019-03-29 09:44:09
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            能否讲讲为什么导出的无论是基本类型还是引用类型，都会和原模块的变量有绑定关系？ [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-03-28 12:37:49
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            https:&amp;#47;&amp;#47;github.com&amp;#47;aimergenge&amp;#47;get-exported-names-via-babel [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            K4SHIFZ  2019-03-28 11:53:27
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            相反，我看了老师的文章后，以前觉得是语言bug的地方，现在觉得不是bug了 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            _CountingStars  2019-03-28 08:36:20
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            作为一个非前段程序员 看了老师的专栏发现 js 坑真多 各种奇怪的语法和表现 感觉像语言的 bug 一样 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            马儿  2019-04-15 18:14:03
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            把var的那个例子改写成let，报错a is not defined 。不明白let是怎么进行预处理的 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            马儿  2019-04-15 18:02:01
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            真不亏为大神！长见识了 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            xwchris  2019-04-08 10:28:44
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            console.log(foo);&lt;br&gt;&lt;br&gt;if (true) {&lt;br&gt;      function foo() {}&lt;br&gt;}&lt;br&gt;&lt;br&gt;为什么这段代码 我在chrome73中执行得到的是ƒ foo() {} 
+        &lt;/div&gt;
+        &lt;br/&gt;
+&lt;div&gt;
+    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-04-09 18:07:53&lt;/div&gt;
+    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;老内核和新内核不一样&lt;/div&gt;
+&lt;/div&gt;
+            
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            favorlm  2019-03-29 08:16:37
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            准备用babel进行分析 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            有铭  2019-03-28 14:03:00
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            看了老师的文章，越来越理解为啥TS出现的地方越来越多了 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            翰弟  2019-03-28 13:06:20
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            君子承诺 老师出的课 继续买反复看 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-03-28 13:03:50
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            * 预处理机制让我对 js 中的声明有了更全面的认识，很多文章中提到的一个词是“提升”，与这里提到的预处理机制不无关联。&lt;br&gt;* 关于声明这块儿，这篇文章讲得也有点意思，不知道winter老师怎么看：&lt;br&gt;https:&amp;#47;&amp;#47;zhuanlan.zhihu.com&amp;#47;p&amp;#47;28140450&lt;br&gt;* 在我看来，if中的function声明在预处理阶段的”赋值“行为好像被if形成的块级作用域”拦截“了，导致这个赋值行为推迟到if语句块执行开始之前。（这里只是一种隐喻，并不准确）。&lt;br&gt;* let,const,class这些在js中的”后来者“由于没有历史包袱，行为大多更加正常（符合直觉，及早抛错）。这让我想到了一篇文章中介绍的temporal dead zone机制：http:&amp;#47;&amp;#47;es6.ruanyifeng.com&amp;#47;#docs&amp;#47;let#%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-03-28 09:35:05
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            想问一个问题：import 进来的引用为什么可以获取到最新的值，是类似于 getter 的机制吗？ 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:08 星期四 124.232.146.132 Runningtime:0.478s Mem:1.42 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

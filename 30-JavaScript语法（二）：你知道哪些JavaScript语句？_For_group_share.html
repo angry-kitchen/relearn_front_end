@@ -1,0 +1,1281 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>30-JavaScript语法（二）：你知道哪些JavaScript语句？_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="30-JavaScript语法（二）：你知道哪些JavaScript语句？_For_group_share.html, html, OneManager">
+    <meta name="description" content="30-JavaScript语法（二）：你知道哪些JavaScript语句？_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">30-JavaScript语法（二）：你知道哪些JavaScript语句？_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/30-JavaScript%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9BJavaScript%E8%AF%AD%E5%8F%A5%EF%BC%9F_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/30-JavaScript%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9BJavaScript%E8%AF%AD%E5%8F%A5%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;30-JavaScript语法（二）：你知道哪些JavaScript语句？&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;30-JavaScript语法（二）：你知道哪些JavaScript语句？&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;我们在上一节课中已经讲过了JavaScript语法的顶层设计，接下来我们进入到更具体的内容。&lt;/p&gt;&lt;p&gt;JavaScript遵循了一般编程语言的‘语句-表达式’结构，多数编程语言都是这样设计的。我们在上节课讲的脚本，或者模块都是由语句列表构成的，这一节课，我们就来一起了解一下语句。&lt;/p&gt;&lt;p&gt;在JavaScript标准中，把语句分成了两种：声明和语句，不过，这里的区分逻辑比较奇怪，所以，这里我还是按照自己的思路给你整理一下。&lt;/p&gt;&lt;p&gt;普通语句：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/81/55/8186219674547691cf59e5c095304d55.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;声明型语句：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/0e/38/0e5327528df12d1eaad52c4005efff38.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们根据上面的分类，来遍历学习一下这些语句。&lt;/p&gt;&lt;h2&gt;语句块&lt;/h2&gt;&lt;p&gt;我们可以这样去简单理解，语句块就是一对大括号。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;{
+    var x, y;
+    x = 10;
+    y = 20;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;语句块的意义和好处在于：让我们可以把多行语句视为同一行语句，这样，if、for等语句定义起来就比较简单了。不过，我们需要注意的是，语句块会产生作用域，我们看一个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;{
+    let x = 1;
+}
+console.log(x); // 报错
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我们的let声明，仅仅对语句块作用域生效，于是我们在语句块外试图访问语句块内的变量x就会报错。&lt;/p&gt;&lt;h2&gt;空语句&lt;/h2&gt;&lt;p&gt;空语句就是一个独立的分号，实际上没什么大用。我们来看一下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;空语句的存在仅仅是从语言设计完备性的角度考虑，允许插入多个分号而不抛出错误。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;h2&gt;if语句&lt;/h2&gt;&lt;p&gt;if语句是条件语句。我想，对多数人来说，if语句都是熟悉的老朋友了，也没有什么特别需要注意的用法，但是为了我们课程的完备性，这里还是要讲一下。&lt;/p&gt;&lt;p&gt;if语句示例如下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;if(a &amp;lt; b)
+    console.log(a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;if语句的作用是，在满足条件时执行它的内容语句，这个语句可以是一个语句块，这样就可以实现有条件地执行多个语句了。&lt;/p&gt;&lt;p&gt;if语句还有else结构，用于不满足条件时执行，一种常见的用法是，利用语句的嵌套能力，把if和else连写成多分支条件判断：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;if(a &amp;lt; 10) {
+    //...
+} else if(a &amp;lt; 20) {
+    //...
+} else if(a &amp;lt; 30) {
+    //...
+} else {
+    //...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码表示四个互斥的分支，分别在满足a&amp;lt;10、a&amp;lt;20、a&amp;lt;30和其它情况时执行。&lt;/p&gt;&lt;h2&gt;switch语句&lt;/h2&gt;&lt;p&gt;switch语句继承自Java，Java中的switch语句继承自C和C++，原本switch语句是跳转的变形，所以我们如果要用它来实现分支，必须要加上break。&lt;/p&gt;&lt;p&gt;其实switch原本的设计是类似goto的思维。我们看一个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;switch(num) {
+case 1:
+    print(1);
+case 2:
+    print 2;
+case 3:
+    print 3;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码当num为1时输出1 2 3，当num为2时输出2 3，当num为3时输出3。如果我们要把它变成分支型，则需要在每个case后加上break。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;switch(num) {
+case 1:
+    print 1;
+    break;
+case 2:
+    print 2;
+    break;
+case 3:
+    print 3;
+    break;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在C时代，switch生成的汇编代码性能是略优于if else的，但是对JavaScript来说，则无本质区别。我个人的看法是，现在switch已经完全没有必要使用了，应该用if else结构代替。&lt;/p&gt;&lt;h2&gt;循环语句&lt;/h2&gt;&lt;p&gt;循环语句应该也是你所熟悉的语句了，这里我们把重点放在一些新用法上。&lt;/p&gt;&lt;h3&gt;while循环和do while循环&lt;/h3&gt;&lt;p&gt;这两个都是历史悠久的JavaScript语法了，示例大概如下：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let a = 100
+while(a--) {
+    console.log(&quot;*&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let a = 101;
+do {
+    console.log(a);
+} while(a &amp;lt; 100)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注意，这里do while循环无论如何至少会执行一次。&lt;/p&gt;&lt;h3&gt;普通for循环&lt;/h3&gt;&lt;p&gt;首先我们来看看普通的for循环。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+for(i = 0; i &amp;lt; 100; i++)
+    console.log(i);
+for(var i = 0; i &amp;lt; 100; i++)
+    console.log(i);
+for(let i = 0; i &amp;lt; 100; i++)
+    console.log(i);
+var j = 0;
+for(const i = 0; j &amp;lt; 100; j++)
+    console.log(i);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里为了配合新语法，加入了允许let和const，实际上，const在这里是非常奇葩的东西，因为这里声明和初始化的变量，按惯例是用于控制循环的，但是它如果是const就没法改了。&lt;/p&gt;&lt;p&gt;我想，这一点可能是从保持let和const一致性的角度考虑的吧。&lt;/p&gt;&lt;h3&gt;for in循环&lt;/h3&gt;&lt;p&gt;for in 循环枚举对象的属性，这里体现了属性的enumerable特征。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let o = { a: 10, b: 20}
+Object.defineProperty(o, &quot;c&quot;, {enumerable:false, value:30})
+for(let p in o)
+    console.log(p);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码中，我们定义了一个对象o，给它添加了不可枚举的属性c，之后我们用for in循环枚举它的属性，我们会发现，输出时得到的只有a和b。&lt;/p&gt;&lt;p&gt;如果我们定义c这个属性时，enumerable为true，则for in循环中也能枚举到它。&lt;/p&gt;&lt;h3&gt;for of循环和for await of循环&lt;/h3&gt;&lt;p&gt;for of循环是非常棒的语法特性。&lt;/p&gt;&lt;p&gt;我们先看下基本用法，它可以用于数组：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;for(let e of [1, 2, 3, 4, 5])
+    console.log(e);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是实际上，它背后的机制是iterator机制。&lt;/p&gt;&lt;p&gt;我们可以给任何一个对象添加iterator，使它可以用于for of语句，看下示例：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let o = {  
+    [Symbol.iterator]:() =&amp;gt; ({
+        _value: 0,
+        next(){
+            if(this._value == 10)
+                return {
+                    done: true
+                }
+            else return {
+                value: this._value++,
+                done: false
+            };
+        }
+    })
+}
+for(let e of o)
+    console.log(e);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码展示了如何为一个对象添加iterator。但是，在实际操作中，我们一般不需要这样定义iterator，我们可以使用generator function。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function* foo(){
+    yield 0;
+    yield 1;
+    yield 2;
+    yield 3;
+}
+for(let e of foo())
+    console.log(e);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码展示了generator function和foo的配合。&lt;/p&gt;&lt;p&gt;此外，JavaScript还为异步生成器函数配备了异步的for of，我们来看一个例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function sleep(duration) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve,duration);
+    })
+}
+async function* foo(){
+    i = 0;
+    while(true) {
+        await sleep(1000);
+        yield i++;
+    }
+        
+}
+for await(let e of foo())
+    console.log(e);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码定义了一个异步生成器函数，异步生成器函数每隔一秒生成一个数字，这是一个无限的生成器。&lt;/p&gt;&lt;p&gt;接下来，我们使用for await of来访问这个异步生成器函数的结果，我们可以看到，这形成了一个每隔一秒打印一个数字的无限循环。&lt;/p&gt;&lt;p&gt;但是因为我们这个循环是异步的，并且有时间延迟，所以，这个无限循环的代码可以用于显示时钟等有意义的操作。&lt;/p&gt;&lt;h2&gt;return&lt;/h2&gt;&lt;p&gt;return语句用于函数中，它终止函数的执行，并且指定函数的返回值，这是大家非常熟悉语句了，也没有什么特殊之处。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;function squre(x){
+    return x * x;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码展示了return的基本用法。它后面可以跟一个表达式，计算结果就是函数返回值。&lt;/p&gt;&lt;h2&gt;break语句和continue语句&lt;/h2&gt;&lt;p&gt;break语句用于跳出循环语句或者switch语句，continue语句用于结束本次循环并继续循环。&lt;/p&gt;&lt;p&gt;这两个语句都属于控制型语句，用法也比较相似，所以我们就一起讲了。需要注意的是，它们都有带标签的用法。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;outer:for(let i = 0; i &amp;lt; 100; i++)
+    inner:for(let j = 0; j &amp;lt; 100; j++)
+        if( i == 50 &amp;amp;&amp;amp; j == 50)
+            break outer;
+outer:for(let i = 0; i &amp;lt; 100; i++)
+    inner:for(let j = 0; j &amp;lt; 100; j++)
+        if( i &amp;gt;= 50 &amp;amp;&amp;amp; j == 50)
+            continue outer;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;带标签的break和continue可以控制自己被外层的哪个语句结构消费，这可以跳出复杂的语句结构。&lt;/p&gt;&lt;h2&gt;with语句&lt;/h2&gt;&lt;p&gt;with语句是个非常巧妙的设计，但它把JS的变量引用关系变得不可分析，所以一般都认为这种语句都属于糟粕。&lt;/p&gt;&lt;p&gt;但是历史无法改写，现在已经无法去除with了。我们来了解一下它的基本用法即可。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let o = {a:1, b:2}
+with(o){
+    console.log(a, b);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;with语句把对象的属性在它内部的作用域内变成变量。&lt;/p&gt;&lt;h2&gt;try语句和throw语句&lt;/h2&gt;&lt;p&gt;try语句和throw语句用于处理异常。它们是配合使用的，所以我们就放在一起讲了。在大型应用中，异常机制非常重要。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;try {
+    throw new Error(&quot;error&quot;);
+} catch(e) {
+    console.log(e);
+} finally {
+    console.log(&quot;finally&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一般来说，throw用于抛出异常，但是单纯从语言的角度，我们可以抛出任何值，也不一定是异常逻辑，但是为了保证语义清晰，不建议用throw表达任何非异常逻辑。&lt;/p&gt;&lt;p&gt;try语句用于捕获异常，用throw抛出的异常，可以在try语句的结构中被处理掉：try部分用于标识捕获异常的代码段，catch部分则用于捕获异常后做一些处理，而finally则是用于执行后做一些必须执行的清理工作。&lt;/p&gt;&lt;p&gt;catch结构会创建一个局部的作用域，并且把一个变量写入其中，需要注意，在这个作用域，不能再声明变量e了，否则会出错。&lt;/p&gt;&lt;p&gt;在catch中重新抛出错误的情况非常常见，在设计比较底层的函数时，常常会这样做，保证抛出的错误能被理解。&lt;/p&gt;&lt;p&gt;finally语句一般用于释放资源，它一定会被执行，我们在前面的课程中已经讨论过一些finally的特征，即使在try中出现了return，finally中的语句也一定要被执行。（你可以参考第19讲）&lt;/p&gt;&lt;h2&gt;debugger语句&lt;/h2&gt;&lt;p&gt;debugger语句的作用是：通知调试器在此断点。在没有调试器挂载时，它不产生任何效果。&lt;/p&gt;&lt;p&gt;介绍完普通语句，我们再来看看声明型语句。声明型语句跟普通语句最大区别就是声明型语句响应预处理过程，普通语句只有执行过程。&lt;/p&gt;&lt;h2&gt;var&lt;/h2&gt;&lt;p&gt;var声明语句是古典的JavaScript中声明变量的方式。而现在，在绝大多数情况下，let和const都是更好的选择。&lt;/p&gt;&lt;p&gt;我们在上一节课已经讲解了var声明对全局作用域的影响，它是一种预处理机制。&lt;/p&gt;&lt;p&gt;如果我们仍然想要使用var，我的个人建议是，把它当做一种“保障变量是局部”的逻辑，遵循以下三条规则：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;声明同时必定初始化；&lt;/li&gt;
+&lt;li&gt;尽可能在离使用的位置近处声明；&lt;/li&gt;
+&lt;li&gt;不要在意重复声明。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var x = 1, y = 2;
+doSth(x, y);
+for(var x = 0; x &amp;lt; 10; x++)
+    doSth2(x);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子中，两次声明了变量x，完成了两段逻辑，这两个x意义上可能不一定相关，这样，不论我们把代码复制粘贴在哪里，都不会出错。&lt;/p&gt;&lt;p&gt;当然，更好的办法是使用let改造，我们看看如何改造：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;{
+    let x = 1, y = 2;
+    doSth(x, y);
+}
+for(let x = 0; x &amp;lt; 10; x++)
+    doSth2(x);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我用代码块限制了第一个x的作用域，这样就更难发生变量命名冲突引起的错误了。&lt;/p&gt;&lt;h2&gt;let和const&lt;/h2&gt;&lt;p&gt;let和const是都是变量的声明，它们的特性非常相似，所以我们放在一起讲了。let和const是新设计的语法，所以没有什么硬伤，非常地符合直觉。let和const的作用范围是if、for等结构型语句。&lt;/p&gt;&lt;p&gt;我们看下基本用法：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;const a = 2;
+if(true){
+    const a = 1;
+    console.log(a);
+}
+console.log(a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的代码先在全局声明了变量a，接下来又在if内声明了a，if内构成了一个独立的作用域。&lt;/p&gt;&lt;p&gt;const和let语句在重复声明时会抛错，这能够有效地避免变量名无意中冲突：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;let a = 2
+const a = 1;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码中，先用let声明了a，接下来又试图使用const声明变量a，这时，就会产生错误。&lt;/p&gt;&lt;p&gt;let和const声明虽然看上去是执行到了才会生效，但是实际上，它们还是会被预处理。如果当前作用域内有声明，就无法访问到外部的变量。我们来看这段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;const a = 2;
+if(true){
+    console.log(a); //抛错
+    const a = 1;   
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里在if的作用域中，变量a声明执行到之前，我们访问了变量a，这时会抛出一个错误，这说明const声明仍然是有预处理机制的。&lt;/p&gt;&lt;p&gt;在执行到const语句前，我们的JavaScript引擎就已经知道后面的代码将会声明变量a，从而不允许我们访问外层作用域中的a。&lt;/p&gt;&lt;h2&gt;class声明&lt;/h2&gt;&lt;p&gt;我们在之前的课程中，已经了解过class相关的用法。这里我们再从语法的角度来看一遍：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;class a {
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;class最基本的用法只需要class关键字、名称和一对大括号。它的声明特征跟const和let类似，都是作用于块级作用域，预处理阶段则会屏蔽外部变量。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;const a = 2;
+if(true){
+    console.log(a); //抛错
+    class a {
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;class内部，可以使用constructor关键字来定义构造函数。还能定义getter/setter和方法。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // Getter
+  get area() {
+    return this.calcArea();
+  }
+  // Method
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子来自MDN，它展示了构造函数、getter和方法的定义。&lt;/p&gt;&lt;p&gt;以目前的兼容性，class中的属性只能写在构造函数中，相关标准正在TC39讨论。&lt;/p&gt;&lt;p&gt;需要注意，class默认内部的函数定义都是strict模式的。&lt;/p&gt;&lt;h2&gt;函数声明&lt;/h2&gt;&lt;p&gt;函数声明使用 function 关键字。&lt;/p&gt;&lt;p&gt;在上一节课中，我们已经讨论过函数声明对全局作用域的影响了。这一节课，我们来看看函数声明具体的内容，我们先看一下函数声明的几种类型&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+function foo(){
+}
+function* foo(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+async function foo(){
+    await sleep(3000);
+    
+}
+async function* foo(){
+    await sleep(3000);
+    yield 1;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;带*的函数是generator，我们在前面的部分已经见过它了。生成器函数可以理解为返回一个序列的函数，它的底层是iterator机制。&lt;/p&gt;&lt;p&gt;async函数是可以暂停执行，等待异步操作的函数，它的底层是Promise机制。&lt;br&gt;
+异步生成器函数则是二者的结合。&lt;/p&gt;&lt;p&gt;函数的参数，可以只写形参名，现在还可以写默认参数和指定多个参数，看下例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;
+function foo(a = 1, ...other) {
+    console.log(a, other)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个形式可以代替一些对参数的处理代码，表意会更加清楚。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;今天我们一起学习了语句家族，语句分成了普通语句和声明型语句。&lt;/p&gt;&lt;p&gt;普通语句部分，建议你把重点放在循环语句上面。声明型语句我觉得都很重要，尤其是它们的行为。熟练掌握了它们，我们就可以在工作中去综合运用它们，从而减少代码中的错误。新特性大多可以帮助我们发现代码中的错误。&lt;/p&gt;&lt;p&gt;最后留一个小作业，请你找出所有具有Symbol.iterator的原生对象，并且看看它们的for of遍历行为。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            阿成  2019-04-02 08:38:34
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            大概就这些？&lt;br&gt;Array, Map, Set, String, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint16Array, Uint32Array, Uint8ClampedArray [5赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            mfist  2019-04-04 07:21:26
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            遍历了下window上面的全局对象，上面有Symbol.iterator的原生属性有15个，主要Array Set Map String相关的。当然还有很多宿主环境提供的全局对象有Symbol.iterator属性，他们有个共同的特征：都是些集合性质的数据结构。&lt;br&gt;0: &amp;quot;Array&amp;quot;&lt;br&gt;1: &amp;quot;String&amp;quot;&lt;br&gt;2: &amp;quot;Uint8Array&amp;quot;&lt;br&gt;3: &amp;quot;Int8Array&amp;quot;&lt;br&gt;4: &amp;quot;Uint16Array&amp;quot;&lt;br&gt;5: &amp;quot;Int16Array&amp;quot;&lt;br&gt;6: &amp;quot;Uint32Array&amp;quot;&lt;br&gt;7: &amp;quot;Int32Array&amp;quot;&lt;br&gt;8: &amp;quot;Float32Array&amp;quot;&lt;br&gt;9: &amp;quot;Float64Array&amp;quot;&lt;br&gt;10: &amp;quot;Uint8ClampedArray&amp;quot;&lt;br&gt;11: &amp;quot;BigUint64Array&amp;quot;&lt;br&gt;12: &amp;quot;BigInt64Array&amp;quot;&lt;br&gt;13: &amp;quot;Map&amp;quot;&lt;br&gt;14: &amp;quot;Set&amp;quot; [3赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            许童童  2019-04-02 14:38:31
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Some built-in types have a default iteration behavior, while other types (such as Object) do not. The built-in types with a @@iterator method are:&lt;br&gt;Array.prototype[@@iterator]()&lt;br&gt;TypedArray.prototype[@@iterator]()&lt;br&gt;String.prototype[@@iterator]()&lt;br&gt;Map.prototype[@@iterator]()&lt;br&gt;Set.prototype[@@iterator]() [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            让时间说真话  2019-04-12 17:06:52
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Map，set，arguments 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            翰弟  2019-04-04 16:16:11
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Array、Map、Set、String、TypedArray、函数的arguments、NodeList对象 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            qqq  2019-04-03 10:15:51
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            catch 中可以使用 var 重新声明 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Format  2019-04-02 19:29:19
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            请问老师后面可以讲讲，例如手淘购物车这种较复杂的功能吗？详细的那种，封装方法，兼容，处理特殊情况之类的 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            K4SHIFZ  2019-04-02 16:55:02
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            请问老师，规范中的Statement和Declaration到底有什么区别？不都是声明的意思吗？ 
+        &lt;/div&gt;
+        &lt;br/&gt;
+&lt;div&gt;
+    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-04-09 18:24:48&lt;/div&gt;
+    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;Statement是语句，Declaration是声明，但是我觉得这个分类不好，因为语句里还有var语句也是声明性质的。&lt;/div&gt;
+&lt;/div&gt;
+            
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            K4SHIFZ  2019-04-02 16:12:30
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            为什么和第十九节中的分类不一样啊？ 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:25 星期四 124.232.146.132 Runningtime:1.641s Mem:1.42 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>

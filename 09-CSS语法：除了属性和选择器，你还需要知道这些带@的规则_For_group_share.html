@@ -1,0 +1,1337 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则_For_group_share.html - OneManager</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则_For_group_share.html, html, OneManager">
+    <meta name="description" content="09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则_For_group_share.html, 预览">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        .changelanguage{position:absolute;right:5px;}
+        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+        .title a{color:#333;text-decoration:none}
+        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
+        .list-container{position:relative;overflow:hidden;border-radius:15px;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
+        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
+        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:40px}
+        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
+        .operatediv div{margin:16px}
+        .operatediv_close{position:absolute;right:3px;top:3px;}
+        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        @media only screen and (max-width:480px){
+            .title{margin-bottom:24px}
+            .list-wrapper{width:95%; margin-bottom:24px;}
+            .list-table {padding:8px}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .size, .updated_at{display:none}
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="padding:1px" id="top-div">
+        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
+        &nbsp;
+        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+            <option value="">Language</option>
+                <option value="en-us" >English</option>
+                <option value="zh-tw" >繁體中文</option>
+                <option value="zh-cn" selected="selected">简体中文</option>
+                <option value="ja" >日本語</option>
+                <option value="ko-kr" >한국어</option>
+                <option value="fa" >فارسی</option>
+                <option value="ar-sa" >السعودية</option>
+        </select>
+    </div>
+    <h1 class="title" id="title">
+        <a href="/">OneManager</a>
+    </h1>
+    <div class="list-wrapper" id="list-div">
+        <div class="list-container">
+            <div class="list-header-container">
+                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则_For_group_share.html</a></h3>
+            </div>
+            <div class="list-body-container">
+                <div style="margin: 12px 4px 4px; text-align: center">
+                    <div style="margin: 24px">
+                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/09-CSS%E8%AF%AD%E6%B3%95%EF%BC%9A%E9%99%A4%E4%BA%86%E5%B1%9E%E6%80%A7%E5%92%8C%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BD%A0%E8%BF%98%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E8%BF%99%E4%BA%9B%E5%B8%A6%40%E7%9A%84%E8%A7%84%E5%88%99_For_group_share.html</textarea>
+                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/09-CSS%E8%AF%AD%E6%B3%95%EF%BC%9A%E9%99%A4%E4%BA%86%E5%B1%9E%E6%80%A7%E5%92%8C%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BD%A0%E8%BF%98%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E8%BF%99%E4%BA%9B%E5%B8%A6%40%E7%9A%84%E8%A7%84%E5%88%99_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
+                    </div>
+                    <div style="margin: 24px">
+                        <div id="txt">
+                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+        &lt;style&gt;
+        html {
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-rendering: optimizelegibility;
+            font-family: Helvetica Neue, PingFang SC, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif
+        }
+        html.borderbox *,
+        html.borderbox :after,
+        html.borderbox :before {
+            box-sizing: border-box
+        }
+        article,
+        aside,
+        blockquote,
+        body,
+        button,
+        code,
+        dd,
+        details,
+        dl,
+        dt,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hr,
+        input,
+        legend,
+        li,
+        menu,
+        nav,
+        ol,
+        p,
+        pre,
+        section,
+        td,
+        textarea,
+        th,
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+        audio,
+        canvas,
+        video {
+            display: inline-block
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, Helvetica, sans-serif
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+        fieldset,
+        img {
+            border: 0
+        }
+        blockquote {
+            position: relative;
+            color: #999;
+            font-weight: 400;
+            border-left: 1px solid #1abc9c;
+            padding-left: 1em;
+            margin: 1em 3em 1em 2em
+        }
+        @media only screen and (max-width: 640px) {
+            blockquote {
+                margin: 1em 0
+            }
+        }
+        abbr,
+        acronym {
+            border-bottom: 1px dotted;
+            font-variant: normal
+        }
+        abbr {
+            cursor: help
+        }
+        del {
+            text-decoration: line-through
+        }
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        th,
+        var {
+            font-style: normal;
+            font-weight: 400
+        }
+        ol,
+        ul {
+            list-style: none
+        }
+        caption,
+        th {
+            text-align: left
+        }
+        q:after,
+        q:before {
+            content: &quot;&quot;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+        :root sub,
+        :root sup {
+            vertical-align: baseline
+        }
+        sup {
+            top: -.5em
+        }
+        sub {
+            bottom: -.25em
+        }
+        a {
+            color: #1abc9c
+        }
+        a:hover {
+            text-decoration: underline
+        }
+        .typo a {
+            border-bottom: 1px solid #1abc9c
+        }
+        .typo a:hover {
+            border-bottom-color: #555;
+            color: #555
+        }
+        .typo a:hover,
+        a,
+        ins {
+            text-decoration: none
+        }
+        .typo-u,
+        u {
+            text-decoration: underline
+        }
+        mark {
+            background: #fffdd1;
+            border-bottom: 1px solid #ffedce;
+            padding: 2px;
+            margin: 0 5px
+        }
+        code,
+        pre,
+        pre tt {
+            font-family: Courier, Courier New, monospace
+        }
+        pre {
+            background: hsla(0, 0%, 97%, .7);
+            border: 1px solid #ddd;
+            padding: 1em 1.5em;
+            display: block;
+            -webkit-overflow-scrolling: touch
+        }
+        hr {
+            border: none;
+            border-bottom: 1px solid #cfcfcf;
+            margin-bottom: .8em;
+            height: 10px
+        }
+        .typo-small,
+        figcaption,
+        small {
+            font-size: .9em;
+            color: #888
+        }
+        b,
+        strong {
+            font-weight: 700;
+            color: #000
+        }
+        [draggable] {
+            cursor: move
+        }
+        .clearfix:after,
+        .clearfix:before {
+            content: &quot;&quot;;
+            display: table
+        }
+        .clearfix:after {
+            clear: both
+        }
+        .clearfix {
+            zoom: 1
+        }
+        .textwrap,
+        .textwrap td,
+        .textwrap th {
+            word-wrap: break-word;
+            word-break: break-all
+        }
+        .textwrap-table {
+            table-layout: fixed
+        }
+        .serif {
+            font-family: Palatino, Optima, Georgia, serif
+        }
+        .typo-dl,
+        .typo-form,
+        .typo-hr,
+        .typo-ol,
+        .typo-p,
+        .typo-pre,
+        .typo-table,
+        .typo-ul,
+        .typo dl,
+        .typo form,
+        .typo hr,
+        .typo ol,
+        .typo p,
+        .typo pre,
+        .typo table,
+        .typo ul,
+        blockquote {
+            margin-bottom: 1rem
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: PingFang SC, Helvetica Neue, Verdana, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+            color: #000;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo-h2,
+        .typo-h3,
+        .typo-h4,
+        .typo-h5,
+        .typo-h6,
+        .typo h1,
+        .typo h2,
+        .typo h3,
+        .typo h4,
+        .typo h5,
+        .typo h6 {
+            margin-top: 1.2em;
+            margin-bottom: .6em;
+            line-height: 1.35
+        }
+        .typo-h1,
+        .typo h1 {
+            font-size: 2em
+        }
+        .typo-h2,
+        .typo h2 {
+            font-size: 1.8em
+        }
+        .typo-h3,
+        .typo h3 {
+            font-size: 1.6em
+        }
+        .typo-h4,
+        .typo h4 {
+            font-size: 1.4em
+        }
+        .typo-h5,
+        .typo-h6,
+        .typo h5,
+        .typo h6 {
+            font-size: 1.2em
+        }
+        .typo-ul,
+        .typo ul {
+            margin-left: 1.3em;
+            list-style: disc
+        }
+        .typo-ol,
+        .typo ol {
+            list-style: decimal;
+            margin-left: 1.9em
+        }
+        .typo-ol ol,
+        .typo-ol ul,
+        .typo-ul ol,
+        .typo-ul ul,
+        .typo li ol,
+        .typo li ul {
+            margin-bottom: .8em;
+            margin-left: 2em
+        }
+        .typo-ol ul,
+        .typo-ul ul,
+        .typo li ul {
+            list-style: circle
+        }
+        .typo-table td,
+        .typo-table th,
+        .typo table caption,
+        .typo table td,
+        .typo table th {
+            border: 1px solid #ddd;
+            padding: .5em 1em;
+            color: #666
+        }
+        .typo-table th,
+        .typo table th {
+            background: #fbfbfb
+        }
+        .typo-table thead th,
+        .typo table thead th {
+            background: hsla(0, 0%, 95%, .7)
+        }
+        .typo table caption {
+            border-bottom: none
+        }
+        .typo-input,
+        .typo-textarea {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+        .typo-em,
+        .typo em,
+        caption,
+        legend {
+            color: #000;
+            font-weight: inherit
+        }
+        .typo-em {
+            position: relative
+        }
+        .typo-em:after {
+            position: absolute;
+            top: .65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+        }
+        .typo img {
+            max-width: 100%
+        }
+        .common-content {
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.75rem;
+            white-space: normal;
+            word-break: normal;
+            font-size: 1rem
+        }
+        .common-content img {
+            display: block;
+            max-width: 100%;
+            background-color: #eee
+        }
+        .common-content audio,
+        .common-content video {
+            width: 100%;
+            background-color: #eee
+        }
+        .common-content center,
+        .common-content font {
+            margin-top: 1rem;
+            display: inline-block
+        }
+        .common-content center {
+            width: 100%
+        }
+        .common-content pre {
+            margin-top: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            overflow: hidden
+        }
+        .common-content pre code {
+            font-size: .8rem;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: auto
+        }
+        .common-content hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        .common-content b,
+        .common-content h1,
+        .common-content h2,
+        .common-content h3,
+        .common-content h4,
+        .common-content h5,
+        .common-content strong {
+            font-weight: 700
+        }
+        .common-content h1,
+        .common-content h2 {
+            font-size: 1.125rem;
+            margin-bottom: .45rem
+        }
+        .common-content h3,
+        .common-content h4,
+        .common-content h5 {
+            font-size: 1rem;
+            margin-bottom: .45rem
+        }
+        .common-content p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: .15rem
+        }
+        .common-content .orange {
+            color: #ff5a05
+        }
+        .common-content .reference {
+            font-size: 1rem;
+            color: #888
+        }
+        .custom-rich-content h1 {
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 15.25px;
+            border-bottom: 1px solid #eee;
+            line-height: 2.8
+        }
+        .custom-rich-content li,
+        .custom-rich-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6
+        }
+        table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        table.hljs-ln,
+        table.hljs-ln tbody,
+        table.hljs-ln td,
+        table.hljs-ln tr {
+            box-sizing: border-box
+        }
+        table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+        table.hljs-ln td.hljs-ln-code,
+        table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 12px;
+            line-height: 20px;
+            vertical-align: top
+        }
+        table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            color: #24292e;
+            word-wrap: normal;
+            white-space: pre
+        }
+        video::-webkit-media-controls {
+            overflow: hidden !important
+        }
+        video::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto
+        }
+        ._29HP61GA_0 {
+            max-width:800px;
+            margin:0 auto;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #353535;
+            line-height: 1.76;
+            white-space: normal;
+            word-break: normal;
+            font-size: 17px;
+            -webkit-transition: background-color .3s ease;
+            transition: background-color .3s ease
+        }
+        ._29HP61GA_0 .MathJax_Display {
+            overflow: auto
+        }
+        ._29HP61GA_0 .poster {
+            position: fixed;
+            left: -10000px;
+            top: -10000px;
+            overflow: hidden;
+            padding: 1rem;
+            background: #ececec
+        }
+        ._29HP61GA_0 .richcontent-pre-copy {
+            font-size: 13px;
+            color: #888;
+            position: absolute;
+            right: 1em;
+            top: .5em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 .richcontent-pre-copy .iconfont {
+            font-size: 12px;
+            margin-right: .2em
+        }
+        ._29HP61GA_0 a {
+            color: #fa8919;
+            border-bottom: 1px solid #fa8919
+        }
+        ._29HP61GA_0 img {
+            display: block;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #eee;
+            vertical-align: top;
+            border-radius: 0
+        }
+        ._29HP61GA_0 audio,
+        ._29HP61GA_0 video {
+            width: 100%;
+            background-color: #eee
+        }
+        ._29HP61GA_0 pre {
+            margin-top: 16px;
+            padding: 34px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: 6px;
+            background: rgba(246, 247, 251, .749);
+            border: 0
+        }
+        ._29HP61GA_0 pre code {
+            font-size: 12px;
+            font-family: Consolas, Liberation Mono, Menlo, monospace, Courier;
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: 16px;
+            margin-right: 16px;
+            overflow-x: scroll
+        }
+        ._29HP61GA_0 pre code:after {
+            content: &quot;&quot;;
+            height: 30px;
+            width: 100%;
+            display: block
+        }
+        ._29HP61GA_0 hr {
+            border: none;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            height: 1px;
+            background: none
+        }
+        ._29HP61GA_0 h1,
+        ._29HP61GA_0 h2,
+        ._29HP61GA_0 h3,
+        ._29HP61GA_0 h4,
+        ._29HP61GA_0 h5 {
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 700
+        }
+        ._29HP61GA_0 b,
+        ._29HP61GA_0 strong {
+            font-weight: 700
+        }
+        ._29HP61GA_0 h1 {
+            font-size: 21px
+        }
+        ._29HP61GA_0 h2 {
+            font-size: 20px
+        }
+        ._29HP61GA_0 h3 {
+            font-size: 19px
+        }
+        ._29HP61GA_0 h4 {
+            font-size: 18px
+        }
+        ._29HP61GA_0 h5 {
+            font-size: 17px
+        }
+        ._29HP61GA_0 center,
+        ._29HP61GA_0 p {
+            font-weight: 400;
+            color: #353535;
+            margin-top: 0;
+            margin-bottom: 30px;
+            word-break: break-word
+        }
+        ._29HP61GA_0 center {
+            text-align: center
+        }
+        ._29HP61GA_0 blockquote {
+            margin-top: 0;
+            margin-bottom: 34px;
+            border-left: 3px solid #e8e8e8;
+            padding-left: 17px;
+            color: #353535
+        }
+        ._29HP61GA_0 blockquote p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol,
+        ._29HP61GA_0 ul {
+            margin-bottom: 30px
+        }
+        ._29HP61GA_0 ol p,
+        ._29HP61GA_0 ul p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        ._29HP61GA_0 ol {
+            list-style: decimal;
+            margin-left: 20px
+        }
+        ._29HP61GA_0 ul li {
+            padding-left: 17px;
+            position: relative;
+            margin-bottom: 10px
+        }
+        ._29HP61GA_0 ul li:after {
+            content: &quot;&quot;;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #353535;
+            position: absolute;
+            top: 10px;
+            left: 0
+        }
+        ._29HP61GA_0 .orange {
+            color: #fa8919
+        }
+        ._29HP61GA_0 .reference {
+            color: #888
+        }
+        ._29HP61GA_0 .m-right {
+            text-align: right
+        }
+        ._29HP61GA_0 .m-center {
+            text-align: center;
+            display: block
+        }
+        ._29HP61GA_0 .m-gray {
+            color: #888
+        }
+        ._29HP61GA_0 .m-small {
+            font-size: 15px
+        }
+        ._29HP61GA_0 table.hljs-ln {
+            margin-bottom: 0;
+            border-spacing: 0;
+            border-collapse: collapse
+        }
+        ._29HP61GA_0 table.hljs-ln,
+        ._29HP61GA_0 table.hljs-ln tbody,
+        ._29HP61GA_0 table.hljs-ln td,
+        ._29HP61GA_0 table.hljs-ln tr {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        ._29HP61GA_0 table.hljs-ln td {
+            padding: 0;
+            border: 0
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            min-width: 15px;
+            font-size: 12px;
+            color: rgba(27, 31, 35, .3);
+            text-align: right;
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code,
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-numbers {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            line-height: 20px;
+            vertical-align: top
+        }
+        ._29HP61GA_0 table.hljs-ln td.hljs-ln-code {
+            position: relative;
+            padding-right: 10px;
+            padding-left: 10px;
+            overflow: visible;
+            font-size: 13px;
+            color: #666;
+            word-wrap: normal;
+            white-space: pre
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;_29HP61GA_0&quot;&gt;
+&lt;h1&gt;09-CSS语法：除了属性和选择器，你还需要知道这些带@的规则&lt;/h1&gt;
+&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;今天我们进入CSS的学习。CSS是前端工程师几乎每天都要用的技术了，不过CSS的学习资料却是最糟糕的，这是因为CSS并没有像HTML和JavaScript那样的一份标准文档。&lt;/p&gt;&lt;p&gt;如果我们到W3C的网站上搜索看看，可以得到一些信息：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/?title=css&quot;&gt;https://www.w3.org/TR/?title=css&lt;/a&gt;&lt;/p&gt;&lt;p&gt;在这里，我们一共看到了98份CSS相关的标准，它们各自从一些角度规定了CSS的特性。&lt;/p&gt;&lt;p&gt;这里我们暂且去掉Working Draft状态的标准，可以得到22份候选标准和6份推荐标准。&lt;/p&gt;&lt;p&gt;既然我们的专栏内容强调去系统性学习CSS，于是，面对这22+6份标准，我们就又需要一条线索，才能把这些离散的标准组织成易于理解和记忆的形式。&lt;/p&gt;&lt;p&gt;在这样的需求下，我找到的线索就是CSS语法，任何CSS的特性都必须通过一定的语法结构表达出来，所以语法可以帮助我们发现大多数CSS特性。&lt;/p&gt;&lt;p&gt;CSS语法的最新标准，你可以戳这里查看：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/css-syntax-3/&quot;&gt;https://www.w3.org/TR/css-syntax-3/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这篇文档的阅读体验其实是非常糟糕的，它对CSS语法的描述使用了类似LL语法分析的伪代码，而且没有描述任何具体的规则。&lt;/p&gt;&lt;p&gt;这里你就不必自己去阅读了，我来把其中一些有用的关键信息抽取出来描述一下，我们一起来看看。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;我们拿到这份标准可以看到，去除空格、HTML注释等无效信息，&lt;strong&gt;CSS的顶层样式表由两种规则组成的规则列表构成，一种被称为 at-rule，也就是at 规则，另一种是 qualified rule，也就是普通规则。&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;at-rule由一个 @ 关键字和后续的一个区块组成，如果没有区块，则以分号结束。这些at-rule在开发中使用机会远远小于普通的规则，所以它的大部分内容，你可能会感觉很陌生。&lt;/p&gt;&lt;p&gt;这些at规则正是掌握CSS的一些高级特性所必须的内容。qualified rule则是指普通的CSS规则，也就是我们所熟识的，由选择器和属性指定构成的规则。&lt;/p&gt;&lt;h2&gt;at 规则&lt;/h2&gt;&lt;p&gt;好了，现在我们已经知道了，CSS语法的整体结构，接下来我们要做的是一个体力活，从所有的CSS标准里找到所有可能的 at-rule（不用谢，我已经帮你找好了，如果页面定位不准，你可以打开页面搜索关键字）。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;@charset ： &lt;a href=&quot;https://www.w3.org/TR/css-syntax-3/&quot;&gt;https://www.w3.org/TR/css-syntax-3/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@import ：&lt;a href=&quot;https://www.w3.org/TR/css-cascade-4/&quot;&gt;https://www.w3.org/TR/css-cascade-4/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@media ：&lt;a href=&quot;https://www.w3.org/TR/css3-conditional/&quot;&gt;https://www.w3.org/TR/css3-conditional/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@page ： &lt;a href=&quot;https://www.w3.org/TR/css-page-3/&quot;&gt;https://www.w3.org/TR/css-page-3/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@counter-style ：&lt;a href=&quot;https://www.w3.org/TR/css-counter-styles-3&quot;&gt;https://www.w3.org/TR/css-counter-styles-3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@keyframes ：&lt;a href=&quot;https://www.w3.org/TR/css-animations-1/&quot;&gt;https://www.w3.org/TR/css-animations-1/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@fontface ：&lt;a href=&quot;https://www.w3.org/TR/css-fonts-3/&quot;&gt;https://www.w3.org/TR/css-fonts-3/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@supports ：&lt;a href=&quot;https://www.w3.org/TR/css3-conditional/&quot;&gt;https://www.w3.org/TR/css3-conditional/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;@namespace ：&lt;a href=&quot;https://www.w3.org/TR/css-namespaces-3/&quot;&gt;https://www.w3.org/TR/css-namespaces-3/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;这里的每一种@规则背后，都是一组CSS的知识。在我们的课程中，有些会重点介绍，不过，为了先给你建立起一个整体的认知，我们这里会给所有的@规则提供一些简单的例子和介绍。&lt;/p&gt;&lt;h3&gt;@charset&lt;/h3&gt;&lt;p&gt;@charset用于提示CSS文件使用的字符编码方式，它如果被使用，必须出现在最前面。这个规则只在给出语法解析阶段前使用，并不影响页面上的展示效果。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@charset &quot;utf-8&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@import&lt;/h3&gt;&lt;p&gt;@import用于引入一个CSS文件，除了@charset规则不会被引入，@import可以引入另一个文件的全部内容。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@import &quot;mystyle.css&quot;;
+@import url(&quot;mystyle.css&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;@import [ &amp;lt;url&amp;gt; | &amp;lt;string&amp;gt; ]
+        [ supports( [ &amp;lt;supports-condition&amp;gt; | &amp;lt;declaration&amp;gt; ] ) ]?
+        &amp;lt;media-query-list&amp;gt;? ;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过代码，我们可以看出，import还支持 supports 和media query形式。&lt;/p&gt;&lt;h3&gt;@media&lt;/h3&gt;&lt;p&gt;media就是大名鼎鼎的media query使用的规则了，它能够对设备的类型进行一些判断。在media的区块内，是普通规则列表。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@media print {
+    body { font-size: 10pt }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@page&lt;/h3&gt;&lt;p&gt;page用于分页媒体访问网页时的表现设置，页面是一种特殊的盒模型结构，除了页面本身，还可以设置它周围的盒。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@page {
+  size: 8.5in 11in;
+  margin: 10%;
+  @top-left {
+    content: &quot;Hamlet&quot;;
+  }
+  @top-right {
+    content: &quot;Page &quot; counter(page);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@ counter-style&lt;/h3&gt;&lt;p&gt;counter-style产生一种数据，用于定义列表项的表现。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@counter-style triangle {
+  system: cyclic;
+  symbols: ‣;
+  suffix: &quot; &quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@ key-frames&lt;/h3&gt;&lt;p&gt;keyframes产生一种数据，用于定义动画关键帧。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;@keyframes diagonal-slide {
+  from {
+    left: 0;
+    top: 0;
+  }
+  to {
+    left: 100px;
+    top: 100px;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@ fontface&lt;/h3&gt;&lt;p&gt;fontface用于定义一种字体，icon font技术就是利用这个特性来实现的。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;@font-face {
+  font-family: Gentium;
+  src: url(http://example.com/fonts/Gentium.woff);
+}
+p { font-family: Gentium, serif; }
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;@ support&lt;/h3&gt;&lt;p&gt;support检查环境的特性，它与media比较类似。&lt;/p&gt;&lt;h3&gt;@ namespace&lt;/h3&gt;&lt;p&gt;用于跟XML命名空间配合的一个规则，表示内部的CSS选择器全都带上特定命名空间。&lt;/p&gt;&lt;h3&gt;@ viewport&lt;/h3&gt;&lt;p&gt;用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被html的meta代替。&lt;/p&gt;&lt;h3&gt;其它&lt;/h3&gt;&lt;p&gt;除了以上这些，还有些目前不太推荐使用的at规则。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;@color-profile 是 SVG1.0 引入的CSS特性，但是实现状况不怎么好。&lt;/li&gt;
+&lt;li&gt;@document 还没讨论清楚，被推迟到了CSS4中。&lt;/li&gt;
+&lt;li&gt;@font-feature-values 。todo查一下。&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;普通规则&lt;/h2&gt;&lt;p&gt;接下来我们进入qualified rule，也就是普通规则的部分，看看这里有什么需要我们记住的内容。&lt;/p&gt;&lt;p&gt;qualified rule主要是由选择器和声明区块构成。声明区块又由属性和值构成。我在下面的列表中，介绍了这部分语法的组成要点。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;普通规则
+&lt;ul&gt;
+&lt;li&gt;选择器&lt;/li&gt;
+&lt;li&gt;声明列表
+&lt;ul&gt;
+&lt;li&gt;属性&lt;/li&gt;
+&lt;li&gt;值
+&lt;ul&gt;
+&lt;li&gt;值的类型&lt;/li&gt;
+&lt;li&gt;函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;选择器&lt;/h3&gt;&lt;p&gt;我们先来看看选择器，它有一份独立的标准，我们可以参考这个网址：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/selectors-4/&quot;&gt;https://www.w3.org/TR/selectors-4/&lt;/a&gt;&lt;/p&gt;&lt;p&gt;这份标准不在我们前面的过滤条件中，它属于CSS和HTML共用的标准。&lt;/p&gt;&lt;p&gt;关于选择器的叠加规则等知识我们后文会专门的一节课程来讲，这里我们就从语法的角度介绍一下选择器。&lt;/p&gt;&lt;p&gt;在选择器标准的最后，附有一张选择器的语法表，从这份语法表，我们可以理清楚记忆选择器的思路。&lt;/p&gt;&lt;p&gt;我们从语法结构可以看出，任何选择器，都是由几个符号结构连接的：空格、大于号、加号、波浪线、双竖线，这里需要注意一下，空格，即为后代选择器的优先级较低。&lt;/p&gt;&lt;p&gt;然后对每一个选择器来说，如果它不是伪元素的话，由几个可选的部分组成，标签类型选择器，id、class、属性和伪类，它们中只要出现一个，就构成了选择器。&lt;/p&gt;&lt;p&gt;如果它是伪元素，则在这个结构之后追加伪元素。只有伪类可以出现在伪元素之后。我在下面用一个列表（不太严谨地）整理了选择器的语法结构：&lt;br&gt;
+&lt;img src=&quot;https://static001.geekbang.org/resource/image/4f/67/4fa32e5cf47c72a58f7a8211d4e8fc67.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们在这里可以参考一个示例图：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/d5/00/d56974c0265982b9ac84b067cd623e00.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;（语法结构分析示例）&lt;br&gt;
+看完了选择器，我们继续来看看声明部分的语法。&lt;/p&gt;&lt;h2&gt;声明：属性和值&lt;/h2&gt;&lt;p&gt;声明部分是一个由“属性:值”组成的序列。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;属性&lt;/strong&gt;是由中划线、下划线、字母等组成的标识符，CSS还支持使用反斜杠转义。我们需要注意的是：属性不允许使用连续的两个中划线开头，这样的属性会被认为是CSS变量。&lt;/p&gt;&lt;p&gt;在&lt;a href=&quot;https://www.w3.org/TR/css-variables/&quot;&gt;CSS Variables标准&lt;/a&gt;中，以双中划线开头的属性被当作变量，与之配合的则是 var 函数：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;:root {
+  --main-color: #06c;
+  --accent-color: #006;
+}
+/* The rest of the CSS file */
+#foo h1 {
+  color: var(--main-color);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;值&lt;/strong&gt;的部分，主要&lt;a href=&quot;https://www.w3.org/TR/css-values-4/&quot;&gt;在标准 CSS Values and Unit&lt;/a&gt;，根据每个CSS属性可以取到不同的值，这里的值可能是字符串、标识符。&lt;/p&gt;&lt;p&gt;CSS属性值可能是以下类型。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;CSS范围的关键字：initial，unset，inherit，任何属性都可以的关键字。&lt;/li&gt;
+&lt;li&gt;字符串：比如content属性。&lt;/li&gt;
+&lt;li&gt;URL：使用url() 函数的URL值。&lt;/li&gt;
+&lt;li&gt;整数/实数：比如flex属性。&lt;/li&gt;
+&lt;li&gt;维度：单位的整数/实数，比如width属性。&lt;/li&gt;
+&lt;li&gt;百分比：大部分维度都支持。&lt;/li&gt;
+&lt;li&gt;颜色：比如background-color属性。&lt;/li&gt;
+&lt;li&gt;图片：比如background-image属性。&lt;/li&gt;
+&lt;li&gt;2D位置：比如background-position属性。&lt;/li&gt;
+&lt;li&gt;函数：来自函数的值，比如transform属性。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;这里我们要重点介绍一下函数。一些属性会要求产生函数类型的值，比如easing-function会要求cubic-bezier()函数的值：&lt;/p&gt;&lt;p&gt;CSS支持一批特定的计算型函数：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;calc()&lt;/li&gt;
+&lt;li&gt;max()&lt;/li&gt;
+&lt;li&gt;min()&lt;/li&gt;
+&lt;li&gt;clamp()&lt;/li&gt;
+&lt;li&gt;toggle()&lt;/li&gt;
+&lt;li&gt;attr()&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;calc()&lt;/strong&gt;函数是基本的表达式计算，它支持加减乘除四则运算。在针对维度进行计算时，calc()函数允许不同单位混合运算，这非常的有用。&lt;/p&gt;&lt;p&gt;例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;section {
+  float: left;
+  margin: 1em; border: solid 1px;
+  width: calc(100%/3 - 2*1em - 2*1px);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;max()、min()和clamp()&lt;/strong&gt;则是一些比较大小的函数，max()表示取两数中较大的一个，min()表示取两数之中较小的一个，clamp()则是给一个值限定一个范围，超出范围外则使用范围的最大或者最小值。&lt;/p&gt;&lt;p&gt;toggle()函数在规则选中多于一个元素时生效，它会在几个值之间来回切换，比如我们要让一个列表项的样式圆点和方点间隔出现，可以使用下面代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-CSS&quot;&gt;ul { list-style-type: toggle(circle, square); }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;attr()函数允许CSS接受属性值的控制。&lt;/p&gt;&lt;h2&gt;总结&lt;/h2&gt;&lt;p&gt;在这一部分，我们介绍了CSS语法的总体结构，CSS的语法总体结构是由两种规则列表构成，一种是at 规则，另一种是普通规则。&lt;/p&gt;&lt;p&gt;在at规则中，我举了13个以上的例子，并逐个进行了简单的介绍。而在普通规则的部分，我介绍了选择器和声明区块是普通规则的主要组成部分。&lt;/p&gt;&lt;p&gt;并且，我给出了一个（不太严谨）的选择器语法结构，声明区块则由属性和值构成，这一部分我们重点介绍了函数。&lt;/p&gt;&lt;p&gt;从整体上去掌握内容，再去定位到单个细节，这对于我们学习CSS有非常重要的提示作用。&lt;/p&gt;&lt;p&gt;最后，给你留一个思考问题，CSS的函数有很多，本文也提到了不少，请你也一起查阅资料，试着总结一下，你能找到多少种CSS函数？&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
+        &lt;ul&gt;
+        
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Carson  2019-02-07 03:04:43
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            在网站上搜索了一下，发现 css 函数有不少，尤其是近三年，增加的函数几乎超过过去的总和。&lt;br&gt;&lt;br&gt;按照 winter 老师提到「知识完备性」的思路，尝试整理了一下 CSS 函数。&lt;br&gt;&lt;br&gt;按照功能，分成以下 5 个类别（可能并不完全准确）：&lt;br&gt;&lt;br&gt;# 1. 图片&lt;br&gt;&lt;br&gt;* filter&lt;br&gt;    * blur()&lt;br&gt;    * brightness()&lt;br&gt;    * contrast()&lt;br&gt;    * drop-shadow()&lt;br&gt;    * grayscale()&lt;br&gt;    * hue_rotate()&lt;br&gt;    * invert()&lt;br&gt;    * opacity()&lt;br&gt;    * saturate()&lt;br&gt;    * sepia()&lt;br&gt;* cross-fade()&lt;br&gt;* element()&lt;br&gt;* image-set()&lt;br&gt;* imagefunction()&lt;br&gt;&lt;br&gt;# 2. 图形绘制&lt;br&gt;* conic-gradient()&lt;br&gt;* linear-gradient()&lt;br&gt;* radial-gradient()&lt;br&gt;* repeating-linear-gradient()&lt;br&gt;* repeating-radial-gradient()&lt;br&gt;* shape()&lt;br&gt;&lt;br&gt;# 3. 布局&lt;br&gt;* calc()&lt;br&gt;* clamp()&lt;br&gt;* fit-content()&lt;br&gt;* max()&lt;br&gt;* min()&lt;br&gt;* minmax()&lt;br&gt;* repeat()&lt;br&gt;&lt;br&gt;# 4. 变形&amp;#47;动画&lt;br&gt;* transform&lt;br&gt;    * matrix()&lt;br&gt;    * matrix3d()&lt;br&gt;    * perspective()&lt;br&gt;    * rotate()&lt;br&gt;    * rotate3d()&lt;br&gt;    * rotateX()&lt;br&gt;    * rotateY()&lt;br&gt;    * rotateZ()&lt;br&gt;    * scale()&lt;br&gt;    * scale3d()&lt;br&gt;    * scaleX()&lt;br&gt;    * scaleY()&lt;br&gt;    * scaleZ()&lt;br&gt;    * skew()&lt;br&gt;    * skewX()&lt;br&gt;    * skewY()&lt;br&gt;    * translate()&lt;br&gt;    * translate3d()&lt;br&gt;    * translateX()&lt;br&gt;    * translateY()&lt;br&gt;    * translateZ()&lt;br&gt;&lt;br&gt;# 5. 环境与元素&lt;br&gt;* var()&lt;br&gt;* env()&lt;br&gt;* attr()&lt;br&gt; [158赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Sevens 些粉  2019-02-08 14:08:57
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            推荐一下《css世界》这本书，有理论基础也有实战应用和常遇坑，看了两章感觉不错。 [31赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            莲  2019-02-09 17:22:29
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            我看到winter老师讲解这些冷门的知识，忽然意识到什么叫做精通？要精通就要抠这种细节，这样才能做到精通&lt;br&gt;&lt;br&gt;做就要做精通，前端是一种手艺人 [14赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            文全  2019-02-07 07:41:38
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            @import 用于引入一个 CSS 文件，除了 @charset 规则不会被引入，@import 可以引入另一个 JavaScript 文件的全部内容。这段写错了 应该是css 文件全部内容 [9赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Aaaaaaaaaaayou  2019-02-07 21:50:28
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            “只有伪类可以出现在伪元素之后”是不是写反了 [5赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            mimof9  2019-02-08 22:42:28
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            试了一下 toggle这个函数 并没有效果。clac实测下来是有效果的。 [4赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            无痕  2019-03-04 13:54:56
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            “||”这个选择器我怎么没搜到，是什么意思 [2赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            🚂🚂🚂  2019-03-04 15:26:15
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            CSS Functions&lt;br&gt;Alphabetical list of CSS functions included in CSS3.&lt;br&gt;&lt;br&gt;attr()&lt;br&gt;blur()&lt;br&gt;brightness()&lt;br&gt;calc()&lt;br&gt;circle()&lt;br&gt;contrast()&lt;br&gt;counter()&lt;br&gt;counters()&lt;br&gt;cubic-bezier()&lt;br&gt;drop-shadow()&lt;br&gt;ellipse()&lt;br&gt;grayscale()&lt;br&gt;hsl()&lt;br&gt;hsla()&lt;br&gt;hue-rotate()&lt;br&gt;hwb()&lt;br&gt;image()&lt;br&gt;inset()&lt;br&gt;invert()&lt;br&gt;linear-gradient()&lt;br&gt;matrix()&lt;br&gt;matrix3d()&lt;br&gt;opacity()&lt;br&gt;perspective()&lt;br&gt;polygon()&lt;br&gt;radial-gradient()&lt;br&gt;repeating-linear-gradient()&lt;br&gt;repeating-radial-gradient()&lt;br&gt;rgb()&lt;br&gt;rgba()&lt;br&gt;rotate()&lt;br&gt;rotate3d()&lt;br&gt;rotateX()&lt;br&gt;rotateY()&lt;br&gt;rotateZ()&lt;br&gt;saturate()&lt;br&gt;sepia()&lt;br&gt;scale()&lt;br&gt;scale3d()&lt;br&gt;scaleX()&lt;br&gt;scaleY()&lt;br&gt;scaleZ()&lt;br&gt;skew()&lt;br&gt;skewX()&lt;br&gt;skewY()&lt;br&gt;symbols()&lt;br&gt;translate()&lt;br&gt;translate3d()&lt;br&gt;translateX()&lt;br&gt;translateY()&lt;br&gt;translateZ()&lt;br&gt;url() [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            花骨朵  2019-02-28 10:44:34
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            css函数：https:&amp;#47;&amp;#47;www.w3cplus.com&amp;#47;css&amp;#47;css-functions.html [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            吴前端  2019-02-19 13:56:20
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            toggle()函数试了下在google 火狐打开都没用呢显示无效属性值 [1赞]
+        &lt;/div&gt;
+        &lt;br/&gt;
+&lt;div&gt;
+    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 14:30:45&lt;/div&gt;
+    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;移动端问题不大，已经都是webkit了。&lt;br&gt;不过我还真没注意火狐没这个函数。&lt;/div&gt;
+&lt;/div&gt;
+            
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Rushan-Chen  2019-02-13 18:27:34
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            @mimof9 &lt;br&gt;文章的链接是CSS4 working draft状态的文档，是很新的文档。&lt;br&gt;&lt;br&gt;看了下CSS3 Candidate Recommendation状态的文档，没有toggle()、min()、max()、clamp()，这几个函数应该是css4新加的，基本上浏览器都还不支持。&lt;br&gt;&lt;br&gt;attr()虽然css3文档有，查了下，浏览器也都不支持。😂&lt;br&gt;&lt;br&gt;等浏览器支持估计还要一段时间吧，现在先知道有这个东西就好，我是这样想的。&lt;br&gt; [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            南蓝  2019-02-12 22:45:46
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            @ counter-style 只在火狐上有用&lt;br&gt;&lt;br&gt;    &amp;lt;style&amp;gt;&lt;br&gt;        @counter-style circled-alpha {&lt;br&gt;            system: fixed;&lt;br&gt;            symbols: &amp;quot;\7532&amp;quot;&amp;quot;\4E59&amp;quot;&amp;quot;\4E19&amp;quot;&amp;quot;\4E01&amp;quot;&amp;quot;\620A&amp;quot;&amp;quot;\5DF1&amp;quot;&amp;quot;\5E9A&amp;quot;&amp;quot;\8F9B&amp;quot;&amp;quot;\58EC&amp;quot;&amp;quot;\7678&amp;quot;;&lt;br&gt;            &amp;#47;* 甲 乙 丙 丁 戊 己 庚 辛 壬 癸 *&amp;#47;&lt;br&gt;            suffix: &amp;quot; &amp;quot;;&lt;br&gt;        }&lt;br&gt;&lt;br&gt;        ul li {&lt;br&gt;            list-style: circled-alpha;&lt;br&gt;&lt;br&gt;        }&lt;br&gt;    &amp;lt;&amp;#47;style&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;head&amp;gt;&lt;br&gt;&lt;br&gt;&amp;lt;body&amp;gt;&lt;br&gt;    &amp;lt;ul&amp;gt;&lt;br&gt;        &amp;lt;li&amp;gt;1&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;        &amp;lt;li&amp;gt;2&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;        &amp;lt;li&amp;gt;3&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;        &amp;lt;li&amp;gt;4&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;        &amp;lt;li&amp;gt;5&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;    &amp;lt;&amp;#47;ul&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;body&amp;gt; [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            胡永  2019-02-12 07:38:18
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            Pseudo class selector [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            hhk  2019-02-07 11:26:57
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            css语法：at 规则 + 普通规则&lt;br&gt;普通规则：选择器 + 声明区块&lt;br&gt;&lt;br&gt;另外，margin 的读音好像读错了 [1赞]
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            王峰  2019-04-17 15:45:59
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            选择器还有一种情况就是*通配符，它不属于标签选择器，也没有优先级 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            ferrinweb  2019-04-12 14:25:44
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            winter老师，文章中没有包含属性选择器，另外不太清楚||代表什么意思。 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            VitoLI  2019-03-25 10:27:51
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            应届生马上要入职了，为要接触一个全新的世界蠢蠢欲动 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            丘丘  2019-03-24 11:13:26
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            在can i use这个网站上都没有搜到toggle()，亲试了一下chrome也不兼容，min()试了一下，好像也是不兼容，这些属性是不是过于偏僻，导致浏览器都不去支持了 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            比利利  2019-02-25 10:23:01
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            查阅了一些资料发现，目前CSS中toggle()这个函数在任何主流浏览器中都不支持，所以无论是Chrome还是Firefox里用这个函数都是无效的。 
+        &lt;/div&gt;
+        &lt;br/&gt;
+&lt;div&gt;
+    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 17:14:37&lt;/div&gt;
+    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;不会吧 document.body.classList.toggle(&amp;quot;a&amp;quot;) 我试了啊&lt;/div&gt;
+&lt;/div&gt;
+            
+    &lt;/div&gt;
+&lt;/li&gt;
+            
+&lt;br/&gt;
+&lt;li&gt;
+    &lt;div&gt;
+        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+            Rushan-Chen  2019-02-13 17:32:06
+        &lt;/div&gt;
+        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+            @南蓝 @counter-style 的兼容性不佳，除了firefox 能部分支持，其它浏览器都还不支持，可以上 https:&amp;#47;&amp;#47;caniuse.com 搜索@counter-style查看浏览器的兼容情况。 
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+            &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" class="mask" style="display:none;"></div>
+    <div id="login_div" class="operatediv" style="display:none">
+        <div style="margin:50px">
+            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
+            <center>
+                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
+                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
+                    <input name="timestamp" type="hidden" value="">
+                    <input type="submit" value="登录">
+                </form>
+            </center>
+        </div>
+    </div>
+    <div style="color: rgba(247,247,249,0);">2021-06-03 11:15:52 星期四 124.232.146.132 Runningtime:0.515s Mem:1.42 MB</div>
+
+    <div style="position: fixed;right: 10px;bottom: 10px;">
+        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
+            <option value="">主题</option>
+            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
+            <option value="apache.html">apache.html</option>
+            <option value="classic.html" selected="selected">classic.html</option>
+            <option value="iis.html">iis.html</option>
+            <option value="nchyn_grey.html">nchyn_grey.html</option>
+            <option value="nexmoe1.html">nexmoe1.html</option>
+            <option value="nexmoe2.html">nexmoe2.html</option>
+            <option value="nginx.html">nginx.html</option>
+            <option value="onemoe.html">onemoe.html</option>
+            <option value="purecool.html">purecool.html</option>
+            <option value="renexmoe.html">renexmoe.html</option>
+            <option value="tfo.html">tfo.html</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+    function changetheme(str)
+    {
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='theme='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+</script>
+<script type="text/javascript">
+    function changelanguage(str)
+    {
+        if (str=='Language') str = '';
+        var expd = new Date();
+        expd.setTime(expd.getTime()+(2*60*60*1000));
+        var expires = "expires="+expd.toGMTString();
+        document.cookie='language='+str+'; path=/; '+expires;
+        location.href = location.href;
+    }
+    function login() {
+        document.getElementById('mask').style.display='';
+            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
+        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
+        document.getElementById('login_div').style.display='';
+        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
+        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
+        document.getElementById('login_input').focus();
+    }
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        try {
+            timestamp = new Date().getTime() + "";
+            timestamp = timestamp.substr(0, timestamp.length-3);
+            f.timestamp.value = timestamp;
+            f.password1.value = sha1(timestamp + "" + f.password1.value);
+            return true;
+        } catch {
+            alert("sha1.js not loaded.");
+            return false;
+        }
+    }
+    var $url = document.getElementById('url');
+    if ($url) {
+        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
+        $url.style.height = $url.scrollHeight + 'px';
+    }
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+    function CopyAllDownloadUrl(str) {
+        var tmptextarea=document.createElement('textarea');
+        document.body.appendChild(tmptextarea);
+        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
+        document.querySelectorAll(str).forEach(function (e) {
+            tmptextarea.innerHTML+=e.href+"\r\n";
+        });
+        tmptextarea.select();
+        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
+        document.execCommand("copy");
+        alert(tmptextarea.innerHTML+"成功");
+    }
+    function operatediv_close(operate) {
+        document.getElementById(operate+'_div').style.display='none';
+        document.getElementById('mask').style.display='none';
+    }
+</script>
+<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
+</html>
