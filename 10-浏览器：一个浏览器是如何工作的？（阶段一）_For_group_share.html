@@ -1,98 +1,9 @@
-
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>10-浏览器：一个浏览器是如何工作的？（阶段一）_For_group_share.html - OneManager</title>
-<!--
-    OneManager: An index & manager of Onedrive auth by ysun.
-    Github: https://github.com/qkqpttgf/OneManager-php
--->
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="10-浏览器：一个浏览器是如何工作的？（阶段一）_For_group_share.html, html, OneManager">
-    <meta name="description" content="10-浏览器：一个浏览器是如何工作的？（阶段一）_For_group_share.html, 预览">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <style type="text/css">
-        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
-        a{color:#24292e;cursor:pointer;text-decoration:none}
-        ion-icon{font-size:15px;vertical-align:bottom}
-        .changelanguage{position:absolute;right:5px;}
-        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
-        .title a{color:#333;text-decoration:none}
-        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
-        .list-container{position:relative;overflow:hidden;border-radius:15px;}
-        .list-header-container{position:relative}
-        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
-        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
-        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
-        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
-        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
-        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
-        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
-        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
-        .list-table tr{height:40px}
-        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
-        .list-table tr[data-to]:hover a{color:white}
-        .list-table tr:first-child{background:rgba(245,245,245,0)}
-        .list-table td,.list-table th{padding:0 10px;text-align:left}
-        .list-table .size,.list-table .updated_at{text-align:right}
-        .updated_at{width:25%}
-        .size{width:15%}
-        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
-        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
-        .operatediv div{margin:16px}
-        .operatediv_close{position:absolute;right:3px;top:3px;}
-        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
-        .markdown-body, .customfile{padding:20px;text-align:left}
-        @media only screen and (max-width:480px){
-            .title{margin-bottom:24px}
-            .list-wrapper{width:95%; margin-bottom:24px;}
-            .list-table {padding:8px}
-            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
-            .size, .updated_at{display:none}
-        }
-    </style>
-    
-</head>
-<body>
-    <div style="padding:1px" id="top-div">
-        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
-        &nbsp;
-        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
-            <option value="">Language</option>
-                <option value="en-us" >English</option>
-                <option value="zh-tw" >繁體中文</option>
-                <option value="zh-cn" selected="selected">简体中文</option>
-                <option value="ja" >日本語</option>
-                <option value="ko-kr" >한국어</option>
-                <option value="fa" >فارسی</option>
-                <option value="ar-sa" >السعودية</option>
-        </select>
-    </div>
-    <h1 class="title" id="title">
-        <a href="/">OneManager</a>
-    </h1>
-    <div class="list-wrapper" id="list-div">
-        <div class="list-container">
-            <div class="list-header-container">
-                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">10-浏览器：一个浏览器是如何工作的？（阶段一）_For_group_share.html</a></h3>
-            </div>
-            <div class="list-body-container">
-                <div style="margin: 12px 4px 4px; text-align: center">
-                    <div style="margin: 24px">
-                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/10-%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F%EF%BC%88%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%89_For_group_share.html</textarea>
-                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/10-%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F%EF%BC%88%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%89_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
-                    </div>
-                    <div style="margin: 24px">
-                        <div id="txt">
-                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-    &lt;title&gt;10-浏览器：一个浏览器是如何工作的？（阶段一）&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
-        &lt;style&gt;
+    <title>10-浏览器：一个浏览器是如何工作的？（阶段一）</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
         html {
             color: #333;
             -webkit-text-size-adjust: 100%;
@@ -226,7 +137,7 @@
         }
         q:after,
         q:before {
-            content: &quot;&quot;
+            content: ""
         }
         sub,
         sup {
@@ -306,7 +217,7 @@
         }
         .clearfix:after,
         .clearfix:before {
-            content: &quot;&quot;;
+            content: "";
             display: table
         }
         .clearfix:after {
@@ -460,7 +371,7 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+            content: "\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB"
         }
         .typo img {
             max-width: 100%
@@ -687,7 +598,7 @@
             overflow-x: scroll
         }
         ._29HP61GA_0 pre code:after {
-            content: &quot;&quot;;
+            content: "";
             height: 30px;
             width: 100%;
             display: block
@@ -769,7 +680,7 @@
             margin-bottom: 10px
         }
         ._29HP61GA_0 ul li:after {
-            content: &quot;&quot;;
+            content: "";
             height: 6px;
             width: 6px;
             border-radius: 50%;
@@ -841,477 +752,367 @@
             word-wrap: normal;
             white-space: pre
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;_29HP61GA_0&quot;&gt;
-&lt;h1&gt;10-浏览器：一个浏览器是如何工作的？（阶段一）&lt;/h1&gt;
-&lt;p&gt;对于前端开发来说，我们平时与浏览器打交道的时间是最多的。可浏览器对前端同学来说更多像一个神秘黑盒子的存在。我们仅仅知道它能做什么，而不知道它是如何做到的。&lt;/p&gt;&lt;p&gt;在我面试和接触过的前端开发者中，70%的前端同学对这部分的知识内容只能达到“一知半解”的程度。甚至还有一部分同学会质疑这部分知识是否重要：这与我们的工作相关吗，学多了会不会偏移前端工作的方向？&lt;/p&gt;&lt;p&gt;事实上，我们这里所需要了解的浏览器工作原理只是它的大致过程，这部分浏览器工作原理不但是前端面试的常考知识点，它还会辅助你的实际工作，学习浏览器的内部工作原理和个中缘由，对于我们做性能优化、排查错误都有很大的好处。&lt;/p&gt;&lt;p&gt;在我们的课程中，我也会控制浏览器相关知识的粒度，把它保持在“给前端工程师了解浏览器”的水准，而不是详细到“给浏览器开发工程师实现浏览器”的水准。&lt;/p&gt;&lt;p&gt;那么，我们今天开始，来共同思考一下。一个浏览器到底是如何工作的。&lt;/p&gt;&lt;p&gt;实际上，对浏览器的实现者来说，他们做的事情，就是把一个URL变成一个屏幕上显示的网页。&lt;/p&gt;&lt;p&gt;这个过程是这样的：&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;浏览器首先使用HTTP协议或者HTTPS协议，向服务端请求页面；&lt;/li&gt;
-&lt;li&gt;把请求回来的HTML代码经过解析，构建成DOM树；&lt;/li&gt;
-&lt;li&gt;计算DOM树上的CSS属性；&lt;/li&gt;
-&lt;li&gt;最后根据CSS属性对元素逐个进行渲染，得到内存中的位图；&lt;/li&gt;
-&lt;li&gt;一个可选的步骤是对位图进行合成，这会极大地增加后续绘制的速度；&lt;/li&gt;
-&lt;li&gt;合成之后，再绘制到界面上。&lt;/li&gt;
-&lt;/ol&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/63/4c/6391573a276c47a9a50ae0cbd2c5844c.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们在开始详细介绍之前，要建立一个感性认识。我们从HTTP请求回来开始，这个过程并非一般想象中的一步做完再做下一步，而是一条流水线。&lt;/p&gt;&lt;p&gt;从HTTP请求回来，就产生了流式的数据，后续的DOM树构建、CSS计算、渲染、合成、绘制，都是尽可能地流式处理前一步的产出：即不需要等到上一步骤完全结束，就开始处理上一步的输出，这样我们在浏览网页时，才会看到逐步出现的页面。&lt;/p&gt;&lt;p&gt;首先我们来介绍下网络通讯的部分。&lt;/p&gt;&lt;h2&gt;HTTP协议&lt;/h2&gt;&lt;p&gt;浏览器首先要做的事就是根据URL把数据取回来，取回数据使用的是HTTP协议（实际上这个过程之前还有DNS查询，不过这里就不详细展开了。）&lt;/p&gt;&lt;p&gt;我先来了解下HTTP的标准。&lt;/p&gt;&lt;p&gt;HTTP标准由IETF组织制定，跟它相关的标准主要有两份：&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;HTTP1.1 &lt;a href=&quot;https://tools.ietf.org/html/rfc2616&quot;&gt;https://tools.ietf.org/html/rfc2616&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;2.HTTP1.1 &lt;a href=&quot;https://tools.ietf.org/html/rfc7234&quot;&gt;https://tools.ietf.org/html/rfc7234&lt;/a&gt;&lt;/p&gt;&lt;p&gt;HTTP协议是基于TCP协议出现的，对TCP协议来说，TCP协议是一条双向的通讯通道，HTTP在TCP的基础上，规定了Request-Response的模式。这个模式决定了通讯必定是由浏览器端首先发起的。&lt;/p&gt;&lt;p&gt;大部分情况下，浏览器的实现者只需要用一个TCP库，甚至一个现成的HTTP库就可以搞定浏览器的网络通讯部分。HTTP是纯粹的文本协议，它是规定了使用TCP协议来传输文本格式的一个应用层协议。&lt;/p&gt;&lt;p&gt;下面，我们试着用一个纯粹的TCP客户端来手工实现HTTP一下：&lt;/p&gt;&lt;h2&gt;实验&lt;/h2&gt;&lt;p&gt;我们的实验需要使用telnet客户端，这个客户端是一个纯粹的TCP连接工具（安装方法）。&lt;/p&gt;&lt;p&gt;首先我们运行telnet，连接到极客时间主机，在命令行里输入以下内容：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;telnet time.geekbang.org 80
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个时候，TCP连接已经建立，我们输入以下字符作为请求：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;GET / HTTP/1.1
+    </style>
+</head>
+<body>
+<div class="_29HP61GA_0">
+<h1>10-浏览器：一个浏览器是如何工作的？（阶段一）</h1>
+<p>对于前端开发来说，我们平时与浏览器打交道的时间是最多的。可浏览器对前端同学来说更多像一个神秘黑盒子的存在。我们仅仅知道它能做什么，而不知道它是如何做到的。</p><p>在我面试和接触过的前端开发者中，70%的前端同学对这部分的知识内容只能达到“一知半解”的程度。甚至还有一部分同学会质疑这部分知识是否重要：这与我们的工作相关吗，学多了会不会偏移前端工作的方向？</p><p>事实上，我们这里所需要了解的浏览器工作原理只是它的大致过程，这部分浏览器工作原理不但是前端面试的常考知识点，它还会辅助你的实际工作，学习浏览器的内部工作原理和个中缘由，对于我们做性能优化、排查错误都有很大的好处。</p><p>在我们的课程中，我也会控制浏览器相关知识的粒度，把它保持在“给前端工程师了解浏览器”的水准，而不是详细到“给浏览器开发工程师实现浏览器”的水准。</p><p>那么，我们今天开始，来共同思考一下。一个浏览器到底是如何工作的。</p><p>实际上，对浏览器的实现者来说，他们做的事情，就是把一个URL变成一个屏幕上显示的网页。</p><p>这个过程是这样的：</p><ol>
+<li>浏览器首先使用HTTP协议或者HTTPS协议，向服务端请求页面；</li>
+<li>把请求回来的HTML代码经过解析，构建成DOM树；</li>
+<li>计算DOM树上的CSS属性；</li>
+<li>最后根据CSS属性对元素逐个进行渲染，得到内存中的位图；</li>
+<li>一个可选的步骤是对位图进行合成，这会极大地增加后续绘制的速度；</li>
+<li>合成之后，再绘制到界面上。</li>
+</ol><!-- [[[read_end]]] --><p><img src="https://static001.geekbang.org/resource/image/63/4c/6391573a276c47a9a50ae0cbd2c5844c.jpg" alt=""></p><p>我们在开始详细介绍之前，要建立一个感性认识。我们从HTTP请求回来开始，这个过程并非一般想象中的一步做完再做下一步，而是一条流水线。</p><p>从HTTP请求回来，就产生了流式的数据，后续的DOM树构建、CSS计算、渲染、合成、绘制，都是尽可能地流式处理前一步的产出：即不需要等到上一步骤完全结束，就开始处理上一步的输出，这样我们在浏览网页时，才会看到逐步出现的页面。</p><p>首先我们来介绍下网络通讯的部分。</p><h2>HTTP协议</h2><p>浏览器首先要做的事就是根据URL把数据取回来，取回数据使用的是HTTP协议（实际上这个过程之前还有DNS查询，不过这里就不详细展开了。）</p><p>我先来了解下HTTP的标准。</p><p>HTTP标准由IETF组织制定，跟它相关的标准主要有两份：</p><ol>
+<li>HTTP1.1 <a href="https://tools.ietf.org/html/rfc2616">https://tools.ietf.org/html/rfc2616</a></li>
+</ol><p>2.HTTP1.1 <a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a></p><p>HTTP协议是基于TCP协议出现的，对TCP协议来说，TCP协议是一条双向的通讯通道，HTTP在TCP的基础上，规定了Request-Response的模式。这个模式决定了通讯必定是由浏览器端首先发起的。</p><p>大部分情况下，浏览器的实现者只需要用一个TCP库，甚至一个现成的HTTP库就可以搞定浏览器的网络通讯部分。HTTP是纯粹的文本协议，它是规定了使用TCP协议来传输文本格式的一个应用层协议。</p><p>下面，我们试着用一个纯粹的TCP客户端来手工实现HTTP一下：</p><h2>实验</h2><p>我们的实验需要使用telnet客户端，这个客户端是一个纯粹的TCP连接工具（安装方法）。</p><p>首先我们运行telnet，连接到极客时间主机，在命令行里输入以下内容：</p><pre><code>telnet time.geekbang.org 80
+</code></pre><p>这个时候，TCP连接已经建立，我们输入以下字符作为请求：</p><pre><code>GET / HTTP/1.1
 Host: time.geekbang.org
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按下两次回车，我们收到了服务端的回复：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;HTTP/1.1 301 Moved Permanently
+</code></pre><p>按下两次回车，我们收到了服务端的回复：</p><pre><code>HTTP/1.1 301 Moved Permanently
 Date: Fri, 25 Jan 2019 13:28:12 GMT
 Content-Type: text/html
 Content-Length: 182
 Connection: keep-alive
 Location: https://time.geekbang.org/
 Strict-Transport-Security: max-age=15768000
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;301 Moved Permanently&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;
-&amp;lt;body bgcolor=&amp;quot;white&amp;quot;&amp;gt;
-&amp;lt;center&amp;gt;&amp;lt;h1&amp;gt;301 Moved Permanently&amp;lt;/h1&amp;gt;&amp;lt;/center&amp;gt;
-&amp;lt;hr&amp;gt;&amp;lt;center&amp;gt;openresty&amp;lt;/center&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这就是一次完整的HTTP请求的过程了，我们可以看到，在TCP通道中传输的，完全是文本。&lt;/p&gt;&lt;p&gt;在请求部分，第一行被称作 request line，它分为三个部分，HTTP Method，也就是请求的“方法”，请求的路径和请求的协议和版本。&lt;/p&gt;&lt;p&gt;在响应部分，第一行被称作 response line，它也分为三个部分，协议和版本、状态码和状态文本。&lt;/p&gt;&lt;p&gt;紧随在request line或者response line之后，是请求头/响应头，这些头由若干行组成，每行是用冒号分隔的名称和值。&lt;/p&gt;&lt;p&gt;在头之后，以一个空行（两个换行符）为分隔，是请求体/响应体，请求体可能包含文件或者表单数据，响应体则是html代码。&lt;/p&gt;&lt;h2&gt;HTTP协议格式&lt;/h2&gt;&lt;p&gt;根据上面的分析，我们可以知道HTTP协议，大概可以划分成如下部分。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/3d/a1/3db5e0f362bc276b83c7564430ecb0a1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;我们简单看一下，在这些部分中，path是请求的路径完全由服务端来定义，没有很多的特别内容；而version几乎都是固定字符串；response body是我们最熟悉的HTML，我在后面会有专门的课程介绍，这里也就不多讲了。&lt;/p&gt;&lt;p&gt;下面我们就来逐个给你介绍其它部分。&lt;/p&gt;&lt;h2&gt;HTTP Method（方法）&lt;/h2&gt;&lt;p&gt;我们首先来介绍一下request line里面的方法部分。这里的方法跟我们编程中的方法意义类似，表示我们此次HTTP请求希望执行的操作类型。方法有以下几种定义：&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;GET&lt;/li&gt;
-&lt;li&gt;POST&lt;/li&gt;
-&lt;li&gt;HEAD&lt;/li&gt;
-&lt;li&gt;PUT&lt;/li&gt;
-&lt;li&gt;DELETE&lt;/li&gt;
-&lt;li&gt;CONNECT&lt;/li&gt;
-&lt;li&gt;OPTIONS&lt;/li&gt;
-&lt;li&gt;TRACE&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;浏览器通过地址栏访问页面都是GET方法。表单提交产生POST方法。&lt;/p&gt;&lt;p&gt;HEAD则是跟GET类似，只返回请求头，多数由JavaScript发起&lt;/p&gt;&lt;p&gt;PUT和DELETE分别表示添加资源和删除资源，但是实际上这只是语义上的一种约定，并没有强约束。&lt;/p&gt;&lt;p&gt;CONNECT现在多用于HTTPS和WebSocket。&lt;/p&gt;&lt;p&gt;OPTIONS和TRACE一般用于调试，多数线上服务都不支持。&lt;/p&gt;&lt;h2&gt;HTTP Status code（状态码）和 Status text（状态文本）&lt;/h2&gt;&lt;p&gt;接下来我们看看response line的状态码和状态文本。常见的状态码有以下几种。&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;1xx：临时回应，表示客户端请继续。&lt;/li&gt;
-&lt;li&gt;2xx：请求成功。
-&lt;ul&gt;
-&lt;li&gt;200：请求成功。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;3xx: 表示请求的目标有变化，希望客户端进一步处理。
-&lt;ul&gt;
-&lt;li&gt;301&amp;amp;302：永久性与临时性跳转。&lt;/li&gt;
-&lt;li&gt;304：跟客户端缓存没有更新。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;4xx：客户端请求错误。
-&lt;ul&gt;
-&lt;li&gt;403：无权限。&lt;/li&gt;
-&lt;li&gt;404：表示请求的页面不存在。&lt;/li&gt;
-&lt;li&gt;418：It’s a teapot. 这是一个彩蛋，来自ietf的一个愚人节玩笑。（&lt;a href=&quot;https://tools.ietf.org/html/rfc2324&quot;&gt;超文本咖啡壶控制协议&lt;/a&gt;）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;5xx：服务端请求错误。
-&lt;ul&gt;
-&lt;li&gt;500：服务端错误。&lt;/li&gt;
-&lt;li&gt;503：服务端暂时性错误，可以一会再试。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;对我们前端来说，1xx系列的状态码是非常陌生的，原因是1xx的状态被浏览器http库直接处理掉了，不会让上层应用知晓。&lt;/p&gt;&lt;p&gt;2xx系列的状态最熟悉的就是200，这通常是网页请求成功的标志，也是大家最喜欢的状态码。&lt;/p&gt;&lt;p&gt;3xx系列比较复杂，301和302两个状态表示当前资源已经被转移，只不过一个是永久性转移，一个是临时性转移。实际上301更接近于一种报错，提示客户端下次别来了。&lt;/p&gt;&lt;p&gt;304又是一个每个前端必知必会的状态，产生这个状态的前提是：客户端本地已经有缓存的版本，并且在Request中告诉了服务端，当服务端通过时间或者tag，发现没有更新的时候，就会返回一个不含body的304状态。&lt;/p&gt;&lt;h2&gt;HTTP Head (HTTP头)&lt;/h2&gt;&lt;p&gt;HTTP头可以看作一个键值对。原则上，HTTP头也是一种数据，我们可以自由定义HTTP头和值。不过在HTTP规范中，规定了一些特殊的HTTP头，我们现在就来了解一下它们。&lt;/p&gt;&lt;p&gt;在HTTP标准中，有完整的请求/响应头规定，这里我们挑几个重点的说一下：&lt;/p&gt;&lt;p&gt;我们先来看看Request Header。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/2b/a2/2be3e2457f08bdf624837dfaee01e4a2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;接下来看一下Response Header。&lt;br&gt;
-&lt;img src=&quot;https://static001.geekbang.org/resource/image/ef/c9/efdeadf27313e08bf0789a3b5480f7c9.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;这里仅仅列出了我认为比较常见的HTTP头，这些头是我认为前端工程师应该做到不需要查阅，看到就可以知道意思的HTTP头。完整的列表还是请你参考我给出的rfc2616标准。&lt;/p&gt;&lt;h2&gt;HTTP Request Body&lt;/h2&gt;&lt;p&gt;HTTP请求的body主要用于提交表单场景。实际上，http请求的body是比较自由的，只要浏览器端发送的body服务端认可就可以了。一些常见的body格式是：&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;application/json&lt;/li&gt;
-&lt;li&gt;application/x-www-form-urlencoded&lt;/li&gt;
-&lt;li&gt;multipart/form-data&lt;/li&gt;
-&lt;li&gt;text/xml&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;我们使用html的form标签提交产生的html请求，默认会产生 application/x-www-form-urlencoded 的数据格式，当有文件上传时，则会使用multipart/form-data。&lt;/p&gt;&lt;h2&gt;HTTPS&lt;/h2&gt;&lt;p&gt;在HTTP协议的基础上，HTTPS和HTTP2规定了更复杂的内容，但是它基本保持了HTTP的设计思想，即：使用上的Request-Response模式。&lt;/p&gt;&lt;p&gt;我们首先来了解下HTTPS。HTTPS有两个作用，一是确定请求的目标服务端身份，二是保证传输的数据不会被网络中间节点窃听或者篡改。&lt;/p&gt;&lt;p&gt;HTTPS的标准也是由RFC规定的，你可以查看它的详情链接：&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc2818&quot;&gt;https://tools.ietf.org/html/rfc2818&lt;/a&gt;&lt;/p&gt;&lt;p&gt;HTTPS是使用加密通道来传输HTTP的内容。但是HTTPS首先与服务端建立一条TLS加密通道。TLS构建于TCP协议之上，它实际上是对传输的内容做一次加密，所以从传输内容上看，HTTPS跟HTTP没有任何区别。&lt;/p&gt;&lt;h2&gt;HTTP 2&lt;/h2&gt;&lt;p&gt;HTTP 2是HTTP 1.1的升级版本，你可以查看它的详情链接。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7540&quot;&gt;https://tools.ietf.org/html/rfc7540&lt;/a&gt;&lt;/p&gt;&lt;p&gt;HTTP 2.0 最大的改进有两点，一是支持服务端推送，二是支持TCP连接复用。&lt;/p&gt;&lt;p&gt;服务端推送能够在客户端发送第一个请求到服务端时，提前把一部分内容推送给客户端，放入缓存当中，这可以避免客户端请求顺序带来的并行度不高，从而导致的性能问题。&lt;/p&gt;&lt;p&gt;TCP连接复用，则使用同一个TCP连接来传输多个HTTP请求，避免了TCP连接建立时的三次握手开销，和初建TCP连接时传输窗口小的问题。&lt;/p&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;span class=&quot;reference&quot;&gt;Note: 其实很多优化涉及更下层的协议。IP层的分包情况，和物理层的建连时间是需要被考虑的。&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;在这一节内容中，我们一起学习了浏览器的第一步工作，也就是“浏览器首先使用HTTP协议或HTTPS协议，向服务端请求页面”的这一过程。&lt;/p&gt;&lt;p&gt;在这个过程中，掌握HTTP协议是重中之重。我从一个小实验开始，带你体验了一次完整的HTTP请求过程。我们一起先分析了HTTP协议的结构。接下来，我分别介绍了HTTP方法、HTTP状态码和状态文本、HTTP Head和HTTP Request Body几个重点需要注意的部分。&lt;/p&gt;&lt;p&gt;最后，我还介绍了HTTPS和HTTP 2这两个补充版本，以便你可以更好地熟悉并理解新的特性。&lt;/p&gt;&lt;p&gt;你在工作中，是否已经开始使用HTTPS和HTTP 2协议了呢？用到了它们的哪些特性，请留言告诉我吧。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
-        &lt;ul&gt;
-        
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            Carson  2019-02-09 00:40:37
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            现在工作中暂时只使用到 HTTPS。&lt;br&gt;&lt;br&gt;去年，看到一些公司已经开始着手更新 HTTP2，不少敬佩的前端高手做了分享。&lt;br&gt;&lt;br&gt;他们利用 HTTP2 服务端推送，以及 TCP 连接复用的特性，把 CSS 和 JS 文件分拆成更小的文件，分批下载。&lt;br&gt;&lt;br&gt;更小的文件意味着用户可以更快看到页面，以及性能的改善。与此同时，这种处理方式也对生产环境的工具链带来调整和改变。&lt;br&gt;&lt;br&gt;很有意思的变化。&lt;br&gt; [56赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            yy不会笑  2019-02-09 23:06:12
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            自己可以扩展补充以下&lt;br&gt;&amp;gt; DNS查询得到IP&lt;br&gt;&lt;br&gt;&amp;gt; tcp&amp;#47;ip的并发限制&lt;br&gt;&lt;br&gt;&amp;gt; get和post的区别&lt;br&gt;&lt;br&gt;&amp;gt; 五层因特网协议栈&lt;br&gt;&lt;br&gt;&amp;gt; 长连接与短连接&lt;br&gt;&lt;br&gt;&amp;gt; http2.0与http1.1的显著不同点：&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;gt; 强缓存与协商缓存 [26赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            徐จุ๊บ  2019-02-09 17:43:34
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            老师真的很喜欢猫呐 [11赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            oillie  2019-02-09 23:35:07
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            h2的头部会用哈夫曼编码压缩大小 [5赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            umaru  2019-02-09 02:38:07
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            老师，浏览器渲染听说有重绘，回流什么的，哪里可以找到这一部分相关资料？ [5赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            hhk  2019-02-17 22:15:10
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            那么 HTTP2 的 TCP 连接复用, 和 keep-alive 有什么区别呢?&lt;br&gt; [4赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-02-19 13:04:09&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;嗯，这块我没细讲，其实就是HTTP2要加这个头才能复用连接。&lt;/div&gt;
-&lt;/div&gt;
-            
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            新哥  2019-02-26 23:10:00
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            option请求在线上也会存在吧？非简单请求中的预请求 [3赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            一步  2019-02-23 11:23:00
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            HTT2 还有一个很重要的特性：使用二进制代理文本进行传输，极大提高了传输的效率 [3赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:26:09&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;嗯 是 这块每太细讲 我觉得大家了解即可 主要是服务端的工作。&lt;/div&gt;
-&lt;/div&gt;
-            
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            丫丫  2019-03-23 09:18:43
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            软件有bug，听上一个音频后切换下一个音频时，下一个音频开始播放的时间不是从零开始，是上一个音频的暂停时间点开始 [2赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            维维  2019-02-12 17:20:33
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            找到了与老师的共同爱好，喜欢猫。 [2赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            芳玥  2019-02-23 14:18:14
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            3xx状态码，真的是给我补了一下。从来没踩过这个坑。 [1赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            ...  2019-02-17 13:51:52
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            老师，网站做https升级后，由于TLS加密，第一次连接，速度慢一点是可以理解，但是之后的连接速度也变得挺慢的，这个用户体验不好，这个是不是跟我申请的https证书有很大关系，除此之外，有没有好的建议？ [1赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-02-19 13:00:36&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;怀疑是没有复用连接，这个凭你给的信息我没法判断，得具体拿log分析时间都花在哪里了，一般来说跟证书关系不大。&lt;/div&gt;
-&lt;/div&gt;
-            
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            瞧，这个人  2019-02-16 08:02:32
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            当5G来临，http小优化都不用找了 [1赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-02-19 12:53:24&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;这完全是一种误解，物理层优化没法解决上层协议的问题。&lt;/div&gt;
-&lt;/div&gt;
-            
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            Shaoyao·琚  2019-02-09 10:36:19
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            棒！已经开始阅览 HTTP3 的文档了🤣 [1赞]
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            Russell  2019-04-11 11:25:08
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            关于缓存，304这块我整理了一片文章。https:&amp;#47;&amp;#47;github.com&amp;#47;XiaodongTong&amp;#47;blog&amp;#47;blob&amp;#47;master&amp;#47;%E6%B5%8F%E8%A7%88%E5%99%A8&amp;#47;%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md 
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            咸菜有点儿甜  2019-03-30 09:50:26
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            Http1.1默认是开启keep-alive的，到http2意思是需要手动加入这个头么？ 
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            索  2019-03-26 17:17:27
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            &amp;lt;!DOCTYPE html&amp;gt;&lt;br&gt;&amp;lt;html&amp;gt;&lt;br&gt;&amp;lt;head&amp;gt;&lt;br&gt;&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;br&gt;&amp;lt;title&amp;gt;&amp;lt;&amp;#47;title&amp;gt;&lt;br&gt;&amp;lt;style&amp;gt;&lt;br&gt;&amp;#47;* var()函数 *&amp;#47;&lt;br&gt;:root {&lt;br&gt;  --bg-color: #cdcdcd;&lt;br&gt;  --font-color: blue;&lt;br&gt;}&lt;br&gt;body {&lt;br&gt;  background-color: var(--bg-color);&lt;br&gt;}&lt;br&gt;.title {&lt;br&gt;  color: var(--font-color);&lt;br&gt;}&lt;br&gt;&amp;#47;* attr()函数 *&amp;#47;&lt;br&gt;p:before {&lt;br&gt;  content: attr(data-foo) &amp;quot; &amp;quot;;&lt;br&gt;}&lt;br&gt;&amp;#47;* max()函数 *&amp;#47;&lt;br&gt;.test-max {&lt;br&gt; height: 30px;&lt;br&gt; background-color: #f00;&lt;br&gt; width: max(30px, 50px);&lt;br&gt;}&lt;br&gt;&amp;#47;* toggle()函数 *&amp;#47;&lt;br&gt;ul {&lt;br&gt;list-style-type:disk;&lt;br&gt;}&lt;br&gt;        li &amp;gt; ul {&lt;br&gt;          list-style-type:toggle(disk, circle, square, box);&lt;br&gt;        }&lt;br&gt;&amp;lt;&amp;#47;style&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;head&amp;gt;&lt;br&gt;&amp;lt;body&amp;gt;&lt;br&gt;&amp;lt;h1 class=&amp;quot;title&amp;quot;&amp;gt;标题引人注意&amp;lt;&amp;#47;h1&amp;gt;&lt;br&gt;&amp;lt;p data-foo=&amp;quot;hello&amp;quot;&amp;gt;world&amp;lt;&amp;#47;p&amp;gt;&lt;br&gt;&amp;lt;div class=&amp;quot;test-max&amp;quot;&amp;gt;&amp;lt;&amp;#47;div&amp;gt;&lt;br&gt;&amp;lt;ul&amp;gt;&lt;br&gt; &amp;lt;li&amp;gt;1&lt;br&gt;   &amp;lt;ul&amp;gt;&lt;br&gt;     &amp;lt;li&amp;gt;1-1&lt;br&gt;       &amp;lt;ul&amp;gt;&lt;br&gt;         &amp;lt;li&amp;gt;1-1-1&lt;br&gt;           &amp;lt;ul&amp;gt;&lt;br&gt;             &amp;lt;li&amp;gt;1-1-1-1&amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;           &amp;lt;&amp;#47;ul&amp;gt;&lt;br&gt;         &amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;       &amp;lt;&amp;#47;ul&amp;gt;&lt;br&gt;     &amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;   &amp;lt;&amp;#47;ul&amp;gt;&lt;br&gt; &amp;lt;&amp;#47;li&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;ul&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;body&amp;gt;&lt;br&gt;&amp;lt;&amp;#47;html&amp;gt;&lt;br&gt;&lt;br&gt;max(),min(),clamp() 浏览器基本都不支持 
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            忠誠  2019-03-20 14:00:03
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            Content-Type 几种常用的不同之处 
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            yeoman  2019-03-09 20:11:02
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            那位提问tag是什么的同学应该是问304请求那块提到的tag，温大指的是协商缓存中的etag（entity tag 
-        &lt;/div&gt;
-        
-    &lt;/div&gt;
-&lt;/li&gt;
-            
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
-            umaru  2019-02-21 04:48:13
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            服务器如何知道tag有没有更新？&lt;br&gt;是有某个地方可以设置还是我需要刻意去修改页面中某个标签？ 
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:02:41&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;一般tag是页面的信息摘要，你的服务器受到端上的tag，会那这个tag跟页面的信息摘要比对，如果相同就直接回复304无需更新了，如果不同就回复页面的内容。&lt;/div&gt;
-&lt;/div&gt;
-            
-    &lt;/div&gt;
-&lt;/li&gt;
-            &lt;/ul&gt;
-&lt;/div&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
 &lt;/body&gt;
-&lt;/html&gt;</textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
+&lt;/html&gt;
+</code></pre><p>这就是一次完整的HTTP请求的过程了，我们可以看到，在TCP通道中传输的，完全是文本。</p><p>在请求部分，第一行被称作 request line，它分为三个部分，HTTP Method，也就是请求的“方法”，请求的路径和请求的协议和版本。</p><p>在响应部分，第一行被称作 response line，它也分为三个部分，协议和版本、状态码和状态文本。</p><p>紧随在request line或者response line之后，是请求头/响应头，这些头由若干行组成，每行是用冒号分隔的名称和值。</p><p>在头之后，以一个空行（两个换行符）为分隔，是请求体/响应体，请求体可能包含文件或者表单数据，响应体则是html代码。</p><h2>HTTP协议格式</h2><p>根据上面的分析，我们可以知道HTTP协议，大概可以划分成如下部分。</p><p><img src="https://static001.geekbang.org/resource/image/3d/a1/3db5e0f362bc276b83c7564430ecb0a1.jpg" alt=""></p><p>我们简单看一下，在这些部分中，path是请求的路径完全由服务端来定义，没有很多的特别内容；而version几乎都是固定字符串；response body是我们最熟悉的HTML，我在后面会有专门的课程介绍，这里也就不多讲了。</p><p>下面我们就来逐个给你介绍其它部分。</p><h2>HTTP Method（方法）</h2><p>我们首先来介绍一下request line里面的方法部分。这里的方法跟我们编程中的方法意义类似，表示我们此次HTTP请求希望执行的操作类型。方法有以下几种定义：</p><ul>
+<li>GET</li>
+<li>POST</li>
+<li>HEAD</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>CONNECT</li>
+<li>OPTIONS</li>
+<li>TRACE</li>
+</ul><p>浏览器通过地址栏访问页面都是GET方法。表单提交产生POST方法。</p><p>HEAD则是跟GET类似，只返回请求头，多数由JavaScript发起</p><p>PUT和DELETE分别表示添加资源和删除资源，但是实际上这只是语义上的一种约定，并没有强约束。</p><p>CONNECT现在多用于HTTPS和WebSocket。</p><p>OPTIONS和TRACE一般用于调试，多数线上服务都不支持。</p><h2>HTTP Status code（状态码）和 Status text（状态文本）</h2><p>接下来我们看看response line的状态码和状态文本。常见的状态码有以下几种。</p><ul>
+<li>1xx：临时回应，表示客户端请继续。</li>
+<li>2xx：请求成功。
+<ul>
+<li>200：请求成功。</li>
+</ul>
+</li>
+<li>3xx: 表示请求的目标有变化，希望客户端进一步处理。
+<ul>
+<li>301&amp;302：永久性与临时性跳转。</li>
+<li>304：跟客户端缓存没有更新。</li>
+</ul>
+</li>
+<li>4xx：客户端请求错误。
+<ul>
+<li>403：无权限。</li>
+<li>404：表示请求的页面不存在。</li>
+<li>418：It’s a teapot. 这是一个彩蛋，来自ietf的一个愚人节玩笑。（<a href="https://tools.ietf.org/html/rfc2324">超文本咖啡壶控制协议</a>）</li>
+</ul>
+</li>
+<li>5xx：服务端请求错误。
+<ul>
+<li>500：服务端错误。</li>
+<li>503：服务端暂时性错误，可以一会再试。</li>
+</ul>
+</li>
+</ul><p>对我们前端来说，1xx系列的状态码是非常陌生的，原因是1xx的状态被浏览器http库直接处理掉了，不会让上层应用知晓。</p><p>2xx系列的状态最熟悉的就是200，这通常是网页请求成功的标志，也是大家最喜欢的状态码。</p><p>3xx系列比较复杂，301和302两个状态表示当前资源已经被转移，只不过一个是永久性转移，一个是临时性转移。实际上301更接近于一种报错，提示客户端下次别来了。</p><p>304又是一个每个前端必知必会的状态，产生这个状态的前提是：客户端本地已经有缓存的版本，并且在Request中告诉了服务端，当服务端通过时间或者tag，发现没有更新的时候，就会返回一个不含body的304状态。</p><h2>HTTP Head (HTTP头)</h2><p>HTTP头可以看作一个键值对。原则上，HTTP头也是一种数据，我们可以自由定义HTTP头和值。不过在HTTP规范中，规定了一些特殊的HTTP头，我们现在就来了解一下它们。</p><p>在HTTP标准中，有完整的请求/响应头规定，这里我们挑几个重点的说一下：</p><p>我们先来看看Request Header。</p><p><img src="https://static001.geekbang.org/resource/image/2b/a2/2be3e2457f08bdf624837dfaee01e4a2.png" alt=""></p><p>接下来看一下Response Header。<br>
+<img src="https://static001.geekbang.org/resource/image/ef/c9/efdeadf27313e08bf0789a3b5480f7c9.png" alt=""></p><p>这里仅仅列出了我认为比较常见的HTTP头，这些头是我认为前端工程师应该做到不需要查阅，看到就可以知道意思的HTTP头。完整的列表还是请你参考我给出的rfc2616标准。</p><h2>HTTP Request Body</h2><p>HTTP请求的body主要用于提交表单场景。实际上，http请求的body是比较自由的，只要浏览器端发送的body服务端认可就可以了。一些常见的body格式是：</p><ul>
+<li>application/json</li>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>text/xml</li>
+</ul><p>我们使用html的form标签提交产生的html请求，默认会产生 application/x-www-form-urlencoded 的数据格式，当有文件上传时，则会使用multipart/form-data。</p><h2>HTTPS</h2><p>在HTTP协议的基础上，HTTPS和HTTP2规定了更复杂的内容，但是它基本保持了HTTP的设计思想，即：使用上的Request-Response模式。</p><p>我们首先来了解下HTTPS。HTTPS有两个作用，一是确定请求的目标服务端身份，二是保证传输的数据不会被网络中间节点窃听或者篡改。</p><p>HTTPS的标准也是由RFC规定的，你可以查看它的详情链接：</p><p><a href="https://tools.ietf.org/html/rfc2818">https://tools.ietf.org/html/rfc2818</a></p><p>HTTPS是使用加密通道来传输HTTP的内容。但是HTTPS首先与服务端建立一条TLS加密通道。TLS构建于TCP协议之上，它实际上是对传输的内容做一次加密，所以从传输内容上看，HTTPS跟HTTP没有任何区别。</p><h2>HTTP 2</h2><p>HTTP 2是HTTP 1.1的升级版本，你可以查看它的详情链接。</p><p><a href="https://tools.ietf.org/html/rfc7540">https://tools.ietf.org/html/rfc7540</a></p><p>HTTP 2.0 最大的改进有两点，一是支持服务端推送，二是支持TCP连接复用。</p><p>服务端推送能够在客户端发送第一个请求到服务端时，提前把一部分内容推送给客户端，放入缓存当中，这可以避免客户端请求顺序带来的并行度不高，从而导致的性能问题。</p><p>TCP连接复用，则使用同一个TCP连接来传输多个HTTP请求，避免了TCP连接建立时的三次握手开销，和初建TCP连接时传输窗口小的问题。</p><blockquote>
+<p><span class="reference">Note: 其实很多优化涉及更下层的协议。IP层的分包情况，和物理层的建连时间是需要被考虑的。</span></p>
+</blockquote><h2>结语</h2><p>在这一节内容中，我们一起学习了浏览器的第一步工作，也就是“浏览器首先使用HTTP协议或HTTPS协议，向服务端请求页面”的这一过程。</p><p>在这个过程中，掌握HTTP协议是重中之重。我从一个小实验开始，带你体验了一次完整的HTTP请求过程。我们一起先分析了HTTP协议的结构。接下来，我分别介绍了HTTP方法、HTTP状态码和状态文本、HTTP Head和HTTP Request Body几个重点需要注意的部分。</p><p>最后，我还介绍了HTTPS和HTTP 2这两个补充版本，以便你可以更好地熟悉并理解新的特性。</p><p>你在工作中，是否已经开始使用HTTPS和HTTP 2协议了呢？用到了它们的哪些特性，请留言告诉我吧。</p><p><img src="https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg" alt=""></p><h2>精选留言：</h2>
+        <ul>
+        
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            Carson  2019-02-09 00:40:37
         </div>
-    </div>
-    <div id="mask" class="mask" style="display:none;"></div>
-    <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
-            <center>
-                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
-                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
-                    <input name="timestamp" type="hidden" value="">
-                    <input type="submit" value="登录">
-                </form>
-            </center>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            现在工作中暂时只使用到 HTTPS。<br><br>去年，看到一些公司已经开始着手更新 HTTP2，不少敬佩的前端高手做了分享。<br><br>他们利用 HTTP2 服务端推送，以及 TCP 连接复用的特性，把 CSS 和 JS 文件分拆成更小的文件，分批下载。<br><br>更小的文件意味着用户可以更快看到页面，以及性能的改善。与此同时，这种处理方式也对生产环境的工具链带来调整和改变。<br><br>很有意思的变化。<br> [56赞]
         </div>
+        
     </div>
-    <div style="color: rgba(247,247,249,0);">2021-06-03 11:15:52 星期四 124.232.146.132 Runningtime:0.48s Mem:1.42 MB</div>
-
-    <div style="position: fixed;right: 10px;bottom: 10px;">
-        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
-            <option value="">主题</option>
-            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
-            <option value="apache.html">apache.html</option>
-            <option value="classic.html" selected="selected">classic.html</option>
-            <option value="iis.html">iis.html</option>
-            <option value="nchyn_grey.html">nchyn_grey.html</option>
-            <option value="nexmoe1.html">nexmoe1.html</option>
-            <option value="nexmoe2.html">nexmoe2.html</option>
-            <option value="nginx.html">nginx.html</option>
-            <option value="onemoe.html">onemoe.html</option>
-            <option value="purecool.html">purecool.html</option>
-            <option value="renexmoe.html">renexmoe.html</option>
-            <option value="tfo.html">tfo.html</option>
-        </select>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            yy不会笑  2019-02-09 23:06:12
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            自己可以扩展补充以下<br>&gt; DNS查询得到IP<br><br>&gt; tcp&#47;ip的并发限制<br><br>&gt; get和post的区别<br><br>&gt; 五层因特网协议栈<br><br>&gt; 长连接与短连接<br><br>&gt; http2.0与http1.1的显著不同点：<br><br><br>&gt; 强缓存与协商缓存 [26赞]
+        </div>
+        
     </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            徐จุ๊บ  2019-02-09 17:43:34
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            老师真的很喜欢猫呐 [11赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            oillie  2019-02-09 23:35:07
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            h2的头部会用哈夫曼编码压缩大小 [5赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            umaru  2019-02-09 02:38:07
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            老师，浏览器渲染听说有重绘，回流什么的，哪里可以找到这一部分相关资料？ [5赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            hhk  2019-02-17 22:15:10
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            那么 HTTP2 的 TCP 连接复用, 和 keep-alive 有什么区别呢?<br> [4赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-02-19 13:04:09</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">嗯，这块我没细讲，其实就是HTTP2要加这个头才能复用连接。</div>
+</div>
+            
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            新哥  2019-02-26 23:10:00
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            option请求在线上也会存在吧？非简单请求中的预请求 [3赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            一步  2019-02-23 11:23:00
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            HTT2 还有一个很重要的特性：使用二进制代理文本进行传输，极大提高了传输的效率 [3赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:26:09</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">嗯 是 这块每太细讲 我觉得大家了解即可 主要是服务端的工作。</div>
+</div>
+            
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            丫丫  2019-03-23 09:18:43
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            软件有bug，听上一个音频后切换下一个音频时，下一个音频开始播放的时间不是从零开始，是上一个音频的暂停时间点开始 [2赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            维维  2019-02-12 17:20:33
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            找到了与老师的共同爱好，喜欢猫。 [2赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            芳玥  2019-02-23 14:18:14
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            3xx状态码，真的是给我补了一下。从来没踩过这个坑。 [1赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            ...  2019-02-17 13:51:52
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            老师，网站做https升级后，由于TLS加密，第一次连接，速度慢一点是可以理解，但是之后的连接速度也变得挺慢的，这个用户体验不好，这个是不是跟我申请的https证书有很大关系，除此之外，有没有好的建议？ [1赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-02-19 13:00:36</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">怀疑是没有复用连接，这个凭你给的信息我没法判断，得具体拿log分析时间都花在哪里了，一般来说跟证书关系不大。</div>
+</div>
+            
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            瞧，这个人  2019-02-16 08:02:32
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            当5G来临，http小优化都不用找了 [1赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-02-19 12:53:24</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">这完全是一种误解，物理层优化没法解决上层协议的问题。</div>
+</div>
+            
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            Shaoyao·琚  2019-02-09 10:36:19
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            棒！已经开始阅览 HTTP3 的文档了🤣 [1赞]
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            Russell  2019-04-11 11:25:08
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            关于缓存，304这块我整理了一片文章。https:&#47;&#47;github.com&#47;XiaodongTong&#47;blog&#47;blob&#47;master&#47;%E6%B5%8F%E8%A7%88%E5%99%A8&#47;%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md 
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            咸菜有点儿甜  2019-03-30 09:50:26
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            Http1.1默认是开启keep-alive的，到http2意思是需要手动加入这个头么？ 
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            索  2019-03-26 17:17:27
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            &lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=&quot;UTF-8&quot;&gt;<br>&lt;title&gt;&lt;&#47;title&gt;<br>&lt;style&gt;<br>&#47;* var()函数 *&#47;<br>:root {<br>  --bg-color: #cdcdcd;<br>  --font-color: blue;<br>}<br>body {<br>  background-color: var(--bg-color);<br>}<br>.title {<br>  color: var(--font-color);<br>}<br>&#47;* attr()函数 *&#47;<br>p:before {<br>  content: attr(data-foo) &quot; &quot;;<br>}<br>&#47;* max()函数 *&#47;<br>.test-max {<br> height: 30px;<br> background-color: #f00;<br> width: max(30px, 50px);<br>}<br>&#47;* toggle()函数 *&#47;<br>ul {<br>list-style-type:disk;<br>}<br>        li &gt; ul {<br>          list-style-type:toggle(disk, circle, square, box);<br>        }<br>&lt;&#47;style&gt;<br>&lt;&#47;head&gt;<br>&lt;body&gt;<br>&lt;h1 class=&quot;title&quot;&gt;标题引人注意&lt;&#47;h1&gt;<br>&lt;p data-foo=&quot;hello&quot;&gt;world&lt;&#47;p&gt;<br>&lt;div class=&quot;test-max&quot;&gt;&lt;&#47;div&gt;<br>&lt;ul&gt;<br> &lt;li&gt;1<br>   &lt;ul&gt;<br>     &lt;li&gt;1-1<br>       &lt;ul&gt;<br>         &lt;li&gt;1-1-1<br>           &lt;ul&gt;<br>             &lt;li&gt;1-1-1-1&lt;&#47;li&gt;<br>           &lt;&#47;ul&gt;<br>         &lt;&#47;li&gt;<br>       &lt;&#47;ul&gt;<br>     &lt;&#47;li&gt;<br>   &lt;&#47;ul&gt;<br> &lt;&#47;li&gt;<br>&lt;&#47;ul&gt;<br>&lt;&#47;body&gt;<br>&lt;&#47;html&gt;<br><br>max(),min(),clamp() 浏览器基本都不支持 
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            忠誠  2019-03-20 14:00:03
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            Content-Type 几种常用的不同之处 
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            yeoman  2019-03-09 20:11:02
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            那位提问tag是什么的同学应该是问304请求那块提到的tag，温大指的是协商缓存中的etag（entity tag 
+        </div>
+        
+    </div>
+</li>
+            
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
+            umaru  2019-02-21 04:48:13
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            服务器如何知道tag有没有更新？<br>是有某个地方可以设置还是我需要刻意去修改页面中某个标签？ 
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:02:41</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">一般tag是页面的信息摘要，你的服务器受到端上的tag，会那这个tag跟页面的信息摘要比对，如果相同就直接回复304无需更新了，如果不同就回复页面的内容。</div>
+</div>
+            
+    </div>
+</li>
+            </ul>
+</div>
 </body>
-<script type="text/javascript">
-    function changetheme(str)
-    {
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='theme='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-</script>
-<script type="text/javascript">
-    function changelanguage(str)
-    {
-        if (str=='Language') str = '';
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='language='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-    function login() {
-        document.getElementById('mask').style.display='';
-            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
-        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
-        document.getElementById('login_div').style.display='';
-        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
-        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
-        document.getElementById('login_input').focus();
-    }
-    function sha1loginpass(f) {
-        if (f.password1.value=="") return false;
-        try {
-            timestamp = new Date().getTime() + "";
-            timestamp = timestamp.substr(0, timestamp.length-3);
-            f.timestamp.value = timestamp;
-            f.password1.value = sha1(timestamp + "" + f.password1.value);
-            return true;
-        } catch {
-            alert("sha1.js not loaded.");
-            return false;
-        }
-    }
-    var $url = document.getElementById('url');
-    if ($url) {
-        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
-        $url.style.height = $url.scrollHeight + 'px';
-    }
-    var $textarea=document.getElementById('txt-a');
-    if ($textarea) {
-        $textarea.style.height = $textarea.scrollHeight + 'px';
-    }
-    function CopyAllDownloadUrl(str) {
-        var tmptextarea=document.createElement('textarea');
-        document.body.appendChild(tmptextarea);
-        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
-        document.querySelectorAll(str).forEach(function (e) {
-            tmptextarea.innerHTML+=e.href+"\r\n";
-        });
-        tmptextarea.select();
-        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
-        document.execCommand("copy");
-        alert(tmptextarea.innerHTML+"成功");
-    }
-    function operatediv_close(operate) {
-        document.getElementById(operate+'_div').style.display='none';
-        document.getElementById('mask').style.display='none';
-    }
-</script>
-<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
-<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
 </html>
