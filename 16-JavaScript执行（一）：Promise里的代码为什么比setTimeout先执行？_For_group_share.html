@@ -1,98 +1,9 @@
-
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？_For_group_share.html - OneManager</title>
-<!--
-    OneManager: An index & manager of Onedrive auth by ysun.
-    Github: https://github.com/qkqpttgf/OneManager-php
--->
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？_For_group_share.html, html, OneManager">
-    <meta name="description" content="16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？_For_group_share.html, 预览">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <style type="text/css">
-        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
-        a{color:#24292e;cursor:pointer;text-decoration:none}
-        ion-icon{font-size:15px;vertical-align:bottom}
-        .changelanguage{position:absolute;right:5px;}
-        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
-        .title a{color:#333;text-decoration:none}
-        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
-        .list-container{position:relative;overflow:hidden;border-radius:15px;}
-        .list-header-container{position:relative}
-        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
-        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
-        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
-        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
-        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
-        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
-        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
-        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
-        .list-table tr{height:40px}
-        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
-        .list-table tr[data-to]:hover a{color:white}
-        .list-table tr:first-child{background:rgba(245,245,245,0)}
-        .list-table td,.list-table th{padding:0 10px;text-align:left}
-        .list-table .size,.list-table .updated_at{text-align:right}
-        .updated_at{width:25%}
-        .size{width:15%}
-        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
-        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
-        .operatediv div{margin:16px}
-        .operatediv_close{position:absolute;right:3px;top:3px;}
-        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
-        .markdown-body, .customfile{padding:20px;text-align:left}
-        @media only screen and (max-width:480px){
-            .title{margin-bottom:24px}
-            .list-wrapper{width:95%; margin-bottom:24px;}
-            .list-table {padding:8px}
-            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
-            .size, .updated_at{display:none}
-        }
-    </style>
-    
-</head>
-<body>
-    <div style="padding:1px" id="top-div">
-        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
-        &nbsp;
-        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
-            <option value="">Language</option>
-                <option value="en-us" >English</option>
-                <option value="zh-tw" >繁體中文</option>
-                <option value="zh-cn" selected="selected">简体中文</option>
-                <option value="ja" >日本語</option>
-                <option value="ko-kr" >한국어</option>
-                <option value="fa" >فارسی</option>
-                <option value="ar-sa" >السعودية</option>
-        </select>
-    </div>
-    <h1 class="title" id="title">
-        <a href="/">OneManager</a>
-    </h1>
-    <div class="list-wrapper" id="list-div">
-        <div class="list-container">
-            <div class="list-header-container">
-                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？_For_group_share.html</a></h3>
-            </div>
-            <div class="list-body-container">
-                <div style="margin: 12px 4px 4px; text-align: center">
-                    <div style="margin: 24px">
-                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/16-JavaScript%E6%89%A7%E8%A1%8C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9APromise%E9%87%8C%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94setTimeout%E5%85%88%E6%89%A7%E8%A1%8C%EF%BC%9F_For_group_share.html</textarea>
-                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/16-JavaScript%E6%89%A7%E8%A1%8C%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9APromise%E9%87%8C%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94setTimeout%E5%85%88%E6%89%A7%E8%A1%8C%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
-                    </div>
-                    <div style="margin: 24px">
-                        <div id="txt">
-                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-    &lt;title&gt;16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
-        &lt;style&gt;
+    <title>16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
         html {
             color: #333;
             -webkit-text-size-adjust: 100%;
@@ -226,7 +137,7 @@
         }
         q:after,
         q:before {
-            content: &quot;&quot;
+            content: ""
         }
         sub,
         sup {
@@ -306,7 +217,7 @@
         }
         .clearfix:after,
         .clearfix:before {
-            content: &quot;&quot;;
+            content: "";
             display: table
         }
         .clearfix:after {
@@ -460,7 +371,7 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+            content: "\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB"
         }
         .typo img {
             max-width: 100%
@@ -687,7 +598,7 @@
             overflow-x: scroll
         }
         ._29HP61GA_0 pre code:after {
-            content: &quot;&quot;;
+            content: "";
             height: 30px;
             width: 100%;
             display: block
@@ -769,7 +680,7 @@
             margin-bottom: 10px
         }
         ._29HP61GA_0 ul li:after {
-            content: &quot;&quot;;
+            content: "";
             height: 6px;
             width: 6px;
             border-radius: 50%;
@@ -841,71 +752,71 @@
             word-wrap: normal;
             white-space: pre
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;_29HP61GA_0&quot;&gt;
-&lt;h1&gt;16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？&lt;/h1&gt;
-&lt;p&gt;你好，我是winter。这一部分我们来讲一讲JavaScript的执行。&lt;/p&gt;&lt;p&gt;首先我们考虑一下，如果我们是浏览器或者Node的开发者，我们该如何使用JavaScript引擎。&lt;/p&gt;&lt;p&gt;当拿到一段JavaScript代码时，浏览器或者Node环境首先要做的就是；传递给JavaScript引擎，并且要求它去执行。&lt;/p&gt;&lt;p&gt;然而，执行JavaScript并非一锤子买卖，宿主环境当遇到一些事件时，会继续把一段代码传递给JavaScript引擎去执行，此外，我们可能还会提供API给JavaScript引擎，比如setTimeout这样的API，它会允许JavaScript在特定的时机执行。&lt;/p&gt;&lt;p&gt;所以，我们首先应该形成一个感性的认知：一个JavaScript引擎会常驻于内存中，它等待着我们（宿主）把JavaScript代码或者函数传递给它执行。&lt;/p&gt;&lt;p&gt;在ES3和更早的版本中，JavaScript本身还没有异步执行代码的能力，这也就意味着，宿主环境传递给JavaScript引擎一段代码，引擎就把代码直接顺次执行了，这个任务也就是宿主发起的任务。&lt;/p&gt;&lt;p&gt;但是，在ES5之后，JavaScript引入了Promise，这样，不需要浏览器的安排，JavaScript引擎本身也可以发起任务了。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;由于我们这里主要讲JavaScript语言，那么采纳JSC引擎的术语，我们把宿主发起的任务称为宏观任务，把JavaScript引擎发起的任务称为微观任务。&lt;/p&gt;&lt;h2&gt;宏观和微观任务&lt;/h2&gt;&lt;p&gt;JavaScript引擎等待宿主环境分配宏观任务，在操作系统中，通常等待的行为都是一个事件循环，所以在Node术语中，也会把这个部分称为事件循环。&lt;/p&gt;&lt;p&gt;不过，术语本身并非我们需要重点讨论的内容，我们在这里把重点放在事件循环的原理上。在底层的C/C++代码中，这个事件循环是一个跑在独立线程中的循环，我们用伪代码来表示，大概是这样的：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;while(TRUE) {
+    </style>
+</head>
+<body>
+<div class="_29HP61GA_0">
+<h1>16-JavaScript执行（一）：Promise里的代码为什么比setTimeout先执行？</h1>
+<p>你好，我是winter。这一部分我们来讲一讲JavaScript的执行。</p><p>首先我们考虑一下，如果我们是浏览器或者Node的开发者，我们该如何使用JavaScript引擎。</p><p>当拿到一段JavaScript代码时，浏览器或者Node环境首先要做的就是；传递给JavaScript引擎，并且要求它去执行。</p><p>然而，执行JavaScript并非一锤子买卖，宿主环境当遇到一些事件时，会继续把一段代码传递给JavaScript引擎去执行，此外，我们可能还会提供API给JavaScript引擎，比如setTimeout这样的API，它会允许JavaScript在特定的时机执行。</p><p>所以，我们首先应该形成一个感性的认知：一个JavaScript引擎会常驻于内存中，它等待着我们（宿主）把JavaScript代码或者函数传递给它执行。</p><p>在ES3和更早的版本中，JavaScript本身还没有异步执行代码的能力，这也就意味着，宿主环境传递给JavaScript引擎一段代码，引擎就把代码直接顺次执行了，这个任务也就是宿主发起的任务。</p><p>但是，在ES5之后，JavaScript引入了Promise，这样，不需要浏览器的安排，JavaScript引擎本身也可以发起任务了。</p><!-- [[[read_end]]] --><p>由于我们这里主要讲JavaScript语言，那么采纳JSC引擎的术语，我们把宿主发起的任务称为宏观任务，把JavaScript引擎发起的任务称为微观任务。</p><h2>宏观和微观任务</h2><p>JavaScript引擎等待宿主环境分配宏观任务，在操作系统中，通常等待的行为都是一个事件循环，所以在Node术语中，也会把这个部分称为事件循环。</p><p>不过，术语本身并非我们需要重点讨论的内容，我们在这里把重点放在事件循环的原理上。在底层的C/C++代码中，这个事件循环是一个跑在独立线程中的循环，我们用伪代码来表示，大概是这样的：</p><pre><code class="language-C">while(TRUE) {
     r = wait();
     execute(r);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们可以看到，整个循环做的事情基本上就是反复“等待-执行”。当然，实际的代码中并没有这么简单，还有要判断循环是否结束、宏观任务队列等逻辑，这里为了方便你理解，我就把这些都省略掉了。&lt;/p&gt;&lt;p&gt;这里每次的执行过程，其实都是一个宏观任务。我们可以大概理解：宏观任务的队列就相当于事件循环。&lt;/p&gt;&lt;p&gt;在宏观任务中，JavaScript的Promise还会产生异步代码，JavaScript必须保证这些异步代码在一个宏观任务中完成，因此，每个宏观任务中又包含了一个微观任务队列：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/16/65/16f70a9a51a65d5302166b0d78414d65.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;有了宏观任务和微观任务机制，我们就可以实现JS引擎级和宿主级的任务了，例如：Promise永远在队列尾部添加微观任务。setTimeout等宿主API，则会添加宏观任务。&lt;/p&gt;&lt;p&gt;接下来，我们来详细介绍一下Promise。&lt;/p&gt;&lt;h2&gt;Promise&lt;/h2&gt;&lt;p&gt;Promise是JavaScript语言提供的一种标准化的异步管理方式，它的总体思想是，需要进行io、等待或者其它异步操作的函数，不返回真实结果，而返回一个“承诺”，函数的调用方可以在合适的时机，选择等待这个承诺兑现（通过Promise的then方法的回调）。&lt;/p&gt;&lt;p&gt;Promise的基本用法示例如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    function sleep(duration) {
+</code></pre><p>我们可以看到，整个循环做的事情基本上就是反复“等待-执行”。当然，实际的代码中并没有这么简单，还有要判断循环是否结束、宏观任务队列等逻辑，这里为了方便你理解，我就把这些都省略掉了。</p><p>这里每次的执行过程，其实都是一个宏观任务。我们可以大概理解：宏观任务的队列就相当于事件循环。</p><p>在宏观任务中，JavaScript的Promise还会产生异步代码，JavaScript必须保证这些异步代码在一个宏观任务中完成，因此，每个宏观任务中又包含了一个微观任务队列：</p><p><img src="https://static001.geekbang.org/resource/image/16/65/16f70a9a51a65d5302166b0d78414d65.jpg" alt=""></p><p>有了宏观任务和微观任务机制，我们就可以实现JS引擎级和宿主级的任务了，例如：Promise永远在队列尾部添加微观任务。setTimeout等宿主API，则会添加宏观任务。</p><p>接下来，我们来详细介绍一下Promise。</p><h2>Promise</h2><p>Promise是JavaScript语言提供的一种标准化的异步管理方式，它的总体思想是，需要进行io、等待或者其它异步操作的函数，不返回真实结果，而返回一个“承诺”，函数的调用方可以在合适的时机，选择等待这个承诺兑现（通过Promise的then方法的回调）。</p><p>Promise的基本用法示例如下：</p><pre><code>    function sleep(duration) {
         return new Promise(function(resolve, reject) {
             setTimeout(resolve,duration);
         })
     }
-    sleep(1000).then( ()=&amp;gt; console.log(&amp;quot;finished&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码定义了一个函数sleep，它的作用是等候传入参数指定的时长。&lt;/p&gt;&lt;p&gt;Promise的then回调是一个异步的执行过程，下面我们就来研究一下Promise函数中的执行顺序，我们来看一段代码示例：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    var r = new Promise(function(resolve, reject){
-        console.log(&amp;quot;a&amp;quot;);
+    sleep(1000).then( ()=&gt; console.log(&quot;finished&quot;));
+</code></pre><p>这段代码定义了一个函数sleep，它的作用是等候传入参数指定的时长。</p><p>Promise的then回调是一个异步的执行过程，下面我们就来研究一下Promise函数中的执行顺序，我们来看一段代码示例：</p><pre><code>    var r = new Promise(function(resolve, reject){
+        console.log(&quot;a&quot;);
         resolve()
     });
-    r.then(() =&amp;gt; console.log(&amp;quot;c&amp;quot;));
-    console.log(&amp;quot;b&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们执行这段代码后，注意输出的顺序是 a b c。在进入console.log(“b”) 之前，毫无疑问 r 已经得到了resolve，但是Promise的resolve始终是异步操作，所以c无法出现在b之前。&lt;/p&gt;&lt;p&gt;接下来我们试试跟setTimeout混用的Promise。&lt;/p&gt;&lt;p&gt;在这段代码中，我设置了两段互不相干的异步操作：通过setTimeout执行console.log(“d”)，通过Promise执行console.log(“c”)&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    var r = new Promise(function(resolve, reject){
-        console.log(&amp;quot;a&amp;quot;);
+    r.then(() =&gt; console.log(&quot;c&quot;));
+    console.log(&quot;b&quot;)
+</code></pre><p>我们执行这段代码后，注意输出的顺序是 a b c。在进入console.log(“b”) 之前，毫无疑问 r 已经得到了resolve，但是Promise的resolve始终是异步操作，所以c无法出现在b之前。</p><p>接下来我们试试跟setTimeout混用的Promise。</p><p>在这段代码中，我设置了两段互不相干的异步操作：通过setTimeout执行console.log(“d”)，通过Promise执行console.log(“c”)</p><pre><code>    var r = new Promise(function(resolve, reject){
+        console.log(&quot;a&quot;);
         resolve()
     });
-    setTimeout(()=&amp;gt;console.log(&amp;quot;d&amp;quot;), 0)
-    r.then(() =&amp;gt; console.log(&amp;quot;c&amp;quot;));
-    console.log(&amp;quot;b&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们发现，不论代码顺序如何，d必定发生在c之后，因为Promise产生的是JavaScript引擎内部的微任务，而setTimeout是浏览器API，它产生宏任务。&lt;/p&gt;&lt;p&gt;为了理解微任务始终先于宏任务，我们设计一个实验：执行一个耗时1秒的Promise。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    setTimeout(()=&amp;gt;console.log(&amp;quot;d&amp;quot;), 0)
+    setTimeout(()=&gt;console.log(&quot;d&quot;), 0)
+    r.then(() =&gt; console.log(&quot;c&quot;));
+    console.log(&quot;b&quot;)
+</code></pre><p>我们发现，不论代码顺序如何，d必定发生在c之后，因为Promise产生的是JavaScript引擎内部的微任务，而setTimeout是浏览器API，它产生宏任务。</p><p>为了理解微任务始终先于宏任务，我们设计一个实验：执行一个耗时1秒的Promise。</p><pre><code>    setTimeout(()=&gt;console.log(&quot;d&quot;), 0)
     var r1 = new Promise(function(resolve, reject){
         resolve()
     });
-    r.then(() =&amp;gt; { 
+    r.then(() =&gt; { 
         var begin = Date.now();
-        while(Date.now() - begin &amp;lt; 1000);
-        console.log(&amp;quot;c1&amp;quot;) 
+        while(Date.now() - begin &lt; 1000);
+        console.log(&quot;c1&quot;) 
         new Promise(function(resolve, reject){
             resolve()
-        }).then(() =&amp;gt; console.log(&amp;quot;c2&amp;quot;))
+        }).then(() =&gt; console.log(&quot;c2&quot;))
     });
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我们强制了1秒的执行耗时，这样，我们可以确保任务c2是在d之后被添加到任务队列。&lt;/p&gt;&lt;p&gt;我们可以看到，即使耗时一秒的c1执行完毕，再enque的c2，仍然先于d执行了，这很好地解释了微任务优先的原理。&lt;/p&gt;&lt;p&gt;通过一系列的实验，我们可以总结一下如何分析异步执行的顺序：&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;首先我们分析有多少个宏任务；&lt;/li&gt;
-&lt;li&gt;在每个宏任务中，分析有多少个微任务；&lt;/li&gt;
-&lt;li&gt;根据调用次序，确定宏任务中的微任务执行次序；&lt;/li&gt;
-&lt;li&gt;根据宏任务的触发规则和调用次序，确定宏任务的执行次序；&lt;/li&gt;
-&lt;li&gt;确定整个顺序。&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;我们再来看一个稍微复杂的例子：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    function sleep(duration) {
+</code></pre><p>这里我们强制了1秒的执行耗时，这样，我们可以确保任务c2是在d之后被添加到任务队列。</p><p>我们可以看到，即使耗时一秒的c1执行完毕，再enque的c2，仍然先于d执行了，这很好地解释了微任务优先的原理。</p><p>通过一系列的实验，我们可以总结一下如何分析异步执行的顺序：</p><ul>
+<li>首先我们分析有多少个宏任务；</li>
+<li>在每个宏任务中，分析有多少个微任务；</li>
+<li>根据调用次序，确定宏任务中的微任务执行次序；</li>
+<li>根据宏任务的触发规则和调用次序，确定宏任务的执行次序；</li>
+<li>确定整个顺序。</li>
+</ul><p>我们再来看一个稍微复杂的例子：</p><pre><code>    function sleep(duration) {
         return new Promise(function(resolve, reject) {
-            console.log(&amp;quot;b&amp;quot;);
+            console.log(&quot;b&quot;);
             setTimeout(resolve,duration);
         })
     }
-    console.log(&amp;quot;a&amp;quot;);
-    sleep(5000).then(()=&amp;gt;console.log(&amp;quot;c&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是一段非常常用的封装方法，利用Promise把setTimeout封装成可以用于异步的函数。&lt;/p&gt;&lt;p&gt;我们首先来看，setTimeout把整个代码分割成了2个宏观任务，这里不论是5秒还是0秒，都是一样的。&lt;/p&gt;&lt;p&gt;第一个宏观任务中，包含了先后同步执行的 console.log(“a”); 和 console.log(“b”);。&lt;/p&gt;&lt;p&gt;setTimeout后，第二个宏观任务执行调用了resolve，然后then中的代码异步得到执行，所以调用了console.log(“c”)，最终输出的顺序才是： a b c。&lt;/p&gt;&lt;p&gt;Promise是JavaScript中的一个定义，但是实际编写代码时，我们可以发现，它似乎并不比回调的方式书写更简单，但是从ES6开始，我们有了async/await，这个语法改进跟Promise配合，能够有效地改善代码结构。&lt;/p&gt;&lt;h2&gt;新特性：async/await&lt;/h2&gt;&lt;p&gt;async/await是ES2016新加入的特性，它提供了用for、if等代码结构来编写异步的方式。它的运行时基础是Promise，面对这种比较新的特性，我们先来看一下基本用法。&lt;/p&gt;&lt;p&gt;async函数必定返回Promise，我们把所有返回Promise的函数都可以认为是异步函数。&lt;/p&gt;&lt;p&gt;async函数是一种特殊语法，特征是在function关键字之前加上async关键字，这样，就定义了一个async函数，我们可以在其中使用await来等待一个Promise。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;function sleep(duration) {
+    console.log(&quot;a&quot;);
+    sleep(5000).then(()=&gt;console.log(&quot;c&quot;));
+</code></pre><p>这是一段非常常用的封装方法，利用Promise把setTimeout封装成可以用于异步的函数。</p><p>我们首先来看，setTimeout把整个代码分割成了2个宏观任务，这里不论是5秒还是0秒，都是一样的。</p><p>第一个宏观任务中，包含了先后同步执行的 console.log(“a”); 和 console.log(“b”);。</p><p>setTimeout后，第二个宏观任务执行调用了resolve，然后then中的代码异步得到执行，所以调用了console.log(“c”)，最终输出的顺序才是： a b c。</p><p>Promise是JavaScript中的一个定义，但是实际编写代码时，我们可以发现，它似乎并不比回调的方式书写更简单，但是从ES6开始，我们有了async/await，这个语法改进跟Promise配合，能够有效地改善代码结构。</p><h2>新特性：async/await</h2><p>async/await是ES2016新加入的特性，它提供了用for、if等代码结构来编写异步的方式。它的运行时基础是Promise，面对这种比较新的特性，我们先来看一下基本用法。</p><p>async函数必定返回Promise，我们把所有返回Promise的函数都可以认为是异步函数。</p><p>async函数是一种特殊语法，特征是在function关键字之前加上async关键字，这样，就定义了一个async函数，我们可以在其中使用await来等待一个Promise。</p><pre><code>function sleep(duration) {
     return new Promise(function(resolve, reject) {
         setTimeout(resolve,duration);
     })
 }
 async function foo(){
-    console.log(&amp;quot;a&amp;quot;)
+    console.log(&quot;a&quot;)
     await sleep(2000)
-    console.log(&amp;quot;b&amp;quot;)
+    console.log(&quot;b&quot;)
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码利用了我们之前定义的sleep函数。在异步函数foo中，我们调用sleep。&lt;/p&gt;&lt;p&gt;async函数强大之处在于，它是可以嵌套的。我们在定义了一批原子操作的情况下，可以利用async函数组合出新的async函数。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;function sleep(duration) {
+</code></pre><p>这段代码利用了我们之前定义的sleep函数。在异步函数foo中，我们调用sleep。</p><p>async函数强大之处在于，它是可以嵌套的。我们在定义了一批原子操作的情况下，可以利用async函数组合出新的async函数。</p><pre><code>function sleep(duration) {
     return new Promise(function(resolve, reject) {
         setTimeout(resolve,duration);
     })
@@ -915,431 +826,321 @@ async function foo(name){
     console.log(name)
 }
 async function foo2(){
-    await foo(&amp;quot;a&amp;quot;);
-    await foo(&amp;quot;b&amp;quot;);
+    await foo(&quot;a&quot;);
+    await foo(&quot;b&quot;);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里foo2用await调用了两次异步函数foo，可以看到，如果我们把sleep这样的异步操作放入某一个框架或者库中，使用者几乎不需要了解Promise的概念即可进行异步编程了。&lt;/p&gt;&lt;p&gt;此外，generator/iterator也常常被跟异步一起来讲，我们必须说明 generator/iterator 并非异步代码，只是在缺少async/await的时候，一些框架（最著名的要数co）使用这样的特性来模拟async/await。&lt;/p&gt;&lt;p&gt;但是generator并非被设计成实现异步，所以有了async/await之后，generator/iterator来模拟异步的方法应该被废弃。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;在今天的文章里，我们学习了JavaScript执行部分的知识，首先我们学习了JavaScript的宏观任务和微观任务相关的知识。我们把宿主发起的任务称为宏观任务，把JavaScript引擎发起的任务称为微观任务。许多的微观任务的队列组成了宏观任务。&lt;/p&gt;&lt;p&gt;除此之外，我们还展开介绍了用Promise来添加微观任务的方式，并且介绍了async/await这个语法的改进。&lt;/p&gt;&lt;p&gt;最后，留给你一个小练习：我们现在要实现一个红绿灯，把一个圆形div按照绿色3秒，黄色1秒，红色2秒循环改变背景色，你会怎样编写这个代码呢？欢迎你留言讨论。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
-        &lt;ul&gt;
+</code></pre><p>这里foo2用await调用了两次异步函数foo，可以看到，如果我们把sleep这样的异步操作放入某一个框架或者库中，使用者几乎不需要了解Promise的概念即可进行异步编程了。</p><p>此外，generator/iterator也常常被跟异步一起来讲，我们必须说明 generator/iterator 并非异步代码，只是在缺少async/await的时候，一些框架（最著名的要数co）使用这样的特性来模拟async/await。</p><p>但是generator并非被设计成实现异步，所以有了async/await之后，generator/iterator来模拟异步的方法应该被废弃。</p><h2>结语</h2><p>在今天的文章里，我们学习了JavaScript执行部分的知识，首先我们学习了JavaScript的宏观任务和微观任务相关的知识。我们把宿主发起的任务称为宏观任务，把JavaScript引擎发起的任务称为微观任务。许多的微观任务的队列组成了宏观任务。</p><p>除此之外，我们还展开介绍了用Promise来添加微观任务的方式，并且介绍了async/await这个语法的改进。</p><p>最后，留给你一个小练习：我们现在要实现一个红绿灯，把一个圆形div按照绿色3秒，黄色1秒，红色2秒循环改变背景色，你会怎样编写这个代码呢？欢迎你留言讨论。</p><p><img src="https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg" alt=""></p><h2>精选留言：</h2>
+        <ul>
         
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             杨学茂  2019-02-23 12:35:37
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            function sleep(duration){&lt;br&gt;    return new Promise(function(resolve){&lt;br&gt;        setTimeout(resolve, duration);&lt;br&gt;    })&lt;br&gt;}&lt;br&gt;async function changeColor(duration,color){&lt;br&gt;    document.getElementById(&amp;quot;traffic-light&amp;quot;).style.background = color;&lt;br&gt;    await sleep(duration);&lt;br&gt;&lt;br&gt;}&lt;br&gt;async function main(){&lt;br&gt;    while(true){&lt;br&gt;        await changeColor(3000,&amp;quot;green&amp;quot;);&lt;br&gt;        await changeColor(1000, &amp;quot;yellow&amp;quot;);&lt;br&gt;        await changeColor(2000, &amp;quot;red&amp;quot;);&lt;br&gt;    }&lt;br&gt;}&lt;br&gt;main() [91赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:28:06&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;这个写的完全挑不出毛病，其它同学可以参考。&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            function sleep(duration){<br>    return new Promise(function(resolve){<br>        setTimeout(resolve, duration);<br>    })<br>}<br>async function changeColor(duration,color){<br>    document.getElementById(&quot;traffic-light&quot;).style.background = color;<br>    await sleep(duration);<br><br>}<br>async function main(){<br>    while(true){<br>        await changeColor(3000,&quot;green&quot;);<br>        await changeColor(1000, &quot;yellow&quot;);<br>        await changeColor(2000, &quot;red&quot;);<br>    }<br>}<br>main() [91赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:28:06</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">这个写的完全挑不出毛病，其它同学可以参考。</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             无羡  2019-02-23 09:26:01
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            const lightEle = document.getElementById(&amp;#39;traffic-light&amp;#39;);&lt;br&gt;function changeTrafficLight(color, duration) {&lt;br&gt;  return new Promise(function(resolve, reject) {&lt;br&gt;    lightEle.style.background = color;&lt;br&gt;    setTimeout(resolve, duration);&lt;br&gt;  })&lt;br&gt;}&lt;br&gt;&lt;br&gt;async function trafficScheduler() {&lt;br&gt;  await changeTrafficLight(&amp;#39;green&amp;#39;, 3000);&lt;br&gt;  await changeTrafficLight(&amp;#39;yellow&amp;#39;, 1000);&lt;br&gt;  await changeTrafficLight(&amp;#39;red&amp;#39;, 2000);&lt;br&gt;  trafficScheduler();&lt;br&gt;}&lt;br&gt;&lt;br&gt;trafficScheduler(); [24赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:23:47&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;这个写的不错，不过，既然都用到了await，是不是可以不用递归呢？&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            const lightEle = document.getElementById(&#39;traffic-light&#39;);<br>function changeTrafficLight(color, duration) {<br>  return new Promise(function(resolve, reject) {<br>    lightEle.style.background = color;<br>    setTimeout(resolve, duration);<br>  })<br>}<br><br>async function trafficScheduler() {<br>  await changeTrafficLight(&#39;green&#39;, 3000);<br>  await changeTrafficLight(&#39;yellow&#39;, 1000);<br>  await changeTrafficLight(&#39;red&#39;, 2000);<br>  trafficScheduler();<br>}<br><br>trafficScheduler(); [24赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:23:47</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">这个写的不错，不过，既然都用到了await，是不是可以不用递归呢？</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             whatever  2019-03-02 15:59:42
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            https:&amp;#47;&amp;#47;jakearchibald.com&amp;#47;2015&amp;#47;tasks-microtasks-queues-and-schedules&amp;#47;&lt;br&gt;为了更深入的理解宏任务和微任务，读了这篇。感觉文中说的微任务总是先于宏任务会让人产生误解，更准确的说法应该是微任务总会在下一个宏任务之前执行，在本身所属的宏任务结束后立即执行。 [22赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            https:&#47;&#47;jakearchibald.com&#47;2015&#47;tasks-microtasks-queues-and-schedules&#47;<br>为了更深入的理解宏任务和微任务，读了这篇。感觉文中说的微任务总是先于宏任务会让人产生误解，更准确的说法应该是微任务总会在下一个宏任务之前执行，在本身所属的宏任务结束后立即执行。 [22赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             奇奇  2019-02-28 08:51:40
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             怎么区分是宿主环境还是js引擎发起的任务呢 [10赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             deiphi  2019-02-26 22:05:57
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            &amp;#47;&amp;#47; 比较原始的写法&lt;br&gt;function color () { &lt;br&gt;	console.log(&amp;#39;green&amp;#39;);&lt;br&gt;	&lt;br&gt;	setTimeout(() =&amp;gt; {&lt;br&gt;			console.log(&amp;#39;yellow&amp;#39;);&lt;br&gt;			&lt;br&gt;			setTimeout(() =&amp;gt; {&lt;br&gt;				console.log(&amp;#39;red&amp;#39;);&lt;br&gt;				&lt;br&gt;				setTimeout(color, 2000);&lt;br&gt;			}, 1000)&lt;br&gt;	}, 3000);&lt;br&gt;}&lt;br&gt;color(); [7赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 17:27:03&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;哈哈哈 这个硬核了啊……  结果倒是对的&lt;br&gt;&lt;br&gt;不试试Promise吗？ 我讲了这么多呢……&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            &#47;&#47; 比较原始的写法<br>function color () { <br>	console.log(&#39;green&#39;);<br>	<br>	setTimeout(() =&gt; {<br>			console.log(&#39;yellow&#39;);<br>			<br>			setTimeout(() =&gt; {<br>				console.log(&#39;red&#39;);<br>				<br>				setTimeout(color, 2000);<br>			}, 1000)<br>	}, 3000);<br>}<br>color(); [7赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 17:27:03</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">哈哈哈 这个硬核了啊……  结果倒是对的<br><br>不试试Promise吗？ 我讲了这么多呢……</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             许童童  2019-02-23 12:27:58
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            async function controlLoop () {&lt;br&gt;  await changeColor(&amp;#39;green&amp;#39;, 3000)&lt;br&gt;  await changeColor(&amp;#39;yellow&amp;#39;, 1000)&lt;br&gt;  await changeColor(&amp;#39;red&amp;#39;, 2000)&lt;br&gt;  await controlLoop()&lt;br&gt;}&lt;br&gt;&lt;br&gt;async function changeColor (color, time) {&lt;br&gt;  console.log(color + &amp;#39; begin&amp;#39;)&lt;br&gt;  return new Promise((resolve) =&amp;gt; {&lt;br&gt;    setTimeout(() =&amp;gt; {&lt;br&gt;      console.log(color + &amp;#39; end&amp;#39;)&lt;br&gt;      resolve()&lt;br&gt;    }, time)&lt;br&gt;  })&lt;br&gt;}&lt;br&gt;&lt;br&gt;controlLoop() [4赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:27:09&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;你这个有点问题，执行多了可能爆栈，改改试试？&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            async function controlLoop () {<br>  await changeColor(&#39;green&#39;, 3000)<br>  await changeColor(&#39;yellow&#39;, 1000)<br>  await changeColor(&#39;red&#39;, 2000)<br>  await controlLoop()<br>}<br><br>async function changeColor (color, time) {<br>  console.log(color + &#39; begin&#39;)<br>  return new Promise((resolve) =&gt; {<br>    setTimeout(() =&gt; {<br>      console.log(color + &#39; end&#39;)<br>      resolve()<br>    }, time)<br>  })<br>}<br><br>controlLoop() [4赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:27:09</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">你这个有点问题，执行多了可能爆栈，改改试试？</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             许吉中  2019-02-24 13:18:24
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            async&amp;#47;await函数属于宏观还是微观？ [3赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:34:15&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;它产生Promise，当然是微观任务了&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            async&#47;await函数属于宏观还是微观？ [3赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:34:15</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">它产生Promise，当然是微观任务了</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             NeverEver  2019-02-23 00:57:54
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             我想到的方法是用Recursion。写一个函数setColor，需要一个参数color，函数里首先把div的backgroundColor设置color，然后用setTimeout来设置下一个颜色，根据传入的color相应更改时间和颜色即可 [3赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:22:14&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;代码写写看呀。 动手是收获最大的。&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:22:14</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">代码写写看呀。 动手是收获最大的。</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             oillie  2019-03-02 19:12:44
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             一个宏任务包含一个微任务队列？还是一个event loop里只有一个微任务队列，虽然不影响实际效果，但还是想确认下.. [2赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Geek_e21f0d  2019-02-26 22:20:39
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            let lightStates = [{&lt;br&gt;        color: &amp;#39;green&amp;#39;,&lt;br&gt;        duration: 3000&lt;br&gt;    },&lt;br&gt;    {&lt;br&gt;        color: &amp;#39;yellow&amp;#39;,&lt;br&gt;        duration: 1000&lt;br&gt;    },&lt;br&gt;    {&lt;br&gt;        color: &amp;#39;red&amp;#39;,&lt;br&gt;        duration: 2000&lt;br&gt;    }];&lt;br&gt;    let setLightColorAndVisibleDuration = function(color, duration) {&lt;br&gt;        &amp;#47;&amp;#47;set light color&lt;br&gt;        return new Promise((resolve) =&amp;gt; {&lt;br&gt;            setTimeout(() =&amp;gt; {&lt;br&gt;                resolve();&lt;br&gt;            }, duration);&lt;br&gt;        });&lt;br&gt;    }&lt;br&gt;    let startShowLight = async function() {&lt;br&gt;        let index = 0;&lt;br&gt;        while(index &amp;lt;= lightStates.length - 1) {&lt;br&gt;            let nextState = lightStates[index];&lt;br&gt;            await setLightColorAndVisibleDuration(nextState.color, nextState.duration);&lt;br&gt;            index++;&lt;br&gt;        }&lt;br&gt;        &lt;br&gt;    };&lt;br&gt;    startShowLight(); [2赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 17:28:02&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;封装不是越复杂越好，太复杂了还不如直接setTimeout了&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            let lightStates = [{<br>        color: &#39;green&#39;,<br>        duration: 3000<br>    },<br>    {<br>        color: &#39;yellow&#39;,<br>        duration: 1000<br>    },<br>    {<br>        color: &#39;red&#39;,<br>        duration: 2000<br>    }];<br>    let setLightColorAndVisibleDuration = function(color, duration) {<br>        &#47;&#47;set light color<br>        return new Promise((resolve) =&gt; {<br>            setTimeout(() =&gt; {<br>                resolve();<br>            }, duration);<br>        });<br>    }<br>    let startShowLight = async function() {<br>        let index = 0;<br>        while(index &lt;= lightStates.length - 1) {<br>            let nextState = lightStates[index];<br>            await setLightColorAndVisibleDuration(nextState.color, nextState.duration);<br>            index++;<br>        }<br>        <br>    };<br>    startShowLight(); [2赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 17:28:02</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">封装不是越复杂越好，太复杂了还不如直接setTimeout了</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             王玄  2019-04-11 17:40:10
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-                    function changeColor() {&lt;br&gt;            console.time();&lt;br&gt;            const timer1 = setTimeout(function () {&lt;br&gt;                clearTimeout(timer1);&lt;br&gt;                console.timeEnd();&lt;br&gt;                console.log(&amp;#39;green&amp;#39;);&lt;br&gt;&lt;br&gt;                console.time();&lt;br&gt;                const timer2 = setTimeout(function () {&lt;br&gt;                    clearTimeout(timer2);&lt;br&gt;                    console.timeEnd();&lt;br&gt;                    console.log(&amp;#39;yellow&amp;#39;);&lt;br&gt;                    console.time();&lt;br&gt;                    const timer3 = setTimeout(function () {&lt;br&gt;                        clearTimeout(timer3);&lt;br&gt;                        console.timeEnd();&lt;br&gt;                        console.log(&amp;#39;red&amp;#39;);&lt;br&gt;                        console.time();&lt;br&gt;                        const timer4 = setTimeout(function () {&lt;br&gt;                            clearTimeout(timer4);&lt;br&gt;                            console.timeEnd();&lt;br&gt;                        }, 1000);&lt;br&gt;                    }, 2000);&lt;br&gt;                }, 3000);&lt;br&gt;            }, 0);&lt;br&gt;        } [1赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+                    function changeColor() {<br>            console.time();<br>            const timer1 = setTimeout(function () {<br>                clearTimeout(timer1);<br>                console.timeEnd();<br>                console.log(&#39;green&#39;);<br><br>                console.time();<br>                const timer2 = setTimeout(function () {<br>                    clearTimeout(timer2);<br>                    console.timeEnd();<br>                    console.log(&#39;yellow&#39;);<br>                    console.time();<br>                    const timer3 = setTimeout(function () {<br>                        clearTimeout(timer3);<br>                        console.timeEnd();<br>                        console.log(&#39;red&#39;);<br>                        console.time();<br>                        const timer4 = setTimeout(function () {<br>                            clearTimeout(timer4);<br>                            console.timeEnd();<br>                        }, 1000);<br>                    }, 2000);<br>                }, 3000);<br>            }, 0);<br>        } [1赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             拒绝第十七次🤤  2019-04-10 21:32:57
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-                let sleep = (color,deep)=&amp;gt;{&lt;br&gt;      return new Promise(reslove=&amp;gt;{&lt;br&gt;        setTimeout(()=&amp;gt;reslove(color) ,deep)&lt;br&gt;      })&lt;br&gt;    }&lt;br&gt;    async function  changColor (color){&lt;br&gt;      await sleep (&amp;#39;green&amp;#39;,3000),&lt;br&gt;      await sleep (&amp;#39;yellow&amp;#39;,1000)&lt;br&gt;      await sleep (&amp;#39;red&amp;#39;,2000)&lt;br&gt;    }&lt;br&gt;    changColor(); [1赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+                let sleep = (color,deep)=&gt;{<br>      return new Promise(reslove=&gt;{<br>        setTimeout(()=&gt;reslove(color) ,deep)<br>      })<br>    }<br>    async function  changColor (color){<br>      await sleep (&#39;green&#39;,3000),<br>      await sleep (&#39;yellow&#39;,1000)<br>      await sleep (&#39;red&#39;,2000)<br>    }<br>    changColor(); [1赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             帅气小熊猫  2019-03-22 08:37:37
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             怎么确定这个微任务属于一个宏任务呢，js主线程跑下来，遇到setTImeout会放到异步队列宏任务中，那下面的遇到的promise怎么判断出它是属于这个宏任务呢？是不是只有这个宏任务没有从异步队列中取出，中间所碰到的所有微任务都属于这个宏任务？ [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             sura  2019-03-04 16:00:32
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            关于async await 推荐看这个 https:&amp;#47;&amp;#47;segmentfault.com&amp;#47;q&amp;#47;1010000016147496 [1赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            关于async await 推荐看这个 https:&#47;&#47;segmentfault.com&#47;q&#47;1010000016147496 [1赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             周序猿  2019-02-26 14:13:03
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            &amp;#47;&amp;#47; 另类的写法&lt;br&gt; var lightDiv = document.getElementById(&amp;#39;light&amp;#39;)&lt;br&gt;    function wait(seconds){&lt;br&gt;      return new Promise((resolve)=&amp;gt;{&lt;br&gt;        setTimeout(resolve,seconds)&lt;br&gt;      })&lt;br&gt;    }&lt;br&gt;&lt;br&gt;    function light(color, waitTime){&lt;br&gt;      this.color = color&lt;br&gt;      this.waitTime = waitTime&lt;br&gt;    }&lt;br&gt;    light.prototype.run = function(){&lt;br&gt;      lightDiv.style.backgroundColor = this.color&lt;br&gt;      return wait(this.waitTime).then(()=&amp;gt;{&lt;br&gt;        return this.nextLight.run()&lt;br&gt;      })&lt;br&gt;    }&lt;br&gt;&lt;br&gt;    let redLight = new light(&amp;#39;red&amp;#39;,2000)&lt;br&gt;    let yellowLight = new light(&amp;#39;yellow&amp;#39;,1000)&lt;br&gt;    let greenLight = new light(&amp;#39;green&amp;#39;,3000)&lt;br&gt;&lt;br&gt;    redLight.nextLight = greenLight&lt;br&gt;    yellowLight.nextLight = redLight&lt;br&gt;    greenLight.nextLight = yellowLight&lt;br&gt;&lt;br&gt;    redLight.run() [1赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 17:21:57&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;额 这个结果是对的 不过封装成这样 合适吗？&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            &#47;&#47; 另类的写法<br> var lightDiv = document.getElementById(&#39;light&#39;)<br>    function wait(seconds){<br>      return new Promise((resolve)=&gt;{<br>        setTimeout(resolve,seconds)<br>      })<br>    }<br><br>    function light(color, waitTime){<br>      this.color = color<br>      this.waitTime = waitTime<br>    }<br>    light.prototype.run = function(){<br>      lightDiv.style.backgroundColor = this.color<br>      return wait(this.waitTime).then(()=&gt;{<br>        return this.nextLight.run()<br>      })<br>    }<br><br>    let redLight = new light(&#39;red&#39;,2000)<br>    let yellowLight = new light(&#39;yellow&#39;,1000)<br>    let greenLight = new light(&#39;green&#39;,3000)<br><br>    redLight.nextLight = greenLight<br>    yellowLight.nextLight = redLight<br>    greenLight.nextLight = yellowLight<br><br>    redLight.run() [1赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 17:21:57</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">额 这个结果是对的 不过封装成这样 合适吗？</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Jurieo  2019-02-26 14:07:48
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             哈哈，我自己思考的执行顺序是 同步-异步-回调，成功正确输出了老师你上面的各个代码的答案。 [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             clannad-  2019-02-25 10:37:00
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-              const box = document.querySelector(&amp;#39;.box&amp;#39;);&lt;br&gt;  const oSpan = box.getElementsByTagName(&amp;#39;span&amp;#39;)[0];&lt;br&gt;  const arr = [&amp;#39;green&amp;#39;,&amp;#39;yellow&amp;#39;,&amp;#39;red&amp;#39;];&lt;br&gt;  oSpan.style.backgroundColor = arr[0];&lt;br&gt;&lt;br&gt;  function changeColor (num,time){&lt;br&gt;    oSpan.style.backgroundColor = arr[num];&lt;br&gt;    return new Promise((resolve,reject) =&amp;gt; {&lt;br&gt;      setTimeout(resolve,time )&lt;br&gt;    })&lt;br&gt;  }&lt;br&gt;  async function eventFn(){&lt;br&gt;      await changeColor(0,3*1000)&lt;br&gt;      await changeColor(1,1*1000)&lt;br&gt;      await changeColor(2,2*1000)&lt;br&gt;      eventFn()&lt;br&gt;  }&lt;br&gt;  eventFn() [1赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+              const box = document.querySelector(&#39;.box&#39;);<br>  const oSpan = box.getElementsByTagName(&#39;span&#39;)[0];<br>  const arr = [&#39;green&#39;,&#39;yellow&#39;,&#39;red&#39;];<br>  oSpan.style.backgroundColor = arr[0];<br><br>  function changeColor (num,time){<br>    oSpan.style.backgroundColor = arr[num];<br>    return new Promise((resolve,reject) =&gt; {<br>      setTimeout(resolve,time )<br>    })<br>  }<br>  async function eventFn(){<br>      await changeColor(0,3*1000)<br>      await changeColor(1,1*1000)<br>      await changeColor(2,2*1000)<br>      eventFn()<br>  }<br>  eventFn() [1赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             达达  2019-02-24 20:53:48
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             终于知道为什么要有宏任务和微任务得区分了 [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             不曾潇洒  2019-02-23 12:47:56
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            老师你好，看了这篇文章后受益匪浅，有个小问题:&lt;br&gt;在Promise段的最后一个例子中，最后一句代码:&lt;br&gt;sleep(5000).then(()=&amp;gt;{console.log(&amp;#39;c&amp;#39;)})，&lt;br&gt;这里面的打印c是属于第一个宏任务还是属于setTime产生的第二个宏任务呢? [1赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:28:58&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;属于第二个宏任务，因为它在setTimeout之后执行。&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            老师你好，看了这篇文章后受益匪浅，有个小问题:<br>在Promise段的最后一个例子中，最后一句代码:<br>sleep(5000).then(()=&gt;{console.log(&#39;c&#39;)})，<br>这里面的打印c是属于第一个宏任务还是属于setTime产生的第二个宏任务呢? [1赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:28:58</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">属于第二个宏任务，因为它在setTimeout之后执行。</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             阿成  2019-02-23 07:49:22
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            略简陋...&lt;br&gt;&amp;#47;&amp;#47; sleep,green,red,yellow already defined&lt;br&gt;async function main () {&lt;br&gt;  while (true) {&lt;br&gt;    green()&lt;br&gt;    await sleep(3)&lt;br&gt;    yellow ()&lt;br&gt;    await sleep (1)&lt;br&gt;    red()&lt;br&gt;    await sleep(2)&lt;br&gt;  }&lt;br&gt;}&lt;br&gt;main() [1赞]
-        &lt;/div&gt;
-        &lt;br/&gt;
-&lt;div&gt;
-    &lt;div style=&quot;color:#888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;作者回复2019-03-01 15:23:05&lt;/div&gt;
-    &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;嘿 这是借用了我的Sleep吗&lt;br&gt;&lt;br&gt;不过我的sleep里单位可是毫秒啊……&lt;/div&gt;
-&lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            略简陋...<br>&#47;&#47; sleep,green,red,yellow already defined<br>async function main () {<br>  while (true) {<br>    green()<br>    await sleep(3)<br>    yellow ()<br>    await sleep (1)<br>    red()<br>    await sleep(2)<br>  }<br>}<br>main() [1赞]
+        </div>
+        <br/>
+<div>
+    <div style="color:#888;font-size:15.25px;font-weight:400;line-height:1.2">作者回复2019-03-01 15:23:05</div>
+    <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">嘿 这是借用了我的Sleep吗<br><br>不过我的sleep里单位可是毫秒啊……</div>
+</div>
             
-    &lt;/div&gt;
-&lt;/li&gt;
-            &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <div id="mask" class="mask" style="display:none;"></div>
-    <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
-            <center>
-                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
-                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
-                    <input name="timestamp" type="hidden" value="">
-                    <input type="submit" value="登录">
-                </form>
-            </center>
-        </div>
-    </div>
-    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:00 星期四 124.232.146.132 Runningtime:0.561s Mem:1.43 MB</div>
-
-    <div style="position: fixed;right: 10px;bottom: 10px;">
-        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
-            <option value="">主题</option>
-            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
-            <option value="apache.html">apache.html</option>
-            <option value="classic.html" selected="selected">classic.html</option>
-            <option value="iis.html">iis.html</option>
-            <option value="nchyn_grey.html">nchyn_grey.html</option>
-            <option value="nexmoe1.html">nexmoe1.html</option>
-            <option value="nexmoe2.html">nexmoe2.html</option>
-            <option value="nginx.html">nginx.html</option>
-            <option value="onemoe.html">onemoe.html</option>
-            <option value="purecool.html">purecool.html</option>
-            <option value="renexmoe.html">renexmoe.html</option>
-            <option value="tfo.html">tfo.html</option>
-        </select>
-    </div>
+</li>
+            </ul>
+</div>
 </body>
-<script type="text/javascript">
-    function changetheme(str)
-    {
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='theme='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-</script>
-<script type="text/javascript">
-    function changelanguage(str)
-    {
-        if (str=='Language') str = '';
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='language='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-    function login() {
-        document.getElementById('mask').style.display='';
-            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
-        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
-        document.getElementById('login_div').style.display='';
-        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
-        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
-        document.getElementById('login_input').focus();
-    }
-    function sha1loginpass(f) {
-        if (f.password1.value=="") return false;
-        try {
-            timestamp = new Date().getTime() + "";
-            timestamp = timestamp.substr(0, timestamp.length-3);
-            f.timestamp.value = timestamp;
-            f.password1.value = sha1(timestamp + "" + f.password1.value);
-            return true;
-        } catch {
-            alert("sha1.js not loaded.");
-            return false;
-        }
-    }
-    var $url = document.getElementById('url');
-    if ($url) {
-        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
-        $url.style.height = $url.scrollHeight + 'px';
-    }
-    var $textarea=document.getElementById('txt-a');
-    if ($textarea) {
-        $textarea.style.height = $textarea.scrollHeight + 'px';
-    }
-    function CopyAllDownloadUrl(str) {
-        var tmptextarea=document.createElement('textarea');
-        document.body.appendChild(tmptextarea);
-        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
-        document.querySelectorAll(str).forEach(function (e) {
-            tmptextarea.innerHTML+=e.href+"\r\n";
-        });
-        tmptextarea.select();
-        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
-        document.execCommand("copy");
-        alert(tmptextarea.innerHTML+"成功");
-    }
-    function operatediv_close(operate) {
-        document.getElementById(operate+'_div').style.display='none';
-        document.getElementById('mask').style.display='none';
-    }
-</script>
-<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
-<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
 </html>

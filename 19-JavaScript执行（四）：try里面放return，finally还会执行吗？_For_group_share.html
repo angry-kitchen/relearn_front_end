@@ -1,98 +1,9 @@
-
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>19-JavaScript执行（四）：try里面放return，finally还会执行吗？_For_group_share.html - OneManager</title>
-<!--
-    OneManager: An index & manager of Onedrive auth by ysun.
-    Github: https://github.com/qkqpttgf/OneManager-php
--->
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="19-JavaScript执行（四）：try里面放return，finally还会执行吗？_For_group_share.html, html, OneManager">
-    <meta name="description" content="19-JavaScript执行（四）：try里面放return，finally还会执行吗？_For_group_share.html, 预览">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <style type="text/css">
-        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#f7f7f9;}
-        a{color:#24292e;cursor:pointer;text-decoration:none}
-        ion-icon{font-size:15px;vertical-align:bottom}
-        .changelanguage{position:absolute;right:5px;}
-        .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
-        .title a{color:#333;text-decoration:none}
-        .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(128,128,128);border-radius:15px;}
-        .list-container{position:relative;overflow:hidden;border-radius:15px;}
-        .list-header-container{position:relative}
-        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
-        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
-        .table-header{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);word-break: break-all;word-wrap: break-word;}
-        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(245,245,245,0.5)}
-        .more-disk{margin:0;border:0 none;padding:30px 30px;text-align:left;font-weight:400;color:#000;background-color:rgba(245,245,245,0.5);white-space:nowrap;overflow:auto;}
-        .more-disk a{margin:0 10px;padding:5px;transition-duration: 0.4s;border-radius: 12px; background-color: white; color: black; border: 2px solid rgba(85,85,85,0.7); }
-        .more-disk a:hover, .more-disk a[now]{ background-color: rgba(85,85,85,0.7); color: white; }
-        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
-        .list-table tr{height:40px}
-        .list-table tr[data-to]:hover{background:rgba(85,85,85,0.7);color:white;}
-        .list-table tr[data-to]:hover a{color:white}
-        .list-table tr:first-child{background:rgba(245,245,245,0)}
-        .list-table td,.list-table th{padding:0 10px;text-align:left}
-        .list-table .size,.list-table .updated_at{text-align:right}
-        .updated_at{width:25%}
-        .size{width:15%}
-        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
-        .operatediv{position:absolute;border:1px #CCCCCC;background-color:#FFFFCC;z-index:2;}
-        .operatediv div{margin:16px}
-        .operatediv_close{position:absolute;right:3px;top:3px;}
-        .readme{padding:8px;background-color:rgba(245,245,245,0.5);}
-        .markdown-body, .customfile{padding:20px;text-align:left}
-        @media only screen and (max-width:480px){
-            .title{margin-bottom:24px}
-            .list-wrapper{width:95%; margin-bottom:24px;}
-            .list-table {padding:8px}
-            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
-            .size, .updated_at{display:none}
-        }
-    </style>
-    
-</head>
-<body>
-    <div style="padding:1px" id="top-div">
-        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon>登录</a>
-        &nbsp;
-        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
-            <option value="">Language</option>
-                <option value="en-us" >English</option>
-                <option value="zh-tw" >繁體中文</option>
-                <option value="zh-cn" selected="selected">简体中文</option>
-                <option value="ja" >日本語</option>
-                <option value="ko-kr" >한국어</option>
-                <option value="fa" >فارسی</option>
-                <option value="ar-sa" >السعودية</option>
-        </select>
-    </div>
-    <h1 class="title" id="title">
-        <a href="/">OneManager</a>
-    </h1>
-    <div class="list-wrapper" id="list-div">
-        <div class="list-container">
-            <div class="list-header-container">
-                <h3 class="table-header"><a href="/">首页</a> / <a href="/jike/">jike</a> / <a href="/jike/极客时间已完结/">极客时间已完结</a> / <a href="/jike/极客时间已完结/58 重学前端/">58 重学前端</a> / <a href="/jike/极客时间已完结/58 重学前端/html/">html</a> / <a href="">19-JavaScript执行（四）：try里面放return，finally还会执行吗？_For_group_share.html</a></h3>
-            </div>
-            <div class="list-body-container">
-                <div style="margin: 12px 4px 4px; text-align: center">
-                    <div style="margin: 24px">
-                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly>/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/19-JavaScript%E6%89%A7%E8%A1%8C%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9Atry%E9%87%8C%E9%9D%A2%E6%94%BEreturn%EF%BC%8Cfinally%E8%BF%98%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F_For_group_share.html</textarea>
-                        <a href="/jike/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%B7%B2%E5%AE%8C%E7%BB%93/58%20%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF/html/19-JavaScript%E6%89%A7%E8%A1%8C%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9Atry%E9%87%8C%E9%9D%A2%E6%94%BEreturn%EF%BC%8Cfinally%E8%BF%98%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F_For_group_share.html"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;下载</a>
-                    </div>
-                    <div style="margin: 24px">
-                        <div id="txt">
-                            <textarea id="txt-a" name="editfile" readonly style="width: 100%; margin-top: 2px;"  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-    &lt;title&gt;19-JavaScript执行（四）：try里面放return，finally还会执行吗？&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
-        &lt;style&gt;
+    <title>19-JavaScript执行（四）：try里面放return，finally还会执行吗？</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
         html {
             color: #333;
             -webkit-text-size-adjust: 100%;
@@ -226,7 +137,7 @@
         }
         q:after,
         q:before {
-            content: &quot;&quot;
+            content: ""
         }
         sub,
         sup {
@@ -306,7 +217,7 @@
         }
         .clearfix:after,
         .clearfix:before {
-            content: &quot;&quot;;
+            content: "";
             display: table
         }
         .clearfix:after {
@@ -460,7 +371,7 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            content: &quot;\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB&quot;
+            content: "\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB"
         }
         .typo img {
             max-width: 100%
@@ -687,7 +598,7 @@
             overflow-x: scroll
         }
         ._29HP61GA_0 pre code:after {
-            content: &quot;&quot;;
+            content: "";
             height: 30px;
             width: 100%;
             display: block
@@ -769,7 +680,7 @@
             margin-bottom: 10px
         }
         ._29HP61GA_0 ul li:after {
-            content: &quot;&quot;;
+            content: "";
             height: 6px;
             width: 6px;
             border-radius: 50%;
@@ -841,21 +752,21 @@
             word-wrap: normal;
             white-space: pre
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;_29HP61GA_0&quot;&gt;
-&lt;h1&gt;19-JavaScript执行（四）：try里面放return，finally还会执行吗？&lt;/h1&gt;
-&lt;p&gt;你好，我是winter。&lt;/p&gt;&lt;p&gt;在前面几篇文章中，我们已经了解了关于执行上下文、作用域、闭包之间的关系。&lt;/p&gt;&lt;p&gt;今天，我们则要说一说更为细节的部分：语句。&lt;/p&gt;&lt;p&gt;语句是任何编程语言的基础结构，与JavaScript对象一样，JavaScript语句同样具有“看起来很像其它语言，但是其实一点都不一样”的特点。&lt;/p&gt;&lt;p&gt;我们比较常见的语句包括变量声明、表达式、条件、循环等，这些都是大家非常熟悉的东西，对于它们的行为，我在这里就不赘述了。&lt;/p&gt;&lt;p&gt;为了了解JavaScript语句有哪些特别之处，首先我们要看一个不太常见的例子，我会通过这个例子，来向你介绍JavaScript语句执行机制涉及的一种基础类型：Completion类型。&lt;/p&gt;&lt;h2&gt;Completion类型&lt;/h2&gt;&lt;p&gt;我们来看一个例子。在函数foo中，使用了一组try语句。我们可以先来做一个小实验，在try中有return语句，finally中的内容还会执行吗？我们来看一段代码。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;function foo(){
+    </style>
+</head>
+<body>
+<div class="_29HP61GA_0">
+<h1>19-JavaScript执行（四）：try里面放return，finally还会执行吗？</h1>
+<p>你好，我是winter。</p><p>在前面几篇文章中，我们已经了解了关于执行上下文、作用域、闭包之间的关系。</p><p>今天，我们则要说一说更为细节的部分：语句。</p><p>语句是任何编程语言的基础结构，与JavaScript对象一样，JavaScript语句同样具有“看起来很像其它语言，但是其实一点都不一样”的特点。</p><p>我们比较常见的语句包括变量声明、表达式、条件、循环等，这些都是大家非常熟悉的东西，对于它们的行为，我在这里就不赘述了。</p><p>为了了解JavaScript语句有哪些特别之处，首先我们要看一个不太常见的例子，我会通过这个例子，来向你介绍JavaScript语句执行机制涉及的一种基础类型：Completion类型。</p><h2>Completion类型</h2><p>我们来看一个例子。在函数foo中，使用了一组try语句。我们可以先来做一个小实验，在try中有return语句，finally中的内容还会执行吗？我们来看一段代码。</p><pre><code>function foo(){
   try{
     return 0;
   } catch(err) {
   } finally {
-    console.log(&amp;quot;a&amp;quot;)
+    console.log(&quot;a&quot;)
   }
 }
 console.log(foo());
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过实际试验，我们可以看到，finally确实执行了，而且return语句也生效了，foo()返回了结果0。&lt;/p&gt;&lt;p&gt;虽然return执行了，但是函数并没有立即返回，又执行了finally里面的内容，这样的行为违背了很多人的直觉。&lt;/p&gt;&lt;!-- [[[read_end]]] --&gt;&lt;p&gt;如果在这个例子中，我们在finally中加入return语句，会发生什么呢？&lt;/p&gt;&lt;pre&gt;&lt;code&gt;function foo(){
+</code></pre><p>通过实际试验，我们可以看到，finally确实执行了，而且return语句也生效了，foo()返回了结果0。</p><p>虽然return执行了，但是函数并没有立即返回，又执行了finally里面的内容，这样的行为违背了很多人的直觉。</p><!-- [[[read_end]]] --><p>如果在这个例子中，我们在finally中加入return语句，会发生什么呢？</p><pre><code>function foo(){
   try{
     return 0;
   } catch(err) {
@@ -864,413 +775,303 @@ console.log(foo());
   }
 }
 console.log(foo());
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过实际执行，我们看到，finally中的return “覆盖”了try中的return。在一个函数中执行了两次return，这已经超出了很多人的常识，也是其它语言中不会出现的一种行为。&lt;/p&gt;&lt;p&gt;面对如此怪异的行为，我们当然可以把它作为一个孤立的知识去记忆，但是实际上，这背后有一套机制在运作。&lt;/p&gt;&lt;p&gt;这一机制的基础正是JavaScript语句执行的完成状态，我们用一个标准类型来表示：Completion Record（我在类型一节提到过，Completion Record用于描述异常、跳出等语句执行过程）。&lt;/p&gt;&lt;p&gt;Completion Record 表示一个语句执行完之后的结果，它有三个字段：&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;[[type]] 表示完成的类型，有break continue return throw和normal几种类型；&lt;/li&gt;
-&lt;li&gt;[[value]] 表示语句的返回值，如果语句没有，则是empty；&lt;/li&gt;
-&lt;li&gt;[[target]] 表示语句的目标，通常是一个JavaScript标签（标签在后文会有介绍）。&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;JavaScript正是依靠语句的 Completion Record类型，方才可以在语句的复杂嵌套结构中，实现各种控制。接下来我们要来了解一下JavaScript使用Completion Record类型，控制语句执行的过程。&lt;/p&gt;&lt;p&gt;首先我们来看看语句有几种分类。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/98/d5/98ce53be306344c018cddd6c083392d5.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;普通的语句&lt;/h2&gt;&lt;p&gt;在JavaScript中，我们把不带控制能力的语句称为普通语句。普通语句有下面几种。&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;声明类语句
-&lt;ul&gt;
-&lt;li&gt;var声明&lt;/li&gt;
-&lt;li&gt;const声明&lt;/li&gt;
-&lt;li&gt;let声明&lt;/li&gt;
-&lt;li&gt;函数声明&lt;/li&gt;
-&lt;li&gt;类声明&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;表达式语句&lt;/li&gt;
-&lt;li&gt;空语句&lt;/li&gt;
-&lt;li&gt;debugger语句&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;这些语句在执行时，从前到后顺次执行（我们这里先忽略var和函数声明的预处理机制），没有任何分支或者重复执行逻辑。&lt;/p&gt;&lt;p&gt;普通语句执行后，会得到 [[type]] 为 normal 的 Completion Record，JavaScript引擎遇到这样的Completion Record，会继续执行下一条语句。&lt;/p&gt;&lt;p&gt;这些语句中，只有表达式语句会产生 [[value]]，当然，从引擎控制的角度，这个value并没有什么用处。&lt;/p&gt;&lt;p&gt;如果你经常使用chrome自带的调试工具，可以知道，输入一个表达式，在控制台可以得到结果，但是在前面加上var，就变成了undefined。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/a3/67/a35801b1b82654d17e413e51b340d767.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;Chrome控制台显示的正是语句的Completion Record的[[value]]。&lt;/p&gt;&lt;h2&gt;语句块&lt;/h2&gt;&lt;p&gt;介绍完了普通语句，我们再来介绍一个比较特殊的语句：语句块。&lt;/p&gt;&lt;p&gt;语句块就是拿大括号括起来的一组语句，它是一种语句的复合结构，可以嵌套。&lt;/p&gt;&lt;p&gt;语句块本身并不复杂，我们需要注意的是语句块内部的语句的Completion Record的[[type]] 如果不为 normal，会打断语句块后续的语句执行。&lt;/p&gt;&lt;p&gt;比如我们考虑，一个[[type]]为return的语句，出现在一个语句块中的情况。&lt;/p&gt;&lt;p&gt;从语句的这个type中，我们大概可以猜到它由哪些特定语句产生，我们就来说说最开始的例子中的 return。&lt;/p&gt;&lt;p&gt;return语句可能产生return或者throw类型的Completion Record。我们来看一个例子。&lt;/p&gt;&lt;p&gt;先给出一个内部为普通语句的语句块：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;{
+</code></pre><p>通过实际执行，我们看到，finally中的return “覆盖”了try中的return。在一个函数中执行了两次return，这已经超出了很多人的常识，也是其它语言中不会出现的一种行为。</p><p>面对如此怪异的行为，我们当然可以把它作为一个孤立的知识去记忆，但是实际上，这背后有一套机制在运作。</p><p>这一机制的基础正是JavaScript语句执行的完成状态，我们用一个标准类型来表示：Completion Record（我在类型一节提到过，Completion Record用于描述异常、跳出等语句执行过程）。</p><p>Completion Record 表示一个语句执行完之后的结果，它有三个字段：</p><ul>
+<li>[[type]] 表示完成的类型，有break continue return throw和normal几种类型；</li>
+<li>[[value]] 表示语句的返回值，如果语句没有，则是empty；</li>
+<li>[[target]] 表示语句的目标，通常是一个JavaScript标签（标签在后文会有介绍）。</li>
+</ul><p>JavaScript正是依靠语句的 Completion Record类型，方才可以在语句的复杂嵌套结构中，实现各种控制。接下来我们要来了解一下JavaScript使用Completion Record类型，控制语句执行的过程。</p><p>首先我们来看看语句有几种分类。</p><p><img src="https://static001.geekbang.org/resource/image/98/d5/98ce53be306344c018cddd6c083392d5.jpg" alt=""></p><h2>普通的语句</h2><p>在JavaScript中，我们把不带控制能力的语句称为普通语句。普通语句有下面几种。</p><ul>
+<li>声明类语句
+<ul>
+<li>var声明</li>
+<li>const声明</li>
+<li>let声明</li>
+<li>函数声明</li>
+<li>类声明</li>
+</ul>
+</li>
+<li>表达式语句</li>
+<li>空语句</li>
+<li>debugger语句</li>
+</ul><p>这些语句在执行时，从前到后顺次执行（我们这里先忽略var和函数声明的预处理机制），没有任何分支或者重复执行逻辑。</p><p>普通语句执行后，会得到 [[type]] 为 normal 的 Completion Record，JavaScript引擎遇到这样的Completion Record，会继续执行下一条语句。</p><p>这些语句中，只有表达式语句会产生 [[value]]，当然，从引擎控制的角度，这个value并没有什么用处。</p><p>如果你经常使用chrome自带的调试工具，可以知道，输入一个表达式，在控制台可以得到结果，但是在前面加上var，就变成了undefined。</p><p><img src="https://static001.geekbang.org/resource/image/a3/67/a35801b1b82654d17e413e51b340d767.png" alt=""></p><p>Chrome控制台显示的正是语句的Completion Record的[[value]]。</p><h2>语句块</h2><p>介绍完了普通语句，我们再来介绍一个比较特殊的语句：语句块。</p><p>语句块就是拿大括号括起来的一组语句，它是一种语句的复合结构，可以嵌套。</p><p>语句块本身并不复杂，我们需要注意的是语句块内部的语句的Completion Record的[[type]] 如果不为 normal，会打断语句块后续的语句执行。</p><p>比如我们考虑，一个[[type]]为return的语句，出现在一个语句块中的情况。</p><p>从语句的这个type中，我们大概可以猜到它由哪些特定语句产生，我们就来说说最开始的例子中的 return。</p><p>return语句可能产生return或者throw类型的Completion Record。我们来看一个例子。</p><p>先给出一个内部为普通语句的语句块：</p><pre><code>{
   var i = 1; // normal, empty, empty
   i ++; // normal, 1, empty
   console.log(i) //normal, undefined, empty
 } // normal, undefined, empty
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在每一行的注释中，我给出了语句的Completion Record。&lt;/p&gt;&lt;p&gt;我们看到，在一个block中，如果每一个语句都是normal类型，那么它会顺次执行。接下来我们加入return试试看。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;{
+</code></pre><p>在每一行的注释中，我给出了语句的Completion Record。</p><p>我们看到，在一个block中，如果每一个语句都是normal类型，那么它会顺次执行。接下来我们加入return试试看。</p><pre><code>{
   var i = 1; // normal, empty, empty
   return i; // return, 1, empty
   i ++; 
   console.log(i)
 } // return, 1, empty
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是假如我们在block中插入了一条return语句，产生了一个非normal记录，那么整个block会成为非normal。这个结构就保证了非normal的完成类型可以穿透复杂的语句嵌套结构，产生控制效果。&lt;/p&gt;&lt;p&gt;接下来我们就具体讲讲控制类语句。&lt;/p&gt;&lt;h2&gt;控制型语句&lt;/h2&gt;&lt;p&gt;控制型语句带有 if、switch关键字，它们会对不同类型的Completion Record产生反应。&lt;/p&gt;&lt;p&gt;控制类语句分成两部分，一类是对其内部造成影响，如if、switch、while/for、try。另一类是对外部造成影响如break、continue、return、throw，这两类语句的配合，会产生控制代码执行顺序和执行逻辑的效果，这也是我们编程的主要工作。&lt;/p&gt;&lt;p&gt;一般来说， for/while - break/continue 和 try - throw 这样比较符合逻辑的组合，是大家比较熟悉的，但是，实际上，我们需要控制语句跟break 、continue 、return 、throw四种类型与控制语句两两组合产生的效果。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/77/d3/7760027d7ee09bdc8ec140efa9caf1d3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;通过这个表，我们不难发现知识的盲点，也就是我们最初的的case中的try和return的组合了。&lt;/p&gt;&lt;p&gt;因为finally中的内容必须保证执行，所以 try/catch执行完毕，即使得到的结果是非normal型的完成记录，也必须要执行finally。&lt;/p&gt;&lt;p&gt;而当finally执行也得到了非normal记录，则会使finally中的记录作为整个try结构的结果。&lt;/p&gt;&lt;h2&gt;带标签的语句&lt;/h2&gt;&lt;p&gt;前文我重点讲了type在语句控制中的作用，接下来我们重点来讲一下最后一个字段：target，这涉及了JavaScript中的一个语法，带标签的语句。&lt;/p&gt;&lt;p&gt;实际上，任何JavaScript语句是可以加标签的，在语句前加冒号即可：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    firstStatement: var i = 1;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;大部分时候，这个东西类似于注释，没有任何用处。唯一有作用的时候是：与完成记录类型中的target相配合，用于跳出多层循环。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    outer: while(true) {
+</code></pre><p>但是假如我们在block中插入了一条return语句，产生了一个非normal记录，那么整个block会成为非normal。这个结构就保证了非normal的完成类型可以穿透复杂的语句嵌套结构，产生控制效果。</p><p>接下来我们就具体讲讲控制类语句。</p><h2>控制型语句</h2><p>控制型语句带有 if、switch关键字，它们会对不同类型的Completion Record产生反应。</p><p>控制类语句分成两部分，一类是对其内部造成影响，如if、switch、while/for、try。另一类是对外部造成影响如break、continue、return、throw，这两类语句的配合，会产生控制代码执行顺序和执行逻辑的效果，这也是我们编程的主要工作。</p><p>一般来说， for/while - break/continue 和 try - throw 这样比较符合逻辑的组合，是大家比较熟悉的，但是，实际上，我们需要控制语句跟break 、continue 、return 、throw四种类型与控制语句两两组合产生的效果。</p><p><img src="https://static001.geekbang.org/resource/image/77/d3/7760027d7ee09bdc8ec140efa9caf1d3.png" alt=""></p><p>通过这个表，我们不难发现知识的盲点，也就是我们最初的的case中的try和return的组合了。</p><p>因为finally中的内容必须保证执行，所以 try/catch执行完毕，即使得到的结果是非normal型的完成记录，也必须要执行finally。</p><p>而当finally执行也得到了非normal记录，则会使finally中的记录作为整个try结构的结果。</p><h2>带标签的语句</h2><p>前文我重点讲了type在语句控制中的作用，接下来我们重点来讲一下最后一个字段：target，这涉及了JavaScript中的一个语法，带标签的语句。</p><p>实际上，任何JavaScript语句是可以加标签的，在语句前加冒号即可：</p><pre><code>    firstStatement: var i = 1;
+</code></pre><p>大部分时候，这个东西类似于注释，没有任何用处。唯一有作用的时候是：与完成记录类型中的target相配合，用于跳出多层循环。</p><pre><code>    outer: while(true) {
       inner: while(true) {
           break outer;
       }
     }
-    console.log(&amp;quot;finished&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;break/continue 语句如果后跟了关键字，会产生带target的完成记录。一旦完成记录带了target，那么只有拥有对应label的循环语句会消费它。&lt;/p&gt;&lt;h2&gt;结语&lt;/h2&gt;&lt;p&gt;我们以Completion Record类型为线索，为你讲解了JavaScript语句执行的原理。&lt;/p&gt;&lt;p&gt;因为JavaScript语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生Completion Record，根据语句的结构和Completion Record，JavaScript实现了各种分支和跳出逻辑。&lt;/p&gt;&lt;p&gt;你遇到哪些语句中的执行的实际效果，是跟你想象的有所出入呢，你可以给我留言，我们一起讨论。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;h2&gt;精选留言：&lt;/h2&gt;
-        &lt;ul&gt;
+    console.log(&quot;finished&quot;)
+</code></pre><p>break/continue 语句如果后跟了关键字，会产生带target的完成记录。一旦完成记录带了target，那么只有拥有对应label的循环语句会消费它。</p><h2>结语</h2><p>我们以Completion Record类型为线索，为你讲解了JavaScript语句执行的原理。</p><p>因为JavaScript语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生Completion Record，根据语句的结构和Completion Record，JavaScript实现了各种分支和跳出逻辑。</p><p>你遇到哪些语句中的执行的实际效果，是跟你想象的有所出入呢，你可以给我留言，我们一起讨论。</p><p><img src="https://static001.geekbang.org/resource/image/7c/b1/7ca7c24e92d25bde2e8609ed5386b5b1.jpg" alt=""></p><h2>精选留言：</h2>
+        <ul>
         
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             有铭  2019-03-02 14:41:25
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             很感兴趣这些高级特性的知识老师是从哪里学到的，我翻过js高级编程那本书都没讲到过这些 [35赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Rushan-Chen  2019-03-02 14:24:21
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             请问老师，表格中的“穿透”和“消费”是什么意思？ [25赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             AICC  2019-03-02 16:55:22
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             3楼你好，我的理解是，消费指对应的代码被有效的执行了，穿透指对应代码被跳过了，也就是对应控制的语句体被有效执行比如try catch,当try中出现了throw,能被有效捕获进而执行catch，这在我理解就是try被消费执行了，而当catch中还有throw时，由于catch不具备处理throw的能力，于是catch被中断跳出，也就是作者所说的穿透，希望能帮到你 [11赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             周小成  2019-03-12 18:27:11
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             穿透和消费，报错应该是连贯的，“穿透”就是指不在当前这一层处理，向外逐层寻找可以“消费”的那一层，直到最后都没找到就报错，比如：function里面有while, while里面有switch, switch里面又有continue，按图表来看，switch-continue应该是穿透，向上层寻找消费，碰到while-contine,那就是消费，再如switch里面是return, switch-return穿透，向上层whlie-return穿透，最后function-return是消费。 [7赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Dream.  2019-03-03 23:57:57
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            第一次看见『消费』与『穿透』这样的描述。&lt;br&gt;&lt;br&gt;这两个词的来源自哪里呢？&lt;br&gt;&lt;br&gt;结合表格中的控制语句组合使用得到的结果来看，我的理解是&lt;br&gt;&lt;br&gt;『消费』是控制语句里的内容执行完毕。&lt;br&gt;『穿透』是控制语句里的内容没能执行完，被中止了。&lt;br&gt; [5赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            第一次看见『消费』与『穿透』这样的描述。<br><br>这两个词的来源自哪里呢？<br><br>结合表格中的控制语句组合使用得到的结果来看，我的理解是<br><br>『消费』是控制语句里的内容执行完毕。<br>『穿透』是控制语句里的内容没能执行完，被中止了。<br> [5赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             火云邪神0007  2019-03-04 14:47:44
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             老师在前面讲过，穿透就是去上一层的作用域或者控制语句找可以消费break，continue的执行环境，消费就是在这一层就执行了这个break或者continue [3赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             夜空中最亮的星（华仔）  2019-03-02 20:01:26
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             老师，我昨天成功的把您的课推销出去了一份，哈哈😄高兴 [2赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             K4SHIFZ  2019-03-29 14:56:31
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             老师，请出一份ES标准解读。带着我们学一次。必买！ [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             守候  2019-03-14 17:00:37
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             学到了 [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Brigand  2019-03-04 09:02:20
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             Completion 类型是个神马鬼？ [1赞]
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             阿成  2019-03-02 13:14:57
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            涨姿势啦&lt;br&gt;不过，从来没用过label...&lt;br&gt;甚至第一次知道js里没有goto... [1赞]
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            涨姿势啦<br>不过，从来没用过label...<br>甚至第一次知道js里没有goto... [1赞]
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             加利率的钟摆  2019-04-17 15:46:48
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            ```javascript&lt;br&gt;function test(){&lt;br&gt;  if(true){&lt;br&gt;    console.log(&amp;quot;111&amp;quot;);&lt;br&gt;    break;&lt;br&gt;  }&lt;br&gt;  if(true){&lt;br&gt;    console.log(&amp;quot;222&amp;quot;);&lt;br&gt;  }&lt;br&gt;}&lt;br&gt;&lt;br&gt;test(); &amp;#47;&amp;#47; SyntaxError: Illegal break statement&lt;br&gt;```&lt;br&gt;&lt;br&gt;我们可以这么分析：&lt;br&gt;&lt;br&gt;1. if 和 break 相遇，break 穿透至 function&lt;br&gt;2. function 和 break 相遇，报错&lt;br&gt;&lt;br&gt;```javascript&lt;br&gt;function test() {&lt;br&gt;  var a = 0;&lt;br&gt;  switch (a) {&lt;br&gt;    case 0:&lt;br&gt;      if (true) {&lt;br&gt;        console.log(&amp;quot;111&amp;quot;);&lt;br&gt;        break;&lt;br&gt;      }&lt;br&gt;  }&lt;br&gt;&lt;br&gt;  if (true) {&lt;br&gt;    console.log(&amp;quot;222&amp;quot;);&lt;br&gt;  }&lt;br&gt;}&lt;br&gt;&lt;br&gt;test();&lt;br&gt;&amp;#47;&amp;#47; 111&lt;br&gt;&amp;#47;&amp;#47; 222&lt;br&gt;```&lt;br&gt;&lt;br&gt;我们可以这么分析：&lt;br&gt;&lt;br&gt;1. if 和 break 相遇，break 穿透至 switch&lt;br&gt;2. swicth 和 break 相遇，消费掉 break&lt;br&gt;3. 接着执行之后的代码 
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            ```javascript<br>function test(){<br>  if(true){<br>    console.log(&quot;111&quot;);<br>    break;<br>  }<br>  if(true){<br>    console.log(&quot;222&quot;);<br>  }<br>}<br><br>test(); &#47;&#47; SyntaxError: Illegal break statement<br>```<br><br>我们可以这么分析：<br><br>1. if 和 break 相遇，break 穿透至 function<br>2. function 和 break 相遇，报错<br><br>```javascript<br>function test() {<br>  var a = 0;<br>  switch (a) {<br>    case 0:<br>      if (true) {<br>        console.log(&quot;111&quot;);<br>        break;<br>      }<br>  }<br><br>  if (true) {<br>    console.log(&quot;222&quot;);<br>  }<br>}<br><br>test();<br>&#47;&#47; 111<br>&#47;&#47; 222<br>```<br><br>我们可以这么分析：<br><br>1. if 和 break 相遇，break 穿透至 switch<br>2. swicth 和 break 相遇，消费掉 break<br>3. 接着执行之后的代码 
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             kovar  2019-04-17 11:09:34
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            搜了一下，Completion Record好像是ES2020里面的东西，老师果然够前卫，虽然我现在还看不懂就是了https:&amp;#47;&amp;#47;tc39.github.io&amp;#47;ecma262&amp;#47;#sec-runtime-semantics 
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            搜了一下，Completion Record好像是ES2020里面的东西，老师果然够前卫，虽然我现在还看不懂就是了https:&#47;&#47;tc39.github.io&#47;ecma262&#47;#sec-runtime-semantics 
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Jacky  2019-04-16 10:21:50
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             try finally 那个跟Java不是一样的吗 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             张驰Terry  2019-04-02 19:18:54
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             这个章节的知识令人茅塞顿开 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             Marvin  2019-04-02 09:04:07
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             太强了，太强了，越看发现自己越弱鸡～ 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             靠人品去赢  2019-03-20 11:24:57
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
-            这个把completion称作一个类型，感觉有点怪，首先这个不是我们自己去定义的，这个是因为我们执行语句都会有这个东西。小白看到这个“类型”会往前找，发现没这个类型，之前掌握的的语言系统也没有相关的类型，结果就是“我擦，这是啥，ES6的新特性吗？”。关于这个，这是我在MDN上找的相关资料，希望大家指点一下（看run-to-completion这部分）https:&amp;#47;&amp;#47;developer.mozilla.org&amp;#47;en-US&amp;#47;docs&amp;#47;Web&amp;#47;JavaScript&amp;#47;EventLoop&lt;br&gt; 
-        &lt;/div&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
+            这个把completion称作一个类型，感觉有点怪，首先这个不是我们自己去定义的，这个是因为我们执行语句都会有这个东西。小白看到这个“类型”会往前找，发现没这个类型，之前掌握的的语言系统也没有相关的类型，结果就是“我擦，这是啥，ES6的新特性吗？”。关于这个，这是我在MDN上找的相关资料，希望大家指点一下（看run-to-completion这部分）https:&#47;&#47;developer.mozilla.org&#47;en-US&#47;docs&#47;Web&#47;JavaScript&#47;EventLoop<br> 
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             zyg  2019-03-14 01:15:16
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             这种设计是不是很不合理呢增加了复杂度～ 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             [已重置]  2019-03-07 14:19:23
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             哇实际代码中遇到过类似的问题，从没想过原来还有这种类似于c中label和goto的用法，都是加标志位两次break解决的。 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
+    </div>
+</li>
             
-&lt;br/&gt;
-&lt;li&gt;
-    &lt;div&gt;
-        &lt;div style=&quot;color: #888;font-size:15.25px;font-weight:400;line-height:1.2&quot;&gt;
+<br/>
+<li>
+    <div>
+        <div style="color: #888;font-size:15.25px;font-weight:400;line-height:1.2">
             梦在路上的人  2019-03-04 22:20:51
-        &lt;/div&gt;
-        &lt;div style=&quot;color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6&quot;&gt;
+        </div>
+        <div style="color:#353535;font-weight:400;white-space:normal;word-break:break-all;line-height:1.6">
             真的是长见识了，学到了好多高级名词。 
-        &lt;/div&gt;
+        </div>
         
-    &lt;/div&gt;
-&lt;/li&gt;
-            &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <div id="mask" class="mask" style="display:none;"></div>
-    <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close">关闭</a>
-            <center>
-                <form action="?preview&admin" method="post" onsubmit="return sha1loginpass(this);">
-                    <input id="login_input" name="password1" type="password" placeholder="输入密码">
-                    <input name="timestamp" type="hidden" value="">
-                    <input type="submit" value="登录">
-                </form>
-            </center>
-        </div>
-    </div>
-    <div style="color: rgba(247,247,249,0);">2021-06-03 11:16:08 星期四 124.232.146.132 Runningtime:0.494s Mem:1.41 MB</div>
-
-    <div style="position: fixed;right: 10px;bottom: 10px;">
-        <select name="theme" onchange="changetheme(this.options[this.options.selectedIndex].value)">
-            <option value="">主题</option>
-            <option value="Onedrive-dev.html">Onedrive-dev.html</option>
-            <option value="apache.html">apache.html</option>
-            <option value="classic.html" selected="selected">classic.html</option>
-            <option value="iis.html">iis.html</option>
-            <option value="nchyn_grey.html">nchyn_grey.html</option>
-            <option value="nexmoe1.html">nexmoe1.html</option>
-            <option value="nexmoe2.html">nexmoe2.html</option>
-            <option value="nginx.html">nginx.html</option>
-            <option value="onemoe.html">onemoe.html</option>
-            <option value="purecool.html">purecool.html</option>
-            <option value="renexmoe.html">renexmoe.html</option>
-            <option value="tfo.html">tfo.html</option>
-        </select>
-    </div>
+</li>
+            </ul>
+</div>
 </body>
-<script type="text/javascript">
-    function changetheme(str)
-    {
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='theme='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-</script>
-<script type="text/javascript">
-    function changelanguage(str)
-    {
-        if (str=='Language') str = '';
-        var expd = new Date();
-        expd.setTime(expd.getTime()+(2*60*60*1000));
-        var expires = "expires="+expd.toGMTString();
-        document.cookie='language='+str+'; path=/; '+expires;
-        location.href = location.href;
-    }
-    function login() {
-        document.getElementById('mask').style.display='';
-            //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
-        document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
-        document.getElementById('login_div').style.display='';
-        document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
-        document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
-        document.getElementById('login_input').focus();
-    }
-    function sha1loginpass(f) {
-        if (f.password1.value=="") return false;
-        try {
-            timestamp = new Date().getTime() + "";
-            timestamp = timestamp.substr(0, timestamp.length-3);
-            f.timestamp.value = timestamp;
-            f.password1.value = sha1(timestamp + "" + f.password1.value);
-            return true;
-        } catch {
-            alert("sha1.js not loaded.");
-            return false;
-        }
-    }
-    var $url = document.getElementById('url');
-    if ($url) {
-        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
-        $url.style.height = $url.scrollHeight + 'px';
-    }
-    var $textarea=document.getElementById('txt-a');
-    if ($textarea) {
-        $textarea.style.height = $textarea.scrollHeight + 'px';
-    }
-    function CopyAllDownloadUrl(str) {
-        var tmptextarea=document.createElement('textarea');
-        document.body.appendChild(tmptextarea);
-        tmptextarea.setAttribute('style','position:absolute;left:-100px;width:0px;height:0px;');
-        document.querySelectorAll(str).forEach(function (e) {
-            tmptextarea.innerHTML+=e.href+"\r\n";
-        });
-        tmptextarea.select();
-        tmptextarea.setSelectionRange(0, tmptextarea.value.length);
-        document.execCommand("copy");
-        alert(tmptextarea.innerHTML+"成功");
-    }
-    function operatediv_close(operate) {
-        document.getElementById(operate+'_div').style.display='none';
-        document.getElementById('mask').style.display='none';
-    }
-</script>
-<script src="//unpkg.zhimg.com/ionicons@4.4.4/dist/ionicons.js"></script>
-<script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script>
 </html>
